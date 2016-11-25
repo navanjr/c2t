@@ -6,6 +6,24 @@ withNumbers = function(verses, chapter) {
   return [];
 }
 
+tp = {
+  breisheet: [
+    {gen: [1,2,3,4,5,[6,1,8]]},
+  ],
+  noach: [
+    {gen: [[6,9],7,8,9,10,11]},
+  ]
+};
+
+[
+  {book: 'gen', verses: [
+    {1: [
+      'asdfasf',
+      'sadfasdf',
+    ]}
+  ]}
+]
+
 portionsData = {
   'breisheet': {
     week: 1,

@@ -1,0 +1,56 @@
+.title {
+  font-family: sans-serif;
+}
+
+.portionsMenu {
+  position: absolute;
+  top: 200;
+  left: 10;
+  border: brown;
+  border-style: dashed;
+  background: rgba(255, 255, 255, 0.90);
+  padding: 20; 
+  font-family: sans-serif;
+  text-align: left;
+  font-size: xx-large;
+}
+
+.menuItem {
+  cursor: pointer;
+}
+
+.menuItem:hover {
+  background-color: yellow;
+}
+
+.portionText {
+  padding: 50;
+  text-align: justify;
+  background: rgba(128, 128, 128, 0.11);
+  font-family: sans-serif;
+  font-size: larger;
+}
+
+.chapter {
+  padding: 20;
+}
+
+.chapterName {
+  font-weight: bold;
+}
+
+.bookName {
+  font-size: xx-large;
+  font-weight: lighter;
+  text-align: center;  
+}
+
+.verseNumber {
+  font-size: x-small;
+  color: maroon;
+  padding-right: 3;
+  vertical-align: text-top;
+  padding-left: 5;
+  font-weight: bold;
+  background-color: rgba(198, 199, 181, 0.28);
+}
