@@ -10,9 +10,14 @@
        url(MaterialIcons-Regular.ttf) format('truetype');
 }
 
+.material-icons:hover {
+  color: yellow;
+}
+
 .material-icons {
+  background: inherit;
   cursor: pointer;
-  font-size: xx-large;
+  font-size: -webkit-xxx-large;
   font-family: 'Material Icons';
   font-weight: normal;
   font-style: normal;

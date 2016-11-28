@@ -6,12 +6,23 @@
   <link href="fonts/google-material/material.css" rel="stylesheet" />
 </head>
 <body align=center>
-<h1 id=title class="title">biblejs</h1>  
-<i class="material-icons button" id="b1">face</i>
-<i class="material-icons button" id="b2">date_range</i>
-<i class="material-icons button" id="b3">event_seat</i>
-<div id="portionText" class="portionText">
+<div id=title class="title">  
+  <div class="navigationLeft">
+    <i class="material-icons button" id="b1">event_seat</i>
+    <i class="material-icons button" id="b2">local_library</i>
+  </div>
+  <div class="navigationPortion">
+    <span id=portionTitle class="portionTitle"></span>
+  </div>
+  <div class="navigationReference">
+    <span id=referenceTitle class="portionTitle"></span>
+  </div>
+  <div class="navigationRight">
+    <i class="material-icons button" id="b3">keyboard_arrow_left</i>
+    <i class="material-icons button" id="b4">keyboard_arrow_right</i>
+  </div>
 </div>
-<div class="portionsMenu" id="portionsMenu">
-</div>
+<div class="reading" id="reading"></div>
+<div id="referencesMenu" class="referencesMenu"></div>
+<div class="portionsMenu" id="portionsMenu"></div>
 </body>

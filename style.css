@@ -1,34 +1,131 @@
-.title {
+html.body {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+  
+* {
+  margin: 0px;
+  padding: 0px;
+  background: #f9f9f9;
   font-family: sans-serif;
+}
+
+.title {
+  text-align: start;
+  padding: 1em;
+  color: white;
+  background: #03a9f4;
+}
+.navigationLeft {
+  float: left;
+  background: transparent;
+  width: 10%;
+  white-space: nowrap;
+  text-align: left;
+}
+.navigationRight {
+  float: right;
+  background: transparent;
+  width: 10%;
+  white-space: nowrap;
+  text-align: right;
+}
+.navigationPortion {
+  display: inline-block;
+  background: transparent;
+  width: 20%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+}
+.navigationReference {
+  display: inline-block;
+  background: transparent;
+  width: 50%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+  padding-left: 1em;
+}
+
+.portionTitle {
+  display: inline;
+  height: 100%;
+  background: inherit;
+  vertical-align: top; 
+  font-size: xx-large;
+  margin-left: 1em;
 }
 
 .portionsMenu {
   position: absolute;
-  top: 200;
   left: 10;
-  border: brown;
-  border-style: dashed;
-  background: rgba(255, 255, 255, 0.90);
-  padding: 20; 
+  background: rgba(255, 255, 255);
   font-family: sans-serif;
   text-align: left;
   font-size: xx-large;
+  width: 40%;
+  transition: 0.5s;
+  z-index: 9;
+  max-height: 0em;
+  overflow: hidden;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.portionsMenu.expand {
+  max-height: 100%;
+}
+
+.referencesMenu {
+  position: absolute;
+  left: 10%;
+  background: rgba(255, 255, 255);
+  text-align: justify;
+  font-family: sans-serif;
+  font-size: larger;
+  transition: 0.5s;
+  z-index: 5;
+  max-height: 0em;
+  overflow: hidden;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.referencesMenu.expand {
+  max-height: 100%;
+}
+
+.reading{
+  position: absolute;
+  overflow-y: auto;
+  max-height: 87%;
+  transition: all .3s ease;
+  text-align: justify;
+  padding: 1em;
+  font-size: x-large;
+  z-index: 1;
+}
+.reading.expand {
+  max-height: 100%;
+  overflow: scroll;
 }
 
 .menuItem {
   cursor: pointer;
+  padding: 5 20 5 20;
 }
-
 .menuItem:hover {
-  background-color: yellow;
+  background-color: rgba(255, 255, 0, 0.5);
 }
 
-.portionText {
-  padding: 50;
-  text-align: justify;
-  background: rgba(128, 128, 128, 0.11);
-  font-family: sans-serif;
-  font-size: larger;
+.bookName {
+  cursor: pointer;
+  padding: .5em .5em .2em .5em;
+  font-size: xx-large;
+  font-weight: lighter;
+  text-align: left;  
+}
+.bookName:hover {
+  background-color: rgba(255, 255, 0, 0.5);
 }
 
 .chapter {
@@ -37,12 +134,6 @@
 
 .chapterName {
   font-weight: bold;
-}
-
-.bookName {
-  font-size: xx-large;
-  font-weight: lighter;
-  text-align: center;  
 }
 
 .verseNumber {
