@@ -73,12 +73,8 @@ nav = {
     var referencesMenu = e && e.srcElement && e.srcElement.parentElement && e.srcElement.parentElement.id === 'referencesMenu';
     var menuItemId = menuItem && e.srcElement.id;
     if (e.hide) {
-      if (portionsExpanded) {
-        this.portions.element.classList.toggle('expand');
-      }
-      if (referencesExpanded) {
-        references.classList.toggle('expand');
-      }
+      nav.hideMenu('portions');
+      nav.hideMenu('references');
     } else if (b1) {
       //we toggle portionMenu and Hide referencesMenu
       nav.toggleMenu('portions');
