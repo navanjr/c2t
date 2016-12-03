@@ -4,7 +4,7 @@ window.bible = {
 
 window.onload = function() {
   // menu
-  var portionNames = Object.keys(tp);
+  var portionNames = Object.keys(portionsData);
   var menu = document.getElementById('portionsMenu');
   for (var i = 0; i < portionNames.length; i++) {
     var menuItem = newElement({contents: properCase(portionNames[i]), class: 'menuItem', id: portionNames[i]});
@@ -181,24 +181,30 @@ newVerseNumberElement = function(contents, options) {
 }
 
 getReference = function(chunk) {
-  var prettyReference = function(ref) {
+  var prettyReference = function(ref, options) {
+    options = options || {};
     //'1'
     //'6,1,8'
     //'6,9'
     var refSplit = ref.split(',');
     if (refSplit.length === 3) {
-      return refSplit[0] + ':' + refSplit[1] + '-' + refSplit[2];
+      if (refSplit[1] != refSplit[2]) {
+        if (options.spansChapters) {
+          return refSplit[0] + ':' + refSplit[2];
+        }
+        return refSplit[0] + ':' + refSplit[1] + '-' + refSplit[2];
+      }
+      return refSplit[0] + ':' + refSplit[1];
     } else if (refSplit.length === 2) {
       return refSplit[0] + ':' + refSplit[1];
-    } else {
-      return ref;
     }
+    return ref;
   };
   var bookName = Object.keys(chunk)[0];
   var chapters = chunk[bookName];
   var first = prettyReference(Object.keys(chapters[0])[0]);
-  var last = prettyReference(Object.keys(chapters[chapters.length - 1])[0]);
-  if (first != last) {
+  var last = prettyReference(Object.keys(chapters[chapters.length - 1])[0], {spansChapters: true});
+  if (chapters.length > 1) {
     return getProperBookName(bookName) + ' ' + first + ' - ' + last;
   } else {
     return getProperBookName(bookName) + ' ' + first;
@@ -211,7 +217,7 @@ getProperBookName = function(book) {
 
 getPortion = function(portionName) {
   var ret = [],
-    somethingToRead = tp[portionName];
+    somethingToRead = portionsData[portionName].references;
   if (somethingToRead) {
     for (var i = 0; i < somethingToRead.length; i++) {
       var reading = somethingToRead[i];
