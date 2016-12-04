@@ -597,537 +597,332 @@ portionsData = {
     title: 'Nasso',
     name: 'nasso',
     description: 'Take up',
-    references: {
-      torah: [
-        {reference: 'Numbers 4:21 - 7:89', verses: function() {return word("num",4).slice(20)
-        .concat(word("num",5))
-        .concat(word("num",6))
-        .concat(word("num",7));}},
-      ],
-      prophets: [
-        {reference: 'Judges 13:2-25', verses: function() {return word("jdg",13).slice(1,25);}},
-      ],
-      britchadasha: [
-        {reference: 'Matthew 26:14-45', verses: function() {return word("mat",26).slice(13,45);}},
-        {reference: 'Matthew 27:34', verses: function() {return word("mat",27).slice(33,34);}},
-        {reference: 'John 7:37 - 8:11', verses: function() {return word("jhn",7).slice(36).concat(word("jhn",8).slice(0,11));}},
-        {reference: 'Acts 21:17-32', verses: function() {return word("act",21).slice(16,32);}},
-      ],
-    },
+    references: [
+      {num: [[4,21],5,6,7]},
+      {jdg: [[13,2,25]]},
+      {mat: [[26,14,45]]},
+      {mat: [[27,34,34]]},
+      {jhn: [[7,37],[8,1,11]]},
+      {act: [[21,17,32]]},
+    ],
   },
   'behaalotcha': {
     week: 34,
     title: 'Beha\'alotcha',
     name: 'behaalotcha',
     description: 'When you set up',
-    references: {
-      torah: [
-        {reference: 'Numbers 8 - 12', verses: function() {return word("num",8)
-        .concat(word("num",9))
-        .concat(word("num",10))
-        .concat(word("num",11))
-        .concat(word("num",12));}},
-      ],
-      prophets: [
-        {reference: 'Zechariah 2:1 - 4:7', verses: function() {return word("zec",2)
-        .concat(word("zec",3))
-        .concat(word("zec",4).slice(0,7));}},
-      ],
-      britchadasha: [
-        {reference: 'Luke 17:11 - 18:14', verses: function() {return word("luk",17).slice(10)
-        .concat(word("luk",18).slice(0,14));}},
-        {reference: 'Luke 23:44-56', verses: function() {return word("luk",23).slice(43,56);}},
-        {reference: 'Acts 2', verses: function() {return word("act",2);}},
-        {reference: 'Acts 10', verses: function() {return word("act",10);}},
-        {reference: '2 Corinthians 10:5-13', verses: function() {return word("cr2",10).slice(4,13);}},
-        {reference: 'Hebrews 3:1-6', verses: function() {return word("heb",3).slice(0,6);}},
-        {reference: 'Revelation 11:1-3', verses: function() {return word("rev",11).slice(0,3);}},
-      ],
-    },
+    references: [
+      {num: [8,9,10,11,12]},
+      {zec: [2,3,[4,1,7]]},
+      {luk: [[17,11],[18,1,14]]},
+      {luk: [[23,44,56]]},
+      {act: [2]},
+      {act: [10]},
+      {cr2: [[10,5,13]]},
+      {heb: [[3,1,6]]},
+      {rev: [[11,1,3]]},
+    ],
   },
   'shelachlacha': {
     week: 35,
     title: 'Shelach L\'cha',
     name: 'shelachlacha',
     description: 'Send',
-    references: {
-      torah: [
-        {reference: 'Numbers 13:1 - 15:41', verses: function() {return word("num",13)
-        .concat(word("num",14))
-        .concat(word("num",15).slice(0,41));}},
-      ],
-      prophets: [
-        {reference: 'Joshua 2', verses: function() {return word("jos",2);}},
-        {reference: 'Psalm 95', verses: function() {return word("psa",95);}},
-        {reference: 'Jeremiah 12:14-17', verses: function() {return word("jer",12).slice(13,17);}},
-        {reference: 'Ezekiel 20', verses: function() {return word("jos",20);}},
-      ],
-      britchadasha: [
-        {reference: 'Mark 10:1-45', verses: function() {return word("mar",10).slice(0,45);}},
-        {reference: 'Hebrews 3:7-19', verses: function() {return word("heb",3).slice(6,19);}},
-      ],
-    },
+    references: [
+      {num: [13,14,15]},
+      {jos: [2]},
+      {psa: [95]},
+      {jer: [[12,14,17]]},
+      {eze:[20]},
+      {mar: [10,1,45]},
+      {heb: [[3,7,19]]},
+    ],
   },
   'korach': {
     week: 36,
     title: 'Korach',
     name: 'korach',
     description: 'Korah',
-    references: {
-      torah: [
-        {reference: 'Numbers 16 - 18', verses: function() {
-          return word("num",16)
-          .concat(word("num",17))
-          .concat(word("num",18));
-        }},
-      ],
-      prophets: [
-        {reference: '1 Samuel 11:14 - 12:22', verses: function() {return word("sa1",11).slice(13)
-        .concat(word("sa1",12).slice(0,22));}},
-      ],
-      britchadasha: [
-        {reference: 'Luke 18:35 - 19:28', verses: function() {return word("luk",18).slice(34).concat(word("luk",19).slice(0,28));}},
-        {reference: 'Romans 13:1-7', verses: function() {return word("rom",13).slice(0,7);}},
-        {reference: '2 Timothy 2:8-21', verses: function() {return word("ti2",2).slice(7,21);}},
-        {reference: 'Jude', verses: function() {return word("jud",1);}},
-      ],
-    },
+    references: [
+      {num: [16,17,18]},
+      {sa1: [[11,14],[12,1,22]]},
+      {luk: [[18,35],[[19,1,28]]]},
+      {rom: [[13,1,7]]},
+      {ti2: [[2,8,21]]},
+      {jud: [1]},
+    ],
   },
   'chukat': {
     week: 37,
     title: 'Chukat',
     name: 'chukat',
     description: 'Statute',
-    references: {
-      torah: [
-        {reference: 'Numbers 19:1 - 22:1', verses: function() {
-          return word("num",19)
-          .concat(word("num",20))
-          .concat(word("num",21))
-          .concat(word("num",22).slice(0,1));
-        }},
-      ],
-      prophets: [
-        {reference: 'Judges 11:1-33', verses: function() {return word("jdg",11).slice(0,33);}},
-        {reference: 'Isaiah 66:1-24', verses: function() {return word("isa",66);}},
-      ],
-      britchadasha: [
-        {reference: 'Matthew 21:1-17', verses: function() {return word("mat",21).slice(0,17);}},
-        {reference: 'John 3:1-21', verses: function() {return word("jhn",3).slice(0,21);}},
-        {reference: 'John 4:3-30', verses: function() {return word("jhn",4).slice(2,30);}},
-        {reference: 'John 12:27-50', verses: function() {return word("jhn",12).slice(26,50);}},
-      ],
-    },
+    references: [
+      {num: [19,20,21,[22,1,1]]},
+      {jdg: [[11,1,33]]},
+      {isa: [66]},
+      {mat: [[21,1,17]]},
+      {jhn: [[3,1,21]]},
+      {jhn: [[4,3,30]]},
+      {jhn: [[12,27]]},
+    ],
   },
   'balak': {
     week: 38,
     title: 'Balak',
     name: 'balak',
     description: 'Balak',
-    references: {
-      torah: [
-        {reference: 'Numbers 22:2 - 25:9', verses: function() {return word("num",22).slice(1)
-          .concat(word("num",23))
-          .concat(word("num",24))
-          .concat(word("num",25).slice(0,9));}},
-      ],
-      prophets: [
-        {reference: 'Joshua 13:22', verses: function() {return word("jos",13).slice(21,22);}},
-        {reference: 'Micah 5:7 - 6:8', verses: function() {return word("mic",5).slice(6)
-            .concat(word("mic",6).slice(0,8));}},            
-      ],
-      britchadasha: [
-        {reference: 'Mark 11:1-26', verses: function() {return word("mar",11).slice(0,26);}},
-        {reference: 'Romans 11:25-32', verses: function() {return word("rom",11).slice(24,32);}},
-        {reference: '1 Corinthians 1:20-31', verses: function() {return word("cr1",1).slice(19,31);}},
-        {reference: 'Hebrews 1:1-2', verses: function() {return word("heb",1).slice(0,2);}},
-        {reference: '2 Peter 2:1-22', verses: function() {return word("pe2",2).slice(0,22);}},
-        {reference: 'Jude 1:11', verses: function() {return word("jud",1).slice(10,11);}},
-        {reference: 'Revelation 2:12-17', verses: function() {return word("rev",2).slice(11,17);}},
-      ],
-    },
+    references: [
+      {num: [[22,2],23,24,[25,1,9]]},
+      {jos: [[13,22,22]]},
+      {mic: [[5,7],[6,1,8]]},
+      {mar: [11,1,26]},
+      {rom: [11,25,32]},
+      {cr1: [[1,20,31]]},
+      {heb: [[1,1,2]]},
+      {pe2: [2]},
+      {jud: [[1,11,11]]},
+      {rev: [[2,12,17]]},
+    ],
   },
   'pinchas': {
     week: 39,
     title: 'Pinchas',
     name: 'pinchas',
     description: 'Phineas',
-    references: {
-      torah: [
-        {reference: 'Numbers 25:10 - 30:1', verses: function() {return word("num",25).slice(9)
-          .concat(word("num",26))
-          .concat(word("num",27))
-          .concat(word("num",28))
-          .concat(word("num",29))
-          .concat(word("num",30).slice(0,1));}},
-      ],
-      prophets: [
-        {reference: '1 Kings 18:46 - 19:21', verses: function() {return word("ki1",18).slice(45)
-            .concat(word("ki1",19).slice(0,21));}},
-      ],
-      britchadasha: [
-        {reference: 'Matthew 26:1-30', verses: function() {return word("mat",26).slice(0,30);}},
-        {reference: 'John 2:13-25', verses: function() {return word("jhn",2).slice(12,25);}},
-        {reference: 'John 7:1-39', verses: function() {return word("jhn",7).slice(0,39);}},
-        {reference: 'John 11:55 - 12:1', verses: function() {return word("jhn",11).slice(54)
-            .concat(word("jhn",12).slice(0,1));}},
-        {reference: 'John 13:1', verses: function() {return word("jhn",13).slice(0,1);}},
-        {reference: 'John 18:28', verses: function() {return word("jhn",18).slice(27,28);}},
-        {reference: 'John 18:39', verses: function() {return word("jhn",18).slice(38,39);}},
-        {reference: 'John 19:14', verses: function() {return word("jhn",19).slice(13,14);}},
-        {reference: 'Acts 2:1-21', verses: function() {return word("act",2).slice(0,21);}},
-        {reference: 'Acts 12:3-4', verses: function() {return word("act",12).slice(2,4);}},
-        {reference: 'Acts 20:6-16', verses: function() {return word("act",20).slice(5,16);}},
-        {reference: 'Acts 27:9-11', verses: function() {return word("act",27).slice(8,11);}},
-        {reference: '1 Corinthians 5:6-8', verses: function() {return word("cr1",5).slice(5,8);}},
-        {reference: '1 Corinthians 16:8', verses: function() {return word("cr1",16).slice(7,8);}},
-        {reference: 'Hebrews 11:28', verses: function() {return word("heb",11).slice(27,28);}},
-      ],
-    },
+    references: [
+      {num: [[25,10],26,27,28,29]},
+      {ki1: [[18,46],[19,1,21]]},
+      {mat: [[26,1,30]]},
+      {jhn: [[2,13,25]]},
+      {jhn: [[7,1,39]]},
+      {jhn: [[11,55],[12,1,1]]},
+      {jhn: [[13,1,1]]},
+      {jhn: [[18,28,28]]},
+      {jhn: [[18,39,39]]},
+      {jhn: [[19,14,14]]},
+      {act: [[2,1,21]]},
+      {act: [[12,3,4]]},
+      {act: [[20,6,16]]},
+      {act: [[27,9,11]]},
+      {cr1: [[5,6,8]]},
+      {cr1: [[16,8,8]]},
+      {heb: [[11,28,28]]},
+    ],
   },
   'mattot': {
     week: 40,
     title: 'Mattot',
     name: 'mattot',
     description: 'Tribes',
-    references: {
-      torah: [
-        {reference: 'Numbers 30 - 32', verses: function() {return word("num",30)
-            .concat(word("num",31))
-            .concat(word("num",32));}},
-      ],
-      prophets: [
-        {reference: 'Judges 11:29-40', verses: function() {return word("jdg",11).slice(28,40);}},
-        {reference: '2 Chronicles 24:20-22', verses: function() {return word("ch2",24).slice(19,22);}},
-        {reference: 'Jeremiah 1:1 - 2:3', verses: function() {return word("jer",1)
-            .concat(word("jer",2).slice(0,3));}},
-      ],
-      britchadasha: [
-        {reference: 'Matthew 5:33-37', verses: function() {return word("mat",5).slice(32,37);}},
-        {reference: 'Matthew 23:1-39', verses: function() {return word("mat",23).slice(0,39);}},
-      ],
-    },
+    references: [
+      {num: [30,31,32]},
+      {jdg: [[11,29,40]]},
+      {ch2: [[24,20,22]]},
+      {jer: [1,[2,1,3]]},
+      {mat: [[5,33,37]]},
+      {mat: [23]},
+    ],
   },
   'massei': {
     week: 40,
     title: 'Massei',
     name: 'massei',
     description: 'Journeys',
-    references: {
-      torah: [
-        {reference: 'Numbers 33 - 36', verses: function() {return word("num",33)
-          .concat(word("num",34))
-          .concat(word("num",35))
-          .concat(word("num",36));}},
-      ],
-      prophets: [
-        {reference: 'Jeremiah 2:4-28', verses: function() {return word("jer",2).slice(3,28);}},
-        {reference: 'Jeremiah 3:4', verses: function() {return word("jer",3).slice(3,4);}},
-        {reference: 'Jeremiah 4:1-2', verses: function() {return word("jer",4).slice(0,2);}},
-      ],
-      britchadasha: [
-        {reference: 'Matthew 24:1 - 25:46', verses: function() {return word("mat",24).concat(word("mat",25).slice(0,46));}},
-        {reference: 'Philippians 3:7-21', verses: function() {return word("phl",3).slice(6,21);}},
-        {reference: 'James 4:1-12', verses: function() {return word("jam",4).slice(0,12);}},
-      ],
-    },
+    references: [
+      {num: [33,34,35,36]},
+      {jer: [[2,4,28]]},
+      {jer: [[3,4,4]]},
+      {jer: [[4,1,2]]},
+      {mat: [24,25]},
+      {phl: [[3,7,21]]},
+      {jam: [[4,1,12]]},
+    ],
   },
   'devarim': {
     week: 41,
     title: 'Devarim',
     name: 'devarim',
     description: 'Words',
-    references: {
-      torah: [
-        {reference: 'Deuteronomy 1:1 - 3:22', verses: function() {
-          return word("deu",1)
-            .concat(word("deu",2))
-            .concat(word("deu",3).slice(0,22));
-        }},
-      ],
-      prophets: [
-        {reference: 'Isaiah 1:1-31', verses: function() {return word("isa",1).slice(0,31)}},
-      ],
-      britchadasha: [
-        {reference: 'Mark 14:1-16', verses: function() {return word("mar",14).slice(0,16);}},
-        {reference: 'John 15:1-11', verses: function() {return word("jhn",15).slice(0,11);}},
-        {reference: 'Acts 6:8 - 7:60 ', verses: function() {return word("act",6).slice(7).concat(word("act",7).slice(0,60));}},
-        {reference: 'Acts 9:1-21', verses: function() {return word("act",9).slice(0,21);}},
-        {reference: '1 Timothy 3:1-7', verses: function() {return word("ti1",3).slice(0,7);}},
-        {reference: 'Hebrews 3:1 - 4:11', verses: function() {return word("heb",3).concat(word("heb",4).slice(0,11));}},
-      ],
-    },
+    references: [
+      {deu: [1,2,[3,1,22]]},
+      {isa: [1]},
+      {mar: [[14,1,16]]},
+      {jhn: [[15,1,11]]},
+      {act: [[6,8],7]},
+      {act: [[9,1,21]]},
+      {ti1: [[3,1,7]]},
+      {heb: [3,[4,1,11]]},
+    ],
   },
   'vaecthanan': {
     week: 42,
     title: 'Va\'ecthanan',
     name: 'vaecthanan',
     description: 'I pleaded',
-    references: {
-      torah: [
-        {reference: 'Deuteronomy 3:23 - 7:11', verses: function() {return word("deu",3).slice(22)
-            .concat(word("deu",4))
-            .concat(word("deu",5))
-            .concat(word("deu",6))
-            .concat(word("deu",7).slice(0,11));}},
-      ],
-      prophets: [
-        {reference: 'Isaiah 40:1-26', verses: function() {return word("isa",40).slice(0,26);}},
-        {reference: 'Isaiah 62:6-7', verses: function() {return word("isa",62).slice(5,7);}},
-      ],
-      britchadasha: [
-        {reference: 'Matthew 4:1-11', verses: function() {return word("mat",4).slice(0,11);}},
-        {reference: 'Matthew 22:33-40', verses: function() {return word("mat",22).slice(32,40);}},
-        {reference: 'Matthew 23:31-39', verses: function() {return word("mat",23).slice(30,39);}},
-        {reference: 'Mark 12:1-44', verses: function() {return word("mar",12).slice(0,44);}},
-        {reference: 'Luke 10:25-37', verses: function() {return word("luk",10).slice(24,37);}},
-        {reference: 'Luke 22:13-38', verses: function() {return word("luk",22).slice(12,38);}},
-        {reference: 'Acts 13:13-43', verses: function() {return word("act",13).slice(12,43);}},
-        {reference: 'Romans 3:27-31', verses: function() {return word("rom",3).slice(26,31);}},
-        {reference: '1 Timothy 2:1-6', verses: function() {return word("ti1",2).slice(0,6);}},
-        {reference: 'James 2:14-26', verses: function() {return word("jam",2).slice(13,26);}},
-      ],
-    },
+    references: [
+      {deu: [[3,23],4,5,6,[7,1,11]]},
+      {isa: [[40,1,26]]},
+      {isa: [[62,6,7]]},
+      {mat: [[4,1,11]]},
+      {mat: [[22,33,40]]},
+      {mat: [[23,31,39]]},
+      {mar: [12]},
+      {luk: [[10,25,37]]},
+      {luk: [[22,13,38]]},
+      {act: [[13,13,42]]},
+      {rom: [[3,27,31]]},
+      {ti1: [[2,1,6]]},
+      {jam: [[2,14,26]]},
+    ],
   },
   'ekev': {
     week: 43,
     title: 'Ekev',
     name: 'ekev',
     description: 'Consequence',
-    references: {
-      torah: [
-        {reference: 'Deuteronomy 7:12 - 11:25', verses: function() {return word("deu",7).slice(11)
-            .concat(word("deu",8))
-            .concat(word("deu",9))
-            .concat(word("deu",10))
-            .concat(word("deu",11).slice(0,25));}},
-      ],
-      prophets: [
-        {reference: 'Isaiah 49:14 - 51:3', verses: function() {return word("isa",49).slice(13)
-          .concat(word("isa",50))
-          .concat(word("isa",51).slice(0,3));}},
-      ],
-      britchadasha: [
-        {reference: 'Luke 4:1-13', verses: function() {return word("luk",4).slice(0,13);}},
-        {reference: 'John 13:31 - 15:27', verses: function() {return word("jhn",13).slice(30)
-          .concat(word("isa",14))
-          .concat(word("isa",15).slice(0,27));}},
-        {reference: 'Romans 8:31-39', verses: function() {return word("rom",8).slice(30,39);}},
-        {reference: 'Hebrews 12:1-29', verses: function() {return word("heb",12).slice(0,29);}},
-        {reference: 'James 5:7-11', verses: function() {return word("jam",5).slice(6,11);}},
-      ],
-    },
+    references: [
+      {deu: [[7,12],8,9,10,[11,1,25]]},
+      {isa: [[49,14],50,[51,1,3]]},
+      {luk: [[4,1,13]]},
+      {jhn: [[13,31],14,15]},
+      {rom: [[8,31,39]]},
+      {heb: [12]},
+      {jam: [[5,7,11]]},
+    ],
   },
   'reeh': {
     week: 44,
     title: 'Re\'eh',
     name: 'reeh',
     description: 'See',
-    references: {
-      torah: [
-        {reference: 'Deuteronomy 11:26 - 16:17', verses: function() {
-          return word("deu",11).slice(25)
-            .concat(word("deu",12))
-            .concat(word("deu",13))
-            .concat(word("deu",14))
-            .concat(word("deu",15))
-            .concat(word("deu",16).slice(0,17));
-        }},
-      ],
-      prophets: [
-        {reference: 'Isaiah 54:11 - 55:9', verses: function() {
-          return word("isa",54).slice(10)
-            .concat(word("isa",55).slice(0,9));
-        }},
-      ],
-      britchadasha: [
-        {reference: 'John 7:37-52', verses: function() {return word("jhn",7).slice(36,52);}},
-        {reference: 'john 16:1 - 17:26', verses: function() {return word("jhn",16).concat(word("jhn",17).slice(0,26));}},
-        {reference: '1 Corinthians 5:9-13', verses: function() {return word("cr1",5).slice(8,13);}},
-        {reference: '1 Corinthians 8:1-13', verses: function() {return word("cr1",8).slice(0,13);}},
-        {reference: '1 John 4:1-6', verses: function() {return word("jo1",4).slice(0,6);}},
-      ],
-    },
+    references: [
+      {deu: [[11,26],12,13,14,15,[16,1,17]]},
+      {isa: [[54,11],[55,1,9]]},
+      {jhn: [[7,37,52]]},
+      {jhn: [16,17]},
+      {cr1: [[5,9,13]]},
+      {cr1: [8]},
+      {jo1: [[4,1,6]]},
+    ],
   },
   'shoftim': {
     week: 45,
     title: 'Shoftim',
     name: 'shoftim',
     description: 'Judges',
-    references: {
-      torah: [
-        {reference: 'Deuteronomy 16:18 - 21:9', verses: function() {
-          return word("deu",16).slice(17)
-            .concat(word("deu",17))
-            .concat(word("deu",18))
-            .concat(word("deu",19))
-            .concat(word("deu",20))
-            .concat(word("deu",21).slice(0,9));
-        }},
-      ],
-      prophets: [
-        {reference: 'Isaiah 51:12 - 52:12', verses: function() {
-          return word("isa",51).slice(11)
-            .concat(word("isa",52).slice(0,12));
-        }},
-      ],
-      britchadasha: [
-        {reference: 'Matthew 5:38-42', verses: function() {return word("mat",5).slice(37,42);}},
-        {reference: 'Matthew 26:47 - 27:10', verses: function() {return word("mat",26).slice(46).concat(word("mat",27).slice(0,10));}},
-        {reference: 'John 1:19-27', verses: function() {return word("jhn",1).slice(18,27);}},
-        {reference: 'Acts 3:13-26', verses: function() {return word("act",3).slice(12,26);}},
-        {reference: 'Acts 7:35-53', verses: function() {return word("act",7).slice(34,53);}},
-        {reference: '1 Corinthians 5:9-13', verses: function() {return word("cr1",5).slice(8,13);}},
-        {reference: '1 Timothy 5:17-22', verses: function() {return word("ti1",5).slice(16,22);}},
-        {reference: 'Hebrews 10:28-31', verses: function() {return word("heb",10).slice(27,31);}},
-      ],
-    },
+    references: [
+      {deu: [[16,18],17,18,19,20,[21,1,9]]},
+      {isa: [[51,12],[52,1,12]]},
+      {mat: [[5,38,42]]},
+      {mat: [[26,47],[27,1,10]]},
+      {jhn: [[1,19,27]]},
+      {act: [[3,13,26]]},
+      {act: [[7,35,53]]},
+      {cr1: [[5,9,13]]},
+      {ti1: [[5,17,22]]},
+      {heb: [[10,28,31]]},
+    ],
   },
   'kitetze': {
     week: 46,
     title: 'Ki Tetze',
     name: 'kitetze',
     description: 'When you go forth',
-    references: {
-      torah: [
-        {reference: 'Deuteronomy 21:10 - 25:19', verses: function() {
-          return word("deu",22)
-            .concat(word("deu",23))
-            .concat(word("deu",24))
-            .concat(word("deu",25).slice(0,19));
-        }},
-      ],
-      prophets: [
-        {reference: 'Isaiah 52:13 - 54:10', verses: function() {
-          return word("isa",52)
-            .concat(word("isa",53))
-            .concat(word("isa",54).slice(0,10));
-        }},
-      ],
-      britchadasha: [
-        {reference: 'Matthew 5:27-32', verses: function() {return word("mat",5).slice(26,32);}},
-        {reference: 'Matthew 19:1-12', verses: function() {return word("mat",19).slice(0,12);}},
-        {reference: 'Matthew 22:23-32', verses: function() {return word("mat",22).slice(22,32);}},
-        {reference: 'Mark 10:2-12', verses: function() {return word("mar",10).slice(1,12);}},
-        {reference: 'Mark 12:18-27', verses: function() {return word("mar",12).slice(17,27);}},
-        {reference: 'Luke 23:1-25', verses: function() {return word("luk",23).slice(0,25);}},
-      ],
-    },
+    references: [
+      {deu: [[21,10],22,23,24,25]},
+      {isa: [[52,13],53,[54,1,10]]},
+      {mat: [[5,27,31]]},
+      {mat: [[19,1,12]]},
+      {mat: [[22,23,32]]},
+      {mar: [[10,2,12]]},
+      {mar: [[12,18,27]]},
+      {luk: [[23,1,25]]},
+    ],
   },
   'kitavo': {
     week: 47,
     title: 'Ki Tavo',
     name: 'kitavo',
     description: 'When you come in',
-    references: {
-      torah: [
-        {reference: 'Deuteronomy 26:1 - 29:9', verses: function() {
-          return word("deu",26).concat(word("deu",29).slice(0,9));}},
-      ],
-      prophets: [
-        {reference: 'Isaiah 60:1-22', verses: function() {return word("isa",60);}},
-      ],
-      britchadasha: [
-        {reference: 'Matthew 13:1-23', verses: function() {return word("mat",13).slice(0,23);}},
-        {reference: 'Matthew 25:1-46', verses: function() {return word("mat",25);}},
-        {reference: 'Luke 21:1-4', verses: function() {return word("luk",21).slice(0,4);}},
-        {reference: 'Luke 23:26-56', verses: function() {return word("luk",23).slice(25,56);}},
-        {reference: 'Acts 28:17-31', verses: function() {return word("act",28).slice(16,31);}},
-        {reference: 'Romans 11:1-15', verses: function() {return word("rom",11).slice(0,15);}},
-        {reference: 'Ephesians 1:3-6', verses: function() {return word("eph",1).slice(2,6);}},
-        {reference: 'James 1:1 - 2:26', verses: function() {return word("jam",1).concat(word("jam",2));}},
-      ],
-    },
+    references: [
+      {deu: [26,27,28,[29,1,9]]},
+      {isa: [60]},
+      {mat: [[13,1,23]]},
+      {mat: [25]},
+      {luk: [[21,1,4]]},
+      {luk: [[23,26,56]]},
+      {act: [[28,17,31]]},
+      {rom: [[11,1,15]]},
+      {eph: [[1,3,6]]},
+      {jam: [1,2]},
+    ],
   },
   'nitzavim': {
     week: 48,
     title: 'Nitzavim',
     name: 'nitzavim',
     description: 'Standing',
-    references: {
-      torah: [
-        {reference: 'Deuteronomy 29:9 -­ 30:20', verses: function() {return word("deu",29).slice(8).concat(word("deu",30));}},
-      ],
-      prophets: [
-        {reference: 'Isaiah 61:1 ­- 63:9', verses: function() {return word("isa",61).concat(word("isa",62)).concat(word("isa",63).slice(0,9));}},
-      ],
-      britchadasha: [
-        {reference: 'Matthew 5:17-­19', verses: function() {return word("mat",5).slice(16,19);}},
-        {reference: 'Luke 24:1­-12', verses: function() {return word("luk",24).slice(0,12);}},
-        {reference: 'Romans 9:30 ­- 10:13', verses: function() {return word("rom",9).slice(29).concat(word("rom",10).slice(0,13));}},
-        {reference: '1 Timothy 6:1­-21', verses: function() {return word("ti1",6);}},
-        {reference: 'Hebrews 12:14-­15', verses: function() {return word("heb",12).slice(13,15);}},
-        {reference: '1 John 5:1-­21', verses: function() {return word("jo1",5);}},
-      ],
-    },
+    references: [
+      {deu: [[29,10],[30,1,20]]},
+      {isa: [61,62,[63,1,9]]},
+      {mat: [[5,17,19]]},
+      {luk: [[24,1,12]]},
+      {rom: [[9,30],[10,1,13]]},
+      {ti1: [6]},
+      {heb: [[12,14,15]]},
+      {jo1: [5]},
+    ],
   },
   'vayelekh': {
     week: 49,
     title: 'Vayelekh',
     name: 'vayelekh',
     description: 'He went',
-    references: {
-      torah: [
-        {reference: 'Deuteronomy 31:1-­30', verses: function() {return word("deu",31);}},
-      ],
-      prophets: [
-        {reference: 'Hosea 14:1­-9', verses: function() {return word("hos",14).slice(0,9);}},
-        {reference: 'Joel 2:15­-27', verses: function() {return word("joe",2).slice(14,27);}},
-        {reference: 'Micah 7:18­-20', verses: function() {return word("mic",7).slice(17,20);}},
-      ],
-      britchadasha: [
-        {reference: 'Luke 24:13­-43', verses: function() {return word("luk",24).slice(12,43);}},
-        {reference: 'Romans 1:1­-18', verses: function() {return word("rom",1).slice(0,18);}},
-        {reference: 'Romans 10:14­-21', verses: function() {return word("rom",10).slice(13,21);}},
-        {reference: 'Romans 12:14­-21', verses: function() {return word("rom",12).slice(13,21);}},
-        {reference: 'Philippians 1:1 -­ 2:30', verses: function() {return word("phl",1).concat(word("phl",2));}},
-        {reference: 'Hebrews 12:14­-29', verses: function() {return word("heb",12).slice(13,29);}},
-        {reference: 'Hebrews 13:5­-8', verses: function() {return word("heb",13).slice(4,8);}},
-        {reference: '1 Peter 1:1 -­ 2:25', verses: function() {return word("pe1",1).concat(word("pe1",2));}},
-      ],
-    },
+    references: [
+      {deu: [31]},
+      {hos: [[14,1,9]]},
+      {joe: [[2,15,27]]},
+      {mic: [[7,18,20]]},
+      {luk: [[24,13,43]]},
+      {rom: [[1,1,18]]},
+      {rom: [[10,14,21]]},
+      {rom: [[12,14,21]]},
+      {phl: [1,2]},
+      {heb: [[12,14,29]]},
+      {heb: [[13,5,8]]},
+      {pe1: [1,2]},
+    ],
   },
   'haazinu': {
     week: 50,
     title: 'Ha\'azinu',
     name: 'haazinu',
     description: 'Listen',
-    references: {
-      torah: [
-        {reference: 'Deuteronomy 32:1-­52', verses: function() {return word("deu",32);}},
-      ],
-      prophets: [
-        {reference: '2 Samuel 22:1-­51', verses: function() {return word("2sa",22);}},
-      ],
-      britchadasha: [
-        {reference: 'John 20:26 ­- 21:25', verses: function() {return word("jhn",20).slice(25).concat(word("jhn",21));}},
-      ],
-    },
+    references: [
+      {deu: [32]},
+      {sa2: [22]},
+      {jhn: [[20,26],[21,1,25]]},
+    ],
   },
   'vezothabracha': {
     week: 51,
     title: 'Vezot Ha\'Bracha',
     name: 'vezothabracha',
     description: 'This it the blessing',
-    references: {
-      torah: [
-        {reference: 'Deuteronomy 33:1 -­ 34:12',  verses: function() {return word("deu",33).concat(word("deu",34));}},
-      ],
-      prophets: [
-        {reference: 'Joshua 1:1-­18', verses: function() {return word("jos",1);}},
-      ],
-      britchadasha: [
-        {reference: 'Matthew 17:1-­9', verses: function() {return word("mat",17).slice(0,9);}},
-        {reference: 'Mark 9:2­-10', verses: function() {return word("mar",9).slice(1,10);}},
-        {reference: 'Luke 9:28­-36', verses: function() {return word("luk",9).slice(27,36);}},
-        {reference: 'Luke 22:44-­53', verses: function() {return word("luk",22).slice(43,53);}},
-        {reference: 'Luke 24:1-­53', verses: function() {return word("luk",24);}},
-        {reference: '2 Peter 3:1-18', verses: function() {return word("pe2",3);}},
-        {reference: 'Jude 1:3­-4', verses: function() {return word("jud",1).slice(2,4);}},
-        {reference: 'Jude 1:­8-10', verses: function() {return word("jud",1).slice(7,10);}},
-        {reference: 'Revelation 22:1-­5', verses: function() {return word("rev",22).slice(0,5);}},
-      ],
-    },
+    references: [
+      {deu: [33,34]},
+      {jos: [1]},
+      {mat: [[17,1,9]]},
+      {mar: [[9,2,10]]},
+      {luk: [[9,28,36]]},
+      {luk: [[22,44,53]]},
+      {luk: [24]},
+      {pe2: [3]},
+      {jud: [[1,1,3]]},
+      {jud: [[1,8,10]]},
+      {rev: [[22,1,5]]},
+    ],
   },
 };
 
