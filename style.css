@@ -76,7 +76,15 @@ html.body {
 .portionsMenu.expand {
   max-height: 85%;
 }
-
+.referenceCount {
+  position: absolute;
+  top: 12px;
+  left: 10%;
+  font-size: 1em;
+  border-radius: 15px;
+  padding: 3px 8px;
+  background-color: #FF6F00;
+}
 .referencesMenu {
   position: absolute;
   left: 10%;
@@ -87,7 +95,7 @@ html.body {
   transition: 0.5s;
   z-index: 5;
   max-height: 0em;
-  overflow: hidden;
+  overflow-y: scroll;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 .referencesMenu.expand {

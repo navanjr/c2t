@@ -99,6 +99,7 @@ nav = {
 
 stuffReferenceMenu = function(portionName) {
   var mainWindow = document.getElementById('referencesMenu');
+  var refCount = document.getElementById('referenceCount');
   mainWindow.innerHTML = "";
   var chunks = getPortion(portionName);
   nav.portion = portionName;
@@ -115,6 +116,7 @@ stuffReferenceMenu = function(portionName) {
     }
     var portionTitle = document.getElementById('portionTitle');
     portionTitle.innerHTML = properCase(portionName);
+    refCount.innerHTML = nav.referenceCount;
   }
 }
 
