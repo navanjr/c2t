@@ -1,5 +1,5 @@
-window.bible = {
-  version: 'nate'
+window.c2t = {
+  version: 'v0.0.1'
 }
 
 window.onload = function() {
