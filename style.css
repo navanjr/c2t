@@ -4,12 +4,12 @@ html.body {
   padding: 0;
   margin: 0;
 }
-  
+
 * {
   margin: 0px;
   padding: 0px;
   background: #f9f9f9;
-  font-family: sans-serif;
+  font-family: 'lato', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif';
 }
 
 .title {
@@ -54,7 +54,7 @@ html.body {
   display: inline;
   height: 100%;
   background: inherit;
-  vertical-align: top; 
+  vertical-align: top;
   font-size: xx-large;
   margin-left: 1em;
 }
@@ -106,10 +106,9 @@ html.body {
   position: absolute;
   overflow-y: auto;
   max-height: 87%;
+  min-width: 100%;
   transition: all .3s ease;
   text-align: justify;
-  padding: 1em;
-  font-size: x-large;
   z-index: 1;
 }
 .reading.expand {
@@ -130,18 +129,19 @@ html.body {
   padding: .5em .5em .2em .5em;
   font-size: xx-large;
   font-weight: lighter;
-  text-align: left;  
+  text-align: left;
 }
 .bookName:hover {
   background-color: rgba(255, 255, 0, 0.5);
 }
 
 .chapter {
-  padding: 20;
+  padding: 2em;
 }
 
 .chapterName {
   font-weight: bold;
+  margin-bottom: .5em;
 }
 
 .verseNumber {
@@ -152,4 +152,34 @@ html.body {
   padding-left: 5;
   font-weight: bold;
   background-color: rgba(198, 199, 181, 0.28);
+}
+
+.section {
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: .3em;
+  text-indent: .3em;
+  text-transform: uppercase;
+  /*background: #eeeeee;*/
+  color: #333333;
+  line-height: 2em;
+  text-align: center;
+  padding: 2rem 1.25rem 1.25rem;
+}
+.shareChapter {
+  white-space: nowrap;
+  max-height: 33px;
+  transition: white-space 0.1s;
+  transition: max-height 1s;
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 20px;
+  background: #ffffff;
+  padding: .40rem 1.25rem .40rem;
+  text-overflow: ellipsis;
+  text-align: justify;
+  overflow: hidden;
+  cursor: pointer;
+  letter-spacing: .1em;
+  margin-bottom: .1em;
 }
