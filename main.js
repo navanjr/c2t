@@ -15,7 +15,6 @@ window.onload = function() {
   var buttons = document.getElementsByTagName('i');
   for (var i = 0; i < buttons.length; i++) {
     buttons[i].onclick = function(e){
-      var id = e.srcElement.id;
       nav.click(e);
     };
   }
@@ -23,7 +22,7 @@ window.onload = function() {
   var references = document.getElementById('referencesMenu');
   references.onclick = function(e) {
     nav.click(e);
-  } 
+  }
   // reading
   var reading = document.getElementById('reading');
   reading.onclick = function(e) {
@@ -33,7 +32,7 @@ window.onload = function() {
   nav.portions = {element: document.getElementById('portionsMenu')};
   nav.references = {element: document.getElementById('referencesMenu')};
   // load current portion
-  stuffReferenceMenu('noach');
+  stuffReferenceMenu('vayetze');
   read({chunkIndex: 0});
 }
 
@@ -67,10 +66,11 @@ nav = {
     var b1 = this.button === 'b1',
         b2 = this.button === 'b2',
         b3 = this.button === 'b3',
-        b4 = this.button === 'b4';
+        b4 = this.button === 'b4',
+        b5 = this.button === 'b5';
     var menuItem = e && e.srcElement && (e.srcElement.className === 'menuItem' || e.srcElement.className === 'bookName');
     var portionsMenu = e && e.srcElement && e.srcElement.parentElement && e.srcElement.parentElement.id === 'portionsMenu';
-    var referencesMenu = e && e.srcElement && e.srcElement.parentElement && e.srcElement.parentElement.id === 'referencesMenu';
+    var referencesMenu = e && e.srcElement && e.srcElement.parentElement && e.srcElement.parentElement.id === 'referencesMenuItems';
     var menuItemId = menuItem && e.srcElement.id;
     if (e.hide) {
       nav.hideMenu('portions');
@@ -83,22 +83,24 @@ nav = {
       //we toggle referencesMenu and Hide portionMenu
       nav.toggleMenu('references');
       nav.hideMenu('portions');
-    } else if (menuItem && portionsMenu) {
+    } else if (menuItem && portionsMenu) { // portions menu
       //hide the portion menu and fill the reference menu and show it and set the reading to the first reference in the torah
       nav.toggleMenu('portions');
       stuffReferenceMenu(menuItemId);
-      // nav.showMenu('references');
       read({chunkIndex: 0});
-    } else if (menuItem && referencesMenu) {
+    } else if (menuItem && referencesMenu) { // references menu
       nav.hideMenu('references');
-    } else if (b3 || b4){
+    } else if (b3 || b4){ // navigate left or right through references
       nav.next(b3 ? -1 : 0);
+    } else if (b5){ // Share Feature
+      shareReading(nav.portion);
+      nav.hideMenu('references');
     }
   }
 };
 
 stuffReferenceMenu = function(portionName) {
-  var mainWindow = document.getElementById('referencesMenu');
+  var mainWindow = document.getElementById('referencesMenuItems');
   var refCount = document.getElementById('referenceCount');
   mainWindow.innerHTML = "";
   var chunks = getPortion(portionName);
@@ -108,8 +110,8 @@ stuffReferenceMenu = function(portionName) {
     for (var i = 0; i < chunks.length; i++) {
       var chunk = chunks[i];
 
-      var bookRefSpan = newElement({id: 'readingName_' + i, class: 'bookName', contents: getReference(chunk)});
-      
+      var bookRefSpan = newElement({id: 'readingName_' + i, class: 'bookName', contents: chunk.reference});
+
       bookRefSpan.onclick = read;
 
       mainWindow.appendChild(bookRefSpan);
@@ -119,6 +121,32 @@ stuffReferenceMenu = function(portionName) {
     refCount.innerHTML = nav.referenceCount;
   }
 }
+
+shareReading = function(portion) {
+  var reading = document.getElementById('reading');
+  var chunks = getPortion(nav.portion);
+  reading.innerHTML = '';
+  l('share feature... ' + portion, chunks);
+  var section = '';
+  var sectionDiv;
+  for (var i = 0; i < chunks.length; i++) {
+    var chunk = chunks[i];
+    if (section != chunk.section) {
+      if (sectionDiv) {
+        reading.appendChild(sectionDiv);
+      }
+      section = chunk.section;
+      sectionDiv = newElement({class: 'section', contents: section});
+    }
+    sectionDiv.appendChild(newElement({
+      class: 'shareChapter',
+      contents: chunk.reference,
+    }));
+  }
+  if (sectionDiv) {
+    reading.appendChild(sectionDiv);
+  }
+};
 
 read = function(options){
   options = options || {};
@@ -132,10 +160,9 @@ read = function(options){
   var readingDiv = document.getElementById('reading');
   var referenceTitleDiv = document.getElementById('referenceTitle');
   readingDiv.innerHTML = '';
-  var bookName = Object.keys(chunks)[0];
-  referenceTitleDiv.innerHTML = getReference(chunks);
-  for (var i = 0; i < chunks[bookName].length; i++) {
-    var chunk = chunks[bookName][i];
+  referenceTitleDiv.innerHTML = chunks.reference;
+  for (var i = 0; i < chunks.verses.length; i++) {
+    var chunk = chunks.verses[i];
     var cs = newElement({class: 'chapter'});
     var chapter = Object.keys(chunk)[0];
     var verseArray = chunk[chapter];
@@ -182,7 +209,7 @@ newVerseNumberElement = function(contents, options) {
   return newElement;
 }
 
-getReference = function(chunk) {
+getReference = function(bookName, verseArray) {
   var prettyReference = function(ref, options) {
     options = options || {};
     //'1'
@@ -202,47 +229,56 @@ getReference = function(chunk) {
     }
     return ref;
   };
-  var bookName = Object.keys(chunk)[0];
-  var chapters = chunk[bookName];
-  var first = prettyReference(Object.keys(chapters[0])[0]);
-  var last = prettyReference(Object.keys(chapters[chapters.length - 1])[0], {spansChapters: true});
-  if (chapters.length > 1) {
-    return getProperBookName(bookName) + ' ' + first + ' - ' + last;
+  var first = prettyReference(Object.keys(verseArray[0])[0]);
+  var last = prettyReference(Object.keys(verseArray[verseArray.length - 1])[0], {spansChapters: true});
+  if (verseArray.length > 1) {
+    return bookName + ' ' + first + ' - ' + last;
   } else {
-    return getProperBookName(bookName) + ' ' + first;
+    return bookName + ' ' + first;
   }
 };
 
 getProperBookName = function(book) {
-  return bookNames[book] || book + 'Proper';
-}
+  return bookInfo.getAllBooks()[book] || book + 'Proper';
+};
 
 getPortion = function(portionName) {
   var ret = [],
     somethingToRead = portionsData[portionName].references;
   if (somethingToRead) {
     for (var i = 0; i < somethingToRead.length; i++) {
-      var reading = somethingToRead[i];
+      var reading = somethingToRead[i]; // returns object {gen: [...]}
       var bookName = Object.keys(reading)[0];
       var book = kjv[bookName];
       var chapters = reading[bookName];
       if (book && chapters.length) {
         var chunk = {};
         chunk[bookName] = [];
+        var bookData = bookInfo.book(bookName) || {};
+        for (var key in bookData) {
+          chunk[key] = bookData[key];
+        }
+        // chunk.bookName = getProperBookName(bookName);
+        // chunk.section = getSection(bookName);
         for (var ii = 0; ii < chapters.length; ii++) {
           var chapter = chapters[ii];
           if (chapter) {
             var chunkObj = {};
             if (Array.isArray(chapter) && chapter.length === 3) { // not the whole chapter
               chunkObj[chapter] = book[chapter[0]].slice(chapter[1]-1, chapter[2]);
+              chunkObj.chapter = 'Chapter ' + chapter[0];
             } else if (Array.isArray(chapter) && chapter.length === 2) { // return from the given verse to the end of the chapter
               chunkObj[chapter] = book[chapter[0]].slice(chapter[1]-1);
+              chunkObj.chapter = 'Chapter ' + chapter[0];
             } else { // return the whole chapter
               chunkObj[chapter] = book[chapter];
+              chunkObj.chapter = 'Chapter ' + chapter;
             }
             chunk[bookName].push(chunkObj);
           }
         }
+        chunk.reference = getReference(chunk.bookName, chunk[bookName]);
+        chunk.verses = chunk[bookName];
         ret.push(chunk);
       }
     }

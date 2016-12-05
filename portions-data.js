@@ -734,7 +734,7 @@ portionsData = {
       prophets: [
         {reference: 'Joshua 13:22', verses: function() {return word("jos",13).slice(21,22);}},
         {reference: 'Micah 5:7 - 6:8', verses: function() {return word("mic",5).slice(6)
-            .concat(word("mic",6).slice(0,8));}},            
+            .concat(word("mic",6).slice(0,8));}},
       ],
       britchadasha: [
         {reference: 'Mark 11:1-26', verses: function() {return word("mar",11).slice(0,26);}},
@@ -1131,71 +1131,108 @@ portionsData = {
   },
 };
 
-bookNames = {
-  gen: 'Genesis',
-  exd: 'Exodus',
-  lev: 'Leviticus',
-  num: 'Numbers',
-  deu: 'Deuteronomy',
-  jos: 'Joshua',
-  jdg: 'Judges',
-  rth: 'Ruth',
-  sa1: '1 Samuel',
-  sa2: '2 Samuel',
-  ki1: '1 Kings',
-  ki2: '2 Kings',
-  ch1: '1 Chronicles',
-  ch2: '2 Chronicles',
-  ezr: 'Ezra',
-  neh: 'Nehemiah',
-  est: 'Esther',
-  job: 'Job',
-  psa: 'Psalms',
-  pro: 'Proverbs',
-  ecc: 'Ecclesiastes',
-  sgs: 'Song of Solomon',
-  isa: 'Isaiah',
-  jer: 'Jeremiah',
-  lam: 'Lamentations',
-  eze: 'Ezekiel',
-  dan: 'Daniel',
-  hos: 'Hosea',
-  joe: 'Joel',
-  amo: 'Amos',
-  oba: 'Obadiah',
-  jon: 'Jonah',
-  mic: 'Micah',
-  nah: 'Nahum',
-  hab: 'Habakkuk',
-  zep: 'Zephaniah',
-  hag: 'Haggai',
-  zec: 'Zechariah',
-  mal: 'Malachi',
-  mat: 'Matthew',
-  mar: 'Mark',
-  luk: 'Luke',
-  jhn: 'John',
-  act: 'Acts',
-  rom: 'Romans',
-  cr1: '1 Corinthians',
-  cr2: '2 Corinthians',
-  gal: 'Galatians',
-  eph: 'Ephesians',
-  phl: 'Philippians',
-  col: 'Colossians',
-  th1: '1 Thessalonians',
-  th2: '2 Thessalonians',
-  ti1: '1 Timothy',
-  ti2: '2 Timothy',
-  tit: 'Titus',
-  phm: 'Philemon',
-  heb: 'Hebrews',
-  jam: 'James',
-  pe1: '1 Peter',
-  pe2: '2 Peter',
-  jo1: '1 John',
-  jo2: '2 John',
-  jo3: '3 John',
-  jud: 'Jude',
-  rev: 'Revelation',
+bookInfo = {
+  sections: {
+    Torah: {
+      gen: 'Genesis',
+      exd: 'Exodus',
+      lev: 'Leviticus',
+      num: 'Numbers',
+      deu: 'Deuteronomy'
+    },
+    Prophets: {
+      jos: 'Joshua',
+      jdg: 'Judges',
+      sa1: '1 Samuel',
+      sa2: '2 Samuel',
+      ki1: '1 Kings',
+      ki2: '2 Kings',
+      isa: 'Isaiah',
+      jer: 'Jeremiah',
+      eze: 'Ezekiel',
+      hos: 'Hosea',
+      joe: 'Joel',
+      amo: 'Amos',
+      oba: 'Obadiah',
+      jon: 'Jonah',
+      mic: 'Micah',
+      nah: 'Nahum',
+      hab: 'Habakkuk',
+      zep: 'Zephaniah',
+      hag: 'Haggai',
+      zec: 'Zechariah',
+      mal: 'Malachi'
+    },
+    Writings: {
+      rth: 'Ruth',
+      ch1: '1 Chronicles',
+      ch2: '2 Chronicles',
+      ezr: 'Ezra',
+      neh: 'Nehemiah',
+      est: 'Esther',
+      job: 'Job',
+      psa: 'Psalms',
+      pro: 'Proverbs',
+      ecc: 'Ecclesiastes',
+      sgs: 'Song of Solomon',
+      lam: 'Lamentations',
+      dan: 'Daniel'
+    },
+    Gospels: {
+      mat: 'Matthew',
+      mar: 'Mark',
+      luk: 'Luke',
+      jhn: 'John',
+      act: 'Acts'
+    },
+    Letters: {
+      rom: 'Romans',
+      cr1: '1 Corinthians',
+      cr2: '2 Corinthians',
+      gal: 'Galatians',
+      eph: 'Ephesians',
+      phl: 'Philippians',
+      col: 'Colossians',
+      th1: '1 Thessalonians',
+      th2: '2 Thessalonians',
+      ti1: '1 Timothy',
+      ti2: '2 Timothy',
+      tit: 'Titus',
+      phm: 'Philemon',
+      heb: 'Hebrews',
+      jam: 'James',
+      pe1: '1 Peter',
+      pe2: '2 Peter',
+      jo1: '1 John',
+      jo2: '2 John',
+      jo3: '3 John',
+      jud: 'Jude',
+      rev: 'Revelation'
+    }
+  },
+  getAllBooks: function () {
+    var combine = function (retObj, obj) {
+      for (var i = 0; i < Object.keys(obj).length; i++) {
+        var key = Object.keys(obj)[i];
+        retObj[key] = obj[key];
+      }
+      return retObj;
+    }
+    retObj = {};
+    var sections = Object.keys(this.sections);
+    for (var i = 0; i < sections.length; i++) {
+      retObj = combine(retObj, this.sections[sections[i]]);
+    }
+    return retObj;
+  },
+  book: function (book) {
+    var sections = Object.keys(this.sections);
+    for (var i = 0; i < sections.length; i++) {
+      var sectionName = sections[i];
+      var section = this.sections[sectionName];
+      if (section[book]) {
+        return {bookName: section[book], section: sectionName};
+      }
+    }
+  }
 };
