@@ -1,6 +1,20 @@
 window.c2t = {
-  version: 'v0.0.1'
+  version: 'v0.0.1',
+  today: new Date()
 }
+c2t.shabbat = {
+  date: new Date(),
+  offset: 6 - c2t.today.getDay()
+};
+var shabbat = c2t.shabbat;
+shabbat.date.setDate(shabbat.date.getDate() + shabbat.offset);
+shabbat.year = shabbat.date.getUTCFullYear();
+shabbat.month = shabbat.date.getUTCMonth() + 1;
+shabbat.day = shabbat.date.getDate();
+c2t.portionName = calendar[shabbat.year]
+  && calendar[shabbat.year][shabbat.month]
+  && calendar[shabbat.year][shabbat.month][shabbat.day]
+  || 'breisheet';
 
 window.onload = function() {
   // menu
@@ -32,7 +46,7 @@ window.onload = function() {
   nav.portions = {element: document.getElementById('portionsMenu')};
   nav.references = {element: document.getElementById('referencesMenu')};
   // load current portion
-  stuffReferenceMenu('vayetze');
+  stuffReferenceMenu(c2t.portionName);
   read({chunkIndex: 0});
 }
 
@@ -91,10 +105,13 @@ nav = {
     } else if (menuItem && referencesMenu) { // references menu
       nav.hideMenu('references');
     } else if (b3 || b4){ // navigate left or right through references
+      nav.hideMenu('references');
+      nav.hideMenu('portions');
       nav.next(b3 ? -1 : 0);
     } else if (b5){ // Share Feature
       shareReading(nav.portion);
       nav.hideMenu('references');
+      nav.hideMenu('portions');
     }
   }
 };
