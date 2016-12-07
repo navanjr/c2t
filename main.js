@@ -17,7 +17,7 @@ c2t.portionName = calendar[shabbat.year]
   || 'breisheet';
 
 window.onload = function() {
-  // menu
+  // menus
   var portionNames = Object.keys(portionsData);
   var menu = document.getElementById('portionsMenu');
   for (var i = 0; i < portionNames.length; i++) {
@@ -25,6 +25,9 @@ window.onload = function() {
     menuItem.onclick = nav.click;
     menu.appendChild(menuItem);
   }
+  document.getElementById('portionTitle').onclick = nav.click;
+  document.getElementById('referenceTitle').onclick = nav.click;
+
   // buttons
   var buttons = document.getElementsByTagName('i');
   for (var i = 0; i < buttons.length; i++) {
@@ -55,11 +58,44 @@ books = function() {
 }
 
 nav = {
+  reset: function() {
+    this.disableMenu('b3');
+  },
+  navigate: function(index) {
+    this.referenceIndex = index;
+    this.first = this.referenceIndex === 0;
+    this.last = this.referenceIndex === this.referenceCount - 1;
+    this.refreshMenus();
+  },
+  refreshMenus: function() {
+    if (this.last) {
+      this.disableMenu('b4');
+    } else {
+      this.enableMenu('b4');
+    }
+    if (this.first) {
+      this.disableMenu('b3');
+    } else {
+      this.enableMenu('b3');
+    }
+  },
   next: function(x) {
     x = x || 1;
     var nextId = this.referenceIndex + x;
     if (nextId > -1 && nextId < this.referenceCount) {
       read({chunkIndex: nextId});
+    }
+  },
+  disableMenu: function(menu) {
+    var menuClassList = document.getElementById(menu).classList;
+    if (!menuClassList.contains('disabled')) {
+      menuClassList.toggle('disabled');
+    }
+  },
+  enableMenu: function(menu) {
+    var menuClassList = document.getElementById(menu).classList;
+    if (menuClassList.contains('disabled')) {
+      menuClassList.toggle('disabled');
     }
   },
   hideMenu: function(menu) {
@@ -78,7 +114,7 @@ nav = {
   click: function(e) {
     this.button = e && e.srcElement && e.srcElement.id;
     var b1 = this.button === 'b1',
-        b2 = this.button === 'b2',
+        b2 = ['b2', 'portionTitle', 'referenceTitle'].includes(this.button),
         b3 = this.button === 'b3',
         b4 = this.button === 'b4',
         b5 = this.button === 'b5';
@@ -136,14 +172,20 @@ stuffReferenceMenu = function(portionName) {
     var portionTitle = document.getElementById('portionTitle');
     portionTitle.innerHTML = properCase(portionName);
     refCount.innerHTML = nav.referenceCount;
+    nav.reset();
   }
 }
 
+changeTitle = function(id, content) {
+  document.getElementById(id).innerHTML = content;
+};
+
 shareReading = function(portion) {
+  //TODO: BUG - this function gets called twice
+  changeTitle('referenceTitle', '"' + portionsData[nav.portion].description + '"');
   var reading = document.getElementById('reading');
   var chunks = getPortion(nav.portion);
   reading.innerHTML = '';
-  l('share feature... ' + portion, chunks);
   var section = '';
   var sectionDiv;
   for (var i = 0; i < chunks.length; i++) {
@@ -172,7 +214,7 @@ read = function(options){
   } else {
     var id = parseInt(this.id.split('_')[1]);
   }
-  nav.referenceIndex = id;
+  nav.navigate(id);
   var chunks = getPortion(nav.portion)[id];
   var readingDiv = document.getElementById('reading');
   var referenceTitleDiv = document.getElementById('referenceTitle');
