@@ -10,8 +10,8 @@
        url(MaterialIcons-Regular.ttf) format('truetype');
 }
 
-.material-icons:hover {
-  color: yellow;
+.material-icons.disabled {
+  color: rgba(249,249,249,0.3);
 }
 
 .material-icons {

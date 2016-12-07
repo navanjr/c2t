@@ -57,6 +57,7 @@ html.body {
   vertical-align: top;
   font-size: xx-large;
   margin-left: 1em;
+  cursor: pointer;
 }
 
 .portionsMenu {
@@ -165,6 +166,9 @@ html.body {
   line-height: 2em;
   text-align: center;
   padding: 2rem 1.25rem 1.25rem;
+}
+.shareDescription {
+  text-align: center;
 }
 .shareChapter {
   white-space: nowrap;
