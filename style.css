@@ -181,3 +181,7 @@ html.body {
   letter-spacing: .1em;
   margin-bottom: .1em;
 }
+.referenceSubMenu {
+  text-align: right;
+  padding-right: .5em;
+}
