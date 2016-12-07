@@ -16,14 +16,6 @@ c2t.portionName = calendar[shabbat.year]
   && calendar[shabbat.year][shabbat.month][shabbat.day]
   || 'breisheet';
 
-window.addEventListener("load",function() {
-	// Set a timeout...
-	setTimeout(function(){
-		// Hide the address bar!
-		window.scrollTo(0, 1);
-	}, 0);
-});
-
 window.onload = function() {
   // menus
   var portionNames = Object.keys(portionsData);
