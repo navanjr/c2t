@@ -121,9 +121,6 @@ html.body {
   cursor: pointer;
   padding: 5 20 5 20;
 }
-.menuItem:hover {
-  background-color: rgba(255, 255, 0, 0.5);
-}
 
 .bookName {
   cursor: pointer;
@@ -131,9 +128,6 @@ html.body {
   font-size: xx-large;
   font-weight: lighter;
   text-align: left;
-}
-.bookName:hover {
-  background-color: rgba(255, 255, 0, 0.5);
 }
 
 .chapter {
