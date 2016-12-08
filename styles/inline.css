@@ -211,14 +211,14 @@ body {
 /* Menus */
 .menu {
   position: absolute;
-  top: 55px;
+  top: 40px;
   background: #fff;
   font-size: x-large;
   text-align: left;
   padding-left: 5px;
   transition: 0.5s;
   overflow-y: auto;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 2px 9px 1px rgba(0, 0, 0, 0.12), 0 4px 2px -2px rgba(0, 0, 0, 0.2);
   max-height: 0em;
   padding-bottom: .1em;
 }
@@ -229,6 +229,7 @@ body {
 }
 .portionsMenu.expand {
   max-height: 85%;
+  top: 57px;
 }
 .referencesMenu {
   left: 65px;
@@ -237,6 +238,7 @@ body {
 }
 .referencesMenu.expand {
   max-height: 85%;
+  top: 57px;
 }
 .referenceSubMenu {
   text-align: right;
