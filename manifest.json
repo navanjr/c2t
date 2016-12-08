@@ -4,5 +4,12 @@
   "start_url": ".",
   "display": "standalone",
   "background_color": "#fff",
-  "description": "Lots of apps waste your time, this ain't one of them."
+  "description": "Lots of apps waste your time, this ain't one of them.",
+  "icons": [
+    {
+      "src": "images/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ]
 }
