@@ -1,40 +1,64 @@
-<head>
-  <link rel="manifest" href="manifest.webmanifest">
-  <meta name="viewport" content="initial-scale=.5">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <script src=ga.js></script>
-  <script src=calendar.js></script>
-  <script src=main.js></script>
-  <script src=kjv.js></script>
-  <script src=portions-data.js></script>
-  <link href="style.css" media="all" rel="stylesheet" type="text/css">
-  <link href="fonts/google-material/material.css" rel="stylesheet" />
-  <link href="fonts/lato/fontFace.import.css" rel="stylesheet" />
-</head>
-<body align=center>
-<div id=title class="title">
-  <div class="navigationLeft">
-    <i class="material-icons button" id="b1">event_seat</i>
-    <i class="material-icons button" id="b2">local_library</i>
-    <span id="referenceCount" class="referenceCount">5</span>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connected 2 Truth</title>
+    <!-- <script src=script/ga.js></script> -->
+    <script src=script/calendar.js></script>
+    <script src=script/main.js async></script>
+    <script src=script/kjv.js></script>
+    <script src=script/portions-data.js></script>
+    <link rel="stylesheet" type="text/css" href="styles/inline.css">
+    <!-- <link href="styles/style.css" media="all" rel="stylesheet" type="text/css"> -->
+    <link href="fonts/google-material/material.css" rel="stylesheet" />
+    <link href="fonts/lato/fontFace.import.css" rel="stylesheet" />
+
+    <!-- TODO add manifest here -->
+    <link rel="manifest" href="/manifest.json">
+    <!-- Add to home screen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Weather PWA">
+    <link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
+    <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#2F3BA2">
+  </head>
+  <body align=center>
+
+  <header class="header">
+    <div class="navDiv navLeft">
+      <i class="material-icons button" id="b1">event_seat</i>
+      <i class="material-icons button" id="b2">local_library</i>
+      <!-- <div class="referenceCountDiv"> -->
+        <span id="referenceCount" class="referenceCount">0</span>
+      <!-- </div> -->
+    </div>
+    <div class="navDiv navTitle">
+      <div id=portionTitle class="portionTitle"></div>
+      <div id=referenceTitle class="referenceTitle"></div>
+    </div>
+    <div class="navDiv navRight">
+      <i class="material-icons button" id="b3">keyboard_arrow_left</i>
+      <i class="material-icons button" id="b4">keyboard_arrow_right</i>
+    </div>
+  </header>
+  <div class="menu portionsMenu" id="portionsMenu"></div>
+  <div id="referencesMenu" class="menu referencesMenu">
+    <div class="referenceSubMenu">
+      <i class="material-icons button" id="b5">share</i>
+    </div>
+    <div id="referencesMenuItems"></div>
   </div>
-  <div class="navigationPortion">
-    <span id=portionTitle class="portionTitle"></span>
+
+  <main class="main" id="reading">
+  </main>
+
+  <div class="loader">
+    <svg viewBox="0 0 32 32" width="32" height="32">
+      <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
+    </svg>
   </div>
-  <div class="navigationReference">
-    <span id=referenceTitle class="portionTitle"></span>
-  </div>
-  <div class="navigationRight">
-    <i class="material-icons button" id="b3">keyboard_arrow_left</i>
-    <i class="material-icons button" id="b4">keyboard_arrow_right</i>
-  </div>
-</div>
-<div class="reading" id="reading"></div>
-<div id="referencesMenu" class="referencesMenu">
-  <div class="referenceSubMenu">
-    <i class="material-icons button" id="b5">share</i>
-  </div>
-  <div id="referencesMenuItems"></div>
-</div>
-<div class="portionsMenu" id="portionsMenu"></div>
-</body>
+
+  </body>
+</html>
