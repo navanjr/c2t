@@ -25,13 +25,6 @@ html.body {
   white-space: nowrap;
   text-align: left;
 }
-.navigationRight {
-  float: right;
-  background: transparent;
-  width: 10%;
-  white-space: nowrap;
-  text-align: right;
-}
 .navigationPortion {
   display: inline-block;
   background: transparent;
@@ -48,6 +41,13 @@ html.body {
   white-space: nowrap;
   text-align: left;
   padding-left: 1em;
+}
+.navigationRight {
+  float: right;
+  background: transparent;
+  width: 10%;
+  white-space: nowrap;
+  text-align: right;
 }
 
 .portionTitle {
