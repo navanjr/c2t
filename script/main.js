@@ -225,10 +225,21 @@
         section = chunk.section;
         sectionDiv = newElement({class: 'section', contents: section});
       }
-      sectionDiv.appendChild(newElement({
-        class: 'shareChapter',
-        contents: chunk.reference,
+      // adds the scripture
+      let card = newElement({class: 'card closer', contents: chunk.reference});
+      // card.onclick = (e) => {console.log(e);};
+      card.id = 'readingName_' + i;
+      card.onclick = read;
+      card.appendChild(newElement({
+        type: 'div',
+        class: 'shareVerse',
+        contents: versesFormated(chunk.verses, {
+          wholeChunk: true,
+          verseCount: 1,
+          supressReference: true
+        })
       }));
+      sectionDiv.appendChild(card);
     }
     if (sectionDiv) {
       reading.appendChild(sectionDiv);
@@ -261,15 +272,33 @@
       }
       var cn = newElement({class: 'chapterName', contents: 'Chapter ' + chapterName});
       cs.appendChild(cn);
-      for (var k = 0; k < verseArray.length; k++) {
-        var verse = verseArray[k];
-        var span = newVerseNumberElement([chapterName, k + verseSeed + 1].join(':'), {renderHTML: true});
-        cs.innerHTML += span + verse;
-      }
+      cs.innerHTML += versesFormated(verseArray, {chapter: chapterName, verseSeed: verseSeed});
       readingDiv.appendChild(cs);
     }
     document.querySelector('.loader').setAttribute('hidden', true);
   }
+
+  var versesFormated = function(array, options) {
+    if (options.wholeChunk) {
+      var chapterAndFirstVerse = Object.keys(array[0])[0];
+      array = array[0][chapterAndFirstVerse];
+      if (options.verseCount) {
+        array = array.slice(0, options.verseCount);
+      }
+      options.chapter = chapterAndFirstVerse.split(',')[0];
+      options.verseSeed = chapterAndFirstVerse.split(',')[1] - 1;
+    }
+    let retVar = '';
+    for (var k = 0; k < array.length; k++) {
+      var verse = array[k];
+      var span = '';
+      if (!options.supressReference) {
+        span = newVerseNumberElement([options.chapter, k + (options.verseSeed || 0) + 1].join(':'), {renderHTML: true});
+      }
+      retVar += span + verse;
+    }
+    return retVar;
+  };
 
   var newVerseNumberElement = function(contents, options) {
     options = options || {};

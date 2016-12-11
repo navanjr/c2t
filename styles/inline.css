@@ -1,5 +1,5 @@
 * {
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 html, body {
   padding: 0;
@@ -11,10 +11,10 @@ html, body {
   font-display: optional;
   color: #444;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; 
+  -moz-osx-font-smoothing: grayscale;
 }
 html {
-  overflow: hidden; 
+  overflow: hidden;
 }
 body {
   display: -webkit-box;
@@ -40,7 +40,7 @@ body {
   -webkit-align-content: stretch;
       -ms-flex-line-pack: stretch;
           align-content: stretch;
-  background: #ececec; 
+  background: #ececec;
 }
 .header {
   width: 100%;
@@ -79,7 +79,7 @@ body {
   transition: -webkit-transform 0.233s cubic-bezier(0, 0, 0.21, 1) 0.1s;
   transition: transform 0.233s cubic-bezier(0, 0, 0.21, 1) 0.1s;
   transition: transform 0.233s cubic-bezier(0, 0, 0.21, 1) 0.1s, -webkit-transform 0.233s cubic-bezier(0, 0, 0.21, 1) 0.1s;
-  z-index: 1000; 
+  z-index: 1000;
 }
 
 /* navigation */
@@ -132,7 +132,7 @@ body {
   top: 50%;
   position: fixed;
   -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%); 
+  transform: translate(-50%, -50%);
 }
 .loader #spinner {
   box-sizing: border-box;
@@ -141,7 +141,7 @@ body {
   -webkit-transform-origin: 50%;
   transform-origin: 50%;
   -webkit-animation: line 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite, rotate 1.6s linear infinite;
-  animation: line 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite, rotate 1.6s linear infinite; 
+  animation: line 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite, rotate 1.6s linear infinite;
 }
 @-webkit-keyframes rotate {
   from {
@@ -149,7 +149,7 @@ body {
             transform: rotate(0); }
   to {
     -webkit-transform: rotate(450deg);
-            transform: rotate(450deg); } 
+            transform: rotate(450deg); }
 }
 @keyframes rotate {
   from {
@@ -157,7 +157,7 @@ body {
             transform: rotate(0); }
   to {
     -webkit-transform: rotate(450deg);
-            transform: rotate(450deg); } 
+            transform: rotate(450deg); }
 }
 @-webkit-keyframes line {
   0% {
@@ -171,7 +171,7 @@ body {
     stroke-dasharray: 2, 85.964;
     stroke-dashoffset: -65.973;
     -webkit-transform: rotate(90deg);
-            transform: rotate(90deg); } 
+            transform: rotate(90deg); }
 }
 @keyframes line {
   0% {
@@ -185,7 +185,7 @@ body {
     stroke-dasharray: 2, 85.964;
     stroke-dashoffset: -65.973;
     -webkit-transform: rotate(90deg);
-            transform: rotate(90deg); } 
+            transform: rotate(90deg); }
 }
 .main {
   padding-top: 60px;
@@ -195,7 +195,7 @@ body {
           flex: 1;
   overflow-x: hidden;
   overflow-y: auto;
-  -webkit-overflow-scrolling: touch; 
+  -webkit-overflow-scrolling: touch;
 }
 .card {
   padding: 16px;
@@ -204,8 +204,23 @@ body {
   background: #fff;
   border-radius: 2px;
   margin: 16px;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); 
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
   text-align: justify;
+  text-transform: none;
+}
+.card.closer {
+  margin: 4px 20px 0px 20px;
+  padding: 5px;
+  font-size: smaller;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.shareVerse{
+  display: inline;
+  margin-left: 5px;
+  font-weight: normal;
 }
 
 /* Menus */
@@ -261,9 +276,15 @@ body {
 .verseNumber {
   font-size: x-small;
   color: maroon;
-  padding-right: 3;
+  padding-right: 3px;
   vertical-align: text-top;
-  padding-left: 5;
+  padding-left: 5px;
   font-weight: bold;
   background-color: rgba(198, 199, 181, 0.28);
+  margin-right: 3px;
+  margin-left: 5px;
+}
+.section {
+  padding-top: 10px;
+  text-transform: uppercase;
 }
