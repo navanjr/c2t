@@ -275,6 +275,7 @@
       cs.innerHTML += versesFormated(verseArray, {chapter: chapterName, verseSeed: verseSeed});
       readingDiv.appendChild(cs);
     }
+    readingDiv.scrollTop = 0;
     document.querySelector('.loader').setAttribute('hidden', true);
   }
 
