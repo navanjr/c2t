@@ -22,6 +22,9 @@
     if (options.id) {
       newElement.id = options.id;
     }
+    if (options.onclick) {
+      newElement.onclick = options.onclick;
+    }
     newElement.innerHTML = options.contents || '';
     return newElement;
   }
@@ -86,7 +89,8 @@
           b2 = ['b2', 'portionTitle', 'referenceTitle'].includes(this.button),
           b3 = this.button === 'b3',
           b4 = this.button === 'b4',
-          b5 = this.button === 'b5';
+          b5 = this.button === 'b5',
+          b6 = this.button === 'b6';
       var menuItem = e && e.srcElement && (e.srcElement.className === 'menuItem' || e.srcElement.className === 'bookName');
       var portionsMenu = e && e.srcElement && e.srcElement.parentElement && e.srcElement.parentElement.id === 'portionsMenu';
       var referencesMenu = e && e.srcElement && e.srcElement.parentElement && e.srcElement.parentElement.id === 'referencesMenuItems';
@@ -113,7 +117,12 @@
         nav.hideMenu('references');
         nav.hideMenu('portions');
         nav.next(b3 ? -1 : 0);
-      } else if (b5){ // Share Feature
+      } else if (b5){ // wholeBible Feature
+        console.log('the wholeBible Feature');
+        wholeBible();
+        nav.hideMenu('references');
+        nav.hideMenu('portions');
+      } else if (b6){ // Share Feature
         shareReading(nav.portion);
         nav.hideMenu('references');
         nav.hideMenu('portions');
@@ -208,6 +217,34 @@
     document.getElementById(id).innerHTML = content;
   };
 
+  var wholeBible = () => {
+    var reading = document.getElementById('reading');
+    reading.innerHTML = '';
+    var sections = Object.keys(bookInfo.sections);
+    for (var i = 0; i < sections.length; i++) {
+      var section = sections[i];
+      var sectionDiv = newElement({
+        contents: section,
+        class: 'section'
+      });
+      var card = newElement({class: 'card closer wholeBibleCard'});
+
+      var books = Object.keys(bookInfo.sections[section]);
+      for (var j = 0; j < books.length; j++) {
+        var book = bookInfo.book(books[j]) || {};
+        card.appendChild(newElement({
+          type: 'span',
+          contents: book.bookName,
+          class: 'wholeBibleBook',
+          id: 'wholeBible_' + books[j],
+          onclick: read
+        }));
+      }
+      sectionDiv.appendChild(card);
+      reading.appendChild(sectionDiv);
+    }
+  }
+
   var shareReading = function(portion) {
     //TODO: BUG - this function gets called twice
     changeTitle('referenceTitle', '"' + portionsData[nav.portion].description + '"');
@@ -247,14 +284,20 @@
   };
 
   var read = function(options){
+    //this.id is null or `portionName_X` or `wholeBible_bookAbvr`
     options = options || {};
-    if (options.chunkIndex != undefined) {
-      var id = options.chunkIndex;
+    var chunks = {};
+    if (this && this.id.split('_')[0] === 'wholeBible') { // reading the entire book
+      chunks = getPortion(this.id.split('_')[1], {wholeBible: true})[0];
     } else {
-      var id = parseInt(this.id.split('_')[1]);
+      if (options.chunkIndex != undefined) {
+        var id = options.chunkIndex;
+      } else {
+        var id = parseInt(this.id.split('_')[1]);
+      }
+      nav.navigate(id); // nav to the id within the Torah Portion
+      chunks = getPortion(nav.portion)[id];
     }
-    nav.navigate(id);
-    var chunks = getPortion(nav.portion)[id];
     var readingDiv = document.getElementById('reading');
     var referenceTitleDiv = document.getElementById('referenceTitle');
     readingDiv.innerHTML = '';
@@ -347,9 +390,15 @@
     return bookInfo.getAllBooks()[book] || book + 'Proper';
   };
 
-  var getPortion = function(portionName) {
+  var getPortion = function(portionName, options) {
+    options = options || {};
     var ret = [],
+      somethingToRead = [];
+    if (options.wholeBible) {
+      somethingToRead = [bookInfo.book(portionName).bookData];
+    } else {
       somethingToRead = portionsData[portionName].references;
+    }
     if (somethingToRead) {
       for (var i = 0; i < somethingToRead.length; i++) {
         var reading = somethingToRead[i]; // returns object {gen: [...]}

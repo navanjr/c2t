@@ -1020,13 +1020,20 @@ bookInfo = {
     return retObj;
   },
   book: function (book) {
+    bookObj = {};
     var sections = Object.keys(this.sections);
     for (var i = 0; i < sections.length; i++) {
       var sectionName = sections[i];
       var section = this.sections[sectionName];
       if (section[book]) {
-        return {bookName: section[book], section: sectionName};
+        bookObj.bookName = section[book];
+        bookObj.section = sectionName;
       }
     }
+    bookObj.bookData = {};
+    if (kjv[book]) {
+      bookObj.bookData[book] = Object.keys(kjv[book]);
+    }
+    return bookObj;
   }
 };

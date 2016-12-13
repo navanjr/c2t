@@ -288,3 +288,18 @@ body {
   padding-top: 10px;
   text-transform: uppercase;
 }
+.wholeBibleCard {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.wholeBibleBook {
+  border-radius: 15px;
+  border-style: solid;
+  border-width: thin;
+  padding: 2px 8px;
+  background-color: #756e68;
+  color: white;
+  font-weight: 600;
+  margin: 1px;
+}
