@@ -47,7 +47,8 @@
   <div class="menu portionsMenu" id="portionsMenu"></div>
   <div id="referencesMenu" class="menu referencesMenu">
     <div class="referenceSubMenu">
-      <i class="material-icons button" id="b5">share</i>
+      <i class="material-icons button" id="b5">book</i>
+      <i class="material-icons button" id="b6">share</i>
     </div>
     <div id="referencesMenuItems"></div>
   </div>
@@ -60,8 +61,8 @@
     </svg>
   </div>
 
-  <script>
-    if('serviceWorker' in navigator) {
+  <!-- // <script> -->
+    <!-- if('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/sw.js', { scope: '/' })
         .then(function(registration) {
               console.log('Service Worker Registered');
@@ -70,7 +71,7 @@
       navigator.serviceWorker.ready.then(function(registration) {
          console.log('Service Worker Ready');
       });
-    }
-  </script>
+    } -->
+  <!-- </script> -->
   </body>
 </html>
