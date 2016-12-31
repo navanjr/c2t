@@ -134,8 +134,11 @@
     version: 'v0.0.1',
     today: new Date()
   }
+  var tday = new Date();
+  tday = tday.valueOf(tday);
+  tday = new Date(tday - 18000000);
   c2t.shabbat = {
-    date: new Date(),
+    date: tday,
     offset: 6 - c2t.today.getDay()
   };
   var shabbat = c2t.shabbat;
