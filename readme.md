@@ -1,5 +1,6 @@
 c2t README
 ==========
+ [http://connected2truth.com](http://connected2truth.com)
 
 # Connected 2 Truth (c2t)
 
