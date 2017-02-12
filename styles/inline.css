@@ -199,6 +199,7 @@ body {
 }
 .card {
   padding: 16px;
+  padding-top: 1em;
   position: relative;
   box-sizing: border-box;
   background: #fff;
@@ -266,6 +267,23 @@ body {
   cursor: pointer;
   padding-top: .5em;
   font-weight: lighter;
+}
+
+/* questions */
+.questionsMenu {
+  z-index: 9;
+  top: 130px;
+  right: 0px;
+  max-height: 85%;
+  max-width: 0px;
+  padding: 0px;
+  white-space: nowrap;
+  overflow-x: hidden;
+}
+.questionsMenu.expand {
+  max-height: 85%;
+  max-width: 100%;
+  padding: 20px;
 }
 
 /* reading */

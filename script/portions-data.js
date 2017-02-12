@@ -1,11 +1,3 @@
-withNumbers = function(verses, chapter) {
-  if (verses && verses.length) {
-    var v = 0;
-    return verses.map(function(r){v++; return {ref: chapter + ":" + v, verse: r};});
-  }
-  return [];
-}
-
 portionsData = {
   'breisheet': {
     week: 1,

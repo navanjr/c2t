@@ -39,3 +39,10 @@
   /* Support for IE. */
   font-feature-settings: 'liga';
 }
+.material-icons.helpButton {
+  float: right;
+  font-size: x-large;
+}
+.material-icons.hide {
+  display: none;
+}

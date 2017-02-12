@@ -30,6 +30,26 @@
   }
 
   var nav = {
+    questions: function(options) {
+      options = options || {};
+
+      // evaluate help menu
+      if (options.evaluateMenu) {
+        var helpClasses = document.getElementById('b_help').classList;
+        if (!questions[this.portion]) {
+          helpClasses.add('hide');
+        } else {
+          helpClasses.remove('hide');
+        }
+      }
+
+      // return questions
+      var myQuestions = questions[this.portion];
+      if (options.chapter && typeof(myQuestions) === "object") {
+        return myQuestions[options.chapter];
+      }
+      return myQuestions;
+    },
     reset: function() {
       this.disableMenu('b3');
     },
@@ -303,6 +323,7 @@
     }
     var readingDiv = document.getElementById('reading');
     var referenceTitleDiv = document.getElementById('referenceTitle');
+    var questionsDiv = document.getElementById('questionsMenu');
     readingDiv.innerHTML = '';
     referenceTitleDiv.innerHTML = chunks.reference;
     for (var i = 0; i < chunks.verses.length; i++) {
@@ -316,14 +337,28 @@
         verseSeed = chapter.split(',')[1] - 1;
         chapterName = chapter.split(',')[0];
       }
-      var cn = newElement({class: 'chapterName', contents: 'Chapter ' + chapterName});
-      cs.appendChild(cn);
+      var gotQuestions = nav.questions({chapter: chapterName, evaluateMenu: true});
+      cs.appendChild(chapterDOM(chapterName, gotQuestions));
       cs.innerHTML += versesFormated(verseArray, {chapter: chapterName, verseSeed: verseSeed});
       readingDiv.appendChild(cs);
     }
     readingDiv.scrollTop = 0;
     document.querySelector('.loader').setAttribute('hidden', true);
   }
+
+  var chapterDOM = function (chapterName, help) {
+    var chapDiv = newElement({class: 'chapterName', contents: 'Chapter ' + chapterName});
+    if (help) {
+      var helpButton = newElement({
+        type: 'i',
+        id: 'help',
+        class: 'helpButton material-icons button',
+        contents: 'help_outline'
+      });
+      chapDiv.appendChild(helpButton);
+    }
+    return chapDiv;
+  };
 
   var versesFormated = function(array, options) {
     if (options.wholeChunk) {
