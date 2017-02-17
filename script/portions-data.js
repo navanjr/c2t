@@ -993,7 +993,7 @@ bookInfo = {
       th2: '2 Thessalonians',
       ti1: '1 Timothy',
       ti2: '2 Timothy',
-      tit: 'Titus',
+      tts: 'Titus',
       phm: 'Philemon',
       heb: 'Hebrews',
       jam: 'James',
