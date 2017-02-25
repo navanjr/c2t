@@ -279,7 +279,7 @@ portionsData = {
       {rev: [[12,10,17]]},
     ],
   },
-  'mishpatin': {
+  'mishpatim': {
     week: 18,
     title: 'Mishpatin',
     name: 'mishpatin',
