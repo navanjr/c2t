@@ -150,7 +150,10 @@
     && calendar[shabbat.year][shabbat.month]
     && calendar[shabbat.year][shabbat.month][shabbat.day]
     || 'breisheet';
-
+  // TODO: fix the following Hack!
+  if (Array.isArray(c2t.portionName)) {
+    c2t.portionName = c2t.portionName[0];
+  }
   window.onload = function() {
     // menus
     var portionNames = Object.keys(portionsData);
