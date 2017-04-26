@@ -32,7 +32,7 @@ calendar = {
       8: 'tzav',
       15: 'chol-hamoed-pesach',
       22: 'shmini',
-      29: ['tzria','metzora'],
+      29: ['tazria','metzora'],
     },
     5: {
       6: ['acharei-mot','kedoshim'],
