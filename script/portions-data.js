@@ -595,7 +595,7 @@ portionsData = {
     name: 'bamidbar',
     description: 'In the wilderness',
     references: [
-      {num: [1,2,3,4]},
+      {num: [1,2,3,[4,1,20]]},
       {hos: [[1,10],[2,1,23]]},
       {luk: [16,[17,1,10]]},
       {cr1: [[12,12,31]]},
