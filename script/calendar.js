@@ -44,7 +44,7 @@ calendar = {
       3: 'nasso',
       10: 'behaalotcha',
       17: 'shelachlacha',
-      24: 'korah',
+      24: 'korach',
     },
     7: {
       1: 'chukat',
