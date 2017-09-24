@@ -7,6 +7,25 @@ withNumbers = function(verses, chapter) {
 }
 
 portionsData = {
+  'yom-kippur': {
+    week: 0,
+    title: 'Yom Kippur',
+    description: 'The Day of Atonement',
+    references: [
+      {lev: [[16,1,34]]},
+      {num: [[29,7,11]]},
+      {isa: [[57,14],[58,1,14]]},
+      {hos: [[14,1,9]]},
+      {joe: [[2,12,32]]},
+      {act: [[2,17,21]]},
+      {act: [[27,1,9]]},
+      {rom: [[3,21,26]]},
+      {rom: [[5,6,11]]},
+      {rom: [[11,17,21]]},
+      {jo1: [[1,1,9]]},
+      {heb: [[10,1,18]]},
+    ],
+  },
   'breisheet': {
     week: 1,
     title: 'B\'reisheet',
