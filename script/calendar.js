@@ -70,7 +70,7 @@ calendar = {
       7: 'vezothabracha',
       14: 'breisheet',
       21: 'noach',
-      28: 'lecha-lecha'
+      28: 'lech-lecha'
     },
     11: {
       4: 'vayera',
