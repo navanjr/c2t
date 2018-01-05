@@ -85,5 +85,11 @@ calendar = {
       23: 'vayigash',
       30: 'vayechi',
     }
+  },
+  2018: {
+    1: {
+      6: 'shemot',
+      13: 'vaera',
+    }
   }
 };
