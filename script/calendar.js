@@ -90,6 +90,8 @@ calendar = {
     1: {
       6: 'shemot',
       13: 'vaera',
+      20: 'bo',
+      27: 'beshalach',
     }
   }
 };
