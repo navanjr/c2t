@@ -92,6 +92,12 @@ calendar = {
       13: 'vaera',
       20: 'bo',
       27: 'beshalach',
+    },
+    2: {
+      3: 'yitro',
+      10: 'mishpatim',
+      17: 'treumah',
+      24: 'tetzave'
     }
   }
 };
