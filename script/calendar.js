@@ -96,8 +96,72 @@ calendar = {
     2: {
       3: 'yitro',
       10: 'mishpatim',
-      17: 'treumah',
+      17: 'terumah',
       24: 'tetzave'
+    },
+    3: {
+      3: 'ki-tiza',
+      10: ['vayakhel','pekudei'],
+      17: 'vayikra',
+      24: 'tzav',
+      17: 'chol-hamoed-pesach'
+    },
+    4: {
+      7: 'chol-hamoed-pesach',
+      14: 'shmini',
+      21: ['tazria','metzora'],
+      28: ['acharei-mot','kedoshim']
+    },
+    5: {
+      5: 'emor',
+      12: ['behar','bechukotai'],
+      19: 'bamidbar',
+      26: 'nasso'
+    },
+    6: {
+      2: 'behaalotcha',
+      9: 'shelachlacha',
+      16: 'korach',
+      23: 'chukat',
+      30: 'balak'
+    },
+    7: {
+      7: 'pinchas',
+      14: ['mattot','massei'],
+      21: 'devarim',
+      28: 'vaecthanan'
+    },
+    8: {
+      4: 'ekev',
+      11: 'reeh',
+      18: 'shoftim',
+      25: 'kitetze'
+    },
+    9: {
+      1: 'kitavo',
+      8: 'nitzavim',
+      15: ['vayelekh','yom-kippur'],
+      22: 'haazinu',
+      29: 'vezothabracha'
+    },
+    10: {
+      6: 'breisheet',
+      13: 'noach',
+      20: 'lech-lecha',
+      27: 'vayera'
+    },
+    11: {
+      3: 'chayei-sarah',
+      10: 'toldot',
+      17: 'vayetze',
+      24: 'vayishlach'
+    },
+    12: {
+      1: 'vayeshev',
+      8: 'miketz',
+      15: 'vayigash',
+      22: 'vayechi',
+      29: 'shemot'
     }
   }
 };
