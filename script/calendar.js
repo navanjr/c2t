@@ -104,7 +104,7 @@ calendar = {
       10: ['vayakhel','pekudei'],
       17: 'vayikra',
       24: 'tzav',
-      17: 'chol-hamoed-pesach'
+      31: 'chol-hamoed-pesach'
     },
     4: {
       7: 'chol-hamoed-pesach',

@@ -305,7 +305,7 @@ portionsData = {
     description: 'Judgments',
     references: [
       {exd: [21,22,23,24]},
-      {ki2: [12,1,16]},
+      {ki2: [[12,1,16]]},
       {jer: [[33,20,26]]},
       {jer: [[34,8,22]]},
       {exe: [[1,26,28]]},
