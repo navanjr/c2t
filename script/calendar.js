@@ -107,9 +107,9 @@ calendar = {
       31: 'chol-hamoed-pesach'
     },
     4: {
-      7: 'chol-hamoed-pesach',
-      14: 'shmini',
-      21: ['tazria','metzora'],
+      7: 'shmini',
+      14: 'tazria',
+      21: 'metzora',
       28: ['acharei-mot','kedoshim']
     },
     5: {
