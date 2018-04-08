@@ -108,7 +108,7 @@ calendar = {
     },
     4: {
       7: 'shmini',
-      14: 'tazria',
+      14: 'tazriat',
       21: 'metzora',
       28: ['acharei-mot','kedoshim']
     },
