@@ -163,5 +163,82 @@ calendar = {
       22: 'vayechi',
       29: 'shemot'
     }
+  },
+  2019: {
+    1: {
+      5: 'vaera',
+      12: 'bo',
+      19: 'beshalach',
+      26: 'yitro',
+    },
+    2: {
+      2: 'mishpatim',
+      9: 'terumah',
+      16: 'tetzave',
+      23: 'ki-tiza'
+    },
+    3: {
+      2: 'vayakhel',
+      9: 'pekudei',
+      16: 'vayikra',
+      23: 'tzav',
+      30: 'shmini'
+    },
+    4: {
+      6: 'chol-hamoed-pesach',
+      13: 'shmini',
+      20: 'chol-hamoed-pesach',
+      27: 'chol-hamoed-pesach'
+    },
+    5: {
+      4: 'acharei-mot',
+      11: 'kedoshim',
+      18: 'emor',
+      25: 'behar'
+    },
+    6: {
+      1: 'bechukotai',
+      8: 'bamidbar',
+      15: 'nasso',
+      22: 'behaalotcha',
+      29: 'shelachlacha'
+    },
+    7: {
+      6: 'korach',
+      13: 'chukat',
+      20: 'balak',
+      27: 'pinchas'
+    },
+    8: {
+      3: ['mattot','massei'],
+      10: 'devarim',
+      17: 'vaecthanan',
+      24: 'ekev',
+      31: 'reeh'
+    },
+    9: {
+      7: 'shoftim',
+      14: 'kitetze',
+      21: 'kitavo',
+      28: 'nitzavim'
+    },
+    10: {
+      5: 'vayelekh',
+      12: 'haazinu',
+      26: 'breisheet'
+    },
+    11: {
+      2: 'noach',
+      9: 'lech-lecha',
+      16: 'vayera',
+      23: 'chayei-sarah',
+      30: 'toldot'
+    },
+    12: {
+      7: 'vayetze',
+      14: 'vayishlach',
+      21: 'vayeshev',
+      28: 'miketz'
+    }
   }
 };
