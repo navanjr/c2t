@@ -206,11 +206,11 @@ calendar = {
     7: {
       6: 'korach',
       13: 'chukat',
-      20: 'balak',
-      27: 'pinchas'
+      20: 'pinchas',
+      27: 'mattot'
     },
     8: {
-      3: ['mattot','massei'],
+      3: 'massei',
       10: 'devarim',
       17: 'vaecthanan',
       24: 'ekev',
