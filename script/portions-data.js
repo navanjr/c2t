@@ -541,6 +541,8 @@ portionsData = {
     references: [
       {deu: [31]},
       {hos: [[14,1,9]]},
+      {mic: [[7,18,20]]},
+      {joe: [[2,15,27]]},
     ],
   },
   'haazinu': {
