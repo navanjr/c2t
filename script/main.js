@@ -90,22 +90,27 @@
           b3 = this.button === 'b3',
           b4 = this.button === 'b4',
           b5 = this.button === 'b5',
-          b6 = this.button === 'b6';
+          b6 = this.button === 'b6',
+          b7 = this.button === 'b7';
       var menuItem = e && e.srcElement && (e.srcElement.className === 'menuItem' || e.srcElement.className === 'bookName');
       var portionsMenu = e && e.srcElement && e.srcElement.parentElement && e.srcElement.parentElement.id === 'portionsMenu';
       var referencesMenu = e && e.srcElement && e.srcElement.parentElement && e.srcElement.parentElement.id === 'referencesMenuItems';
+      var settingsMenu = e && e.srcElement && e.srcElement.parentElement && e.srcElement.parentElement.id === 'settingsMenuItems';
       var menuItemId = menuItem && e.srcElement.id;
       if (e.hide) {
         nav.hideMenu('portions');
         nav.hideMenu('references');
+        nav.hideMenu('settings');
       } else if (b1) {
         //we toggle portionMenu and Hide referencesMenu
         nav.toggleMenu('portions');
         nav.hideMenu('references');
+        nav.hideMenu('settings');
       } else if(b2) {
         //we toggle referencesMenu and Hide portionMenu
         nav.toggleMenu('references');
         nav.hideMenu('portions');
+        nav.hideMenu('settings');
       } else if (menuItem && portionsMenu) { // portions menu
         //hide the portion menu and fill the reference menu and show it and set the reading to the first reference in the torah
         nav.toggleMenu('portions');
@@ -113,18 +118,28 @@
         read({chunkIndex: 0});
       } else if (menuItem && referencesMenu) { // references menu
         nav.hideMenu('references');
+      } else if (menuItem && settingsMenu) { // settings menu
+        // stuffReferenceMenu(menuItemId);
+        nav.hideMenu('settings');
+        listSettings(menuItemId);
       } else if (b3 || b4){ // navigate left or right through references
         nav.hideMenu('references');
         nav.hideMenu('portions');
+        nav.hideMenu('settings');
         nav.next(b3 ? -1 : 0);
       } else if (b5){ // wholeBible Feature
         console.log('the wholeBible Feature');
         wholeBible();
         nav.hideMenu('references');
         nav.hideMenu('portions');
+        nav.hideMenu('settings');
       } else if (b6){ // Share Feature
         shareReading(nav.portion);
         nav.hideMenu('references');
+        nav.hideMenu('portions');
+        nav.hideMenu('settings');
+      } else if (b7){ // Settings menu
+        nav.toggleMenu('settings');
         nav.hideMenu('portions');
       }
     }
@@ -150,6 +165,7 @@
     && calendar[shabbat.year][shabbat.month]
     && calendar[shabbat.year][shabbat.month][shabbat.day]
     || 'breisheet';
+  nav.apostolicList = 'default-list';
   // TODO: fix the following Hack!
   if (Array.isArray(c2t.portionName)) {
     c2t.portionName = c2t.portionName[0];
@@ -186,6 +202,8 @@
     //nav
     nav.portions = {element: document.getElementById('portionsMenu')};
     nav.references = {element: document.getElementById('referencesMenu')};
+    nav.settings = {element: document.getElementById('settingsMenu')};
+    fillSettingsMenu();
     // load current portion
     stuffReferenceMenu(c2t.portionName);
     read({chunkIndex: 0});
@@ -288,6 +306,26 @@
       reading.appendChild(sectionDiv);
     }
   };
+
+  // populate the setings menu with the available apostolic reading lists
+  var fillSettingsMenu = function(){
+    var smenu = document.getElementById('settingsMenuItems');
+    var apoObject = Object.keys(apostolicData);
+    var apoValues = Object.values(apostolicData);
+    for (var q = 0; q < apoObject.length; q++) {
+        var apostolicPortion = newElement({id: apoObject[q], class: 'bookName', contents: apoValues[q].displayName});
+        apostolicPortion.onclick = nav.click;
+        smenu.appendChild(apostolicPortion);
+    }
+  }
+
+  // resets the references list to use the newly selected apostolic reading list
+  var listSettings = function(listName){
+    nav.apostolicList = listName;
+    stuffReferenceMenu(nav.portion);
+    var staticListCount = Object.keys(portionsData[nav.portion].references).length;
+    read({chunkIndex: staticListCount});
+  }
 
   var read = function(options){
     //this.id is null or `portionName_X` or `wholeBible_bookAbvr`
@@ -403,7 +441,7 @@
     if (options.wholeBible) {
       somethingToRead = [bookInfo.book(portionName).bookData];
     } else {
-      somethingToRead = portionsData[portionName].references;
+      somethingToRead = portionsData[portionName].references.concat(apostolicData[nav.apostolicList][portionName].references);
     }
     if (somethingToRead) {
       for (var i = 0; i < somethingToRead.length; i++) {
