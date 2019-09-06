@@ -102,12 +102,12 @@
         nav.hideMenu('references');
         nav.hideMenu('settings');
       } else if (b1) {
-        //we toggle portionMenu and Hide referencesMenu
+        //we toggle portionMenu and Hide referencesMenu and settingsMenu
         nav.toggleMenu('portions');
         nav.hideMenu('references');
         nav.hideMenu('settings');
       } else if(b2) {
-        //we toggle referencesMenu and Hide portionMenu
+        //we toggle referencesMenu and Hide portionMenu and settingsMenu
         nav.toggleMenu('references');
         nav.hideMenu('portions');
         nav.hideMenu('settings');
@@ -138,8 +138,10 @@
         nav.hideMenu('references');
         nav.hideMenu('portions');
         nav.hideMenu('settings');
-      } else if (b7){ // Settings menu
+      } else if (b7){
+        //we toggle settingsMenu and Hide portionMenu and references Menu
         nav.toggleMenu('settings');
+        nav.hideMenu('references');
         nav.hideMenu('portions');
       }
     }
@@ -203,6 +205,7 @@
     nav.portions = {element: document.getElementById('portionsMenu')};
     nav.references = {element: document.getElementById('referencesMenu')};
     nav.settings = {element: document.getElementById('settingsMenu')};
+    // load the settings list with the available apostolic reading lists
     fillSettingsMenu();
     // load current portion
     stuffReferenceMenu(c2t.portionName);
@@ -324,7 +327,7 @@
     nav.apostolicList = listName;
     stuffReferenceMenu(nav.portion);
     var staticListCount = Object.keys(portionsData[nav.portion].references).length;
-    read({chunkIndex: staticListCount});
+    read({chunkIndex: staticListCount}); // We read the first reading from the apostolic list
   }
 
   var read = function(options){
