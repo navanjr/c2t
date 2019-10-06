@@ -451,26 +451,53 @@
 
     var alephDate = new Date(alephDate.setHours(0,0,0,0)); /* we want to work with a clean date timestamp so our math works out evenly later */
     
-    var festivals = { /* store the dates of all the festivals. TODO: also add the reading list index to this array, and call it later in our loop as f[1][2] */
-      rosh: [1,1],
-      kippur: [1,10],
-      sukkot: [1,15],
-      sukkot2: [1,22],
-      pesach: [8,15],
-      pesach2: [8,21],
-      shavuot: [10,6]
+    var festivals = { /* store the dates of all the festivals, and also the reading list index for each one */
+    // TODO: add all festival readings to reading list
+      rosh: [1,1,"rosh-hashannah"],
+      kippur: [1,10,"yom-kippur"],
+      sukkot: [1,15,"sukkot"],
+      sukkot2: [1,22,"sukkot2"],
+      pesach: [8,15,"pesach"],
+      pesach2: [8,21,"pesach2"],
+      shavuot: [10,6,"shavuot"]
     }
-    var hYear = hebYear(alephDate); /* the Hebrew calendar year of alephDate */
-    var afterRosh = false; /* a variable to tell us later in the code if the current date is between Rosh Hashannah and Sukkot */
-    var alephSukkot = HebToGreg(hYear, festivals.sukkot2[0], festivals.sukkot2[1]);  /* The Gregorian date of the last day of Sukkot, which is when the portion cycle gets reset */
+    var hYear = hebYear(alephDate); // the Hebrew calendar year of alephDate
+    var afterRosh = false; // a variable to tell us later in the code if the current date is between Rosh Hashannah and Sukkot
+
+    // The Gregorian date of the last day of Sukkot, which is when the portion cycle gets reset
+    var alephSukkot = HebToGreg(hYear, festivals.sukkot2[0], festivals.sukkot2[1]);
+
     if(alephDate.getTime() <= alephSukkot.getTime()){
       var afterRosh = true;
-      var alephSukkot = HebToGreg((hYear - 1), festivals.sukkot2[0], festivals.sukkot2[1]); /* if we are between Rosh Hashannah and Sukkot we set alephSukkot to the sukkot of the previous Hebrew calendar year */
+      // If we are between Rosh Hashannah and Sukkot we set alephSukkot to the sukkot of the previous Hebrew calendar year
+      var alephSukkot = HebToGreg((hYear - 1), festivals.sukkot2[0], festivals.sukkot2[1]);
     }
-    var startingShabbat = getShabbat(alephSukkot);
+    // Setting more festival dates to use later
+    if(afterRosh){
+      var pesachYear = (hYear - 1);
+      var pesach = HebToGreg(pesachYear, festivals.pesach[0], festivals.pesach[1]);
+      var pesach2 = HebToGreg(pesachYear, festivals.pesach2[0], festivals.pesach2[1]);
+      var sukkot = HebToGreg((hYear), festivals.sukkot[0], festivals.sukkot[1]);
+      var sukkot2 = HebToGreg((hYear), festivals.sukkot2[0], festivals.sukkot2[1]);
+      var kippur = HebToGreg((hYear), festivals.kippur[0], festivals.kippur[1]);
+      var rosh = HebToGreg((hYear), festivals.rosh[0], festivals.rosh[1]);
+    }
+    else{
+      var pesachYear = hYear;
+      var pesach = HebToGreg((hYear), festivals.pesach[0], festivals.pesach[1]);
+      var pesach2 = HebToGreg((hYear), festivals.pesach2[0], festivals.pesach2[1]);
+      var sukkot = HebToGreg((hYear + 1), festivals.sukkot[0], festivals.sukkot[1]);
+      var sukkot2 = HebToGreg((hYear + 1), festivals.sukkot2[0], festivals.sukkot2[1]);
+      var kippur = HebToGreg((hYear + 1), festivals.kippur[0], festivals.kippur[1]);
+      var rosh = HebToGreg((hYear + 1), festivals.rosh[0], festivals.rosh[1]);
+    }
+
+
+    var startingShabbat = getNextShabbat(alephSukkot);
     var nextShabbat = getShabbat(alephDate);
 
-    var portionNumber = Math.floor((nextShabbat.getTime() - startingShabbat.getTime())/604800000 + 1); /* find the portion number based on the number of weeks elapsed since the first shabbat after last Sukkot */
+    // Find the portion number based on the number of weeks elapsed since the first shabbat after last Sukkot
+    var portionNumber = Math.floor((nextShabbat.getTime() - startingShabbat.getTime())/604800000 + 1);
 
 
     for(const f of Object.entries(festivals)){
@@ -497,59 +524,68 @@
       }
 
       if(findFestival(alephDate, festDate, nextShabbat)){
-        return("TODO: add festival readings for " + f[0] + " here"); /* if today is a festival day, or if there is a festival between now and next Shabbat, then we return the festival readings instead */
+        return([f[1][2], festDate]); // If today is a festival day, or if there is a festival between now and next Shabbat, then we return the festival readings
       }
       if(festDate.getDay() == 6 && nextShabbat.getTime() > festDate.getTime()){
-        portionNumber -= 1; /* if we have passed a festival that fell on a Shabbat, then the weekly portions get bumped back by one week */
+        portionNumber -= 1; // If we have passed a festival that fell on a Shabbat, then the weekly portions get bumped back by one week
       }
     }
 
-    if(afterRosh){
-      var pesachYear = (hYear - 1);
-      var pesach = HebToGreg(pesachYear, festivals.pesach[0], festivals.pesach[1]);
-      var pesach2 = HebToGreg(pesachYear, festivals.pesach2[0], festivals.pesach2[1]);
-      var sukkot = HebToGreg((hYear), festivals.sukkot[0], festivals.sukkot[1]);
-      var sukkot2 = HebToGreg((hYear), festivals.sukkot2[0], festivals.sukkot2[1]);
-    }
-    else{
-      var pesachYear = hYear;
-      var pesach = HebToGreg((hYear), festivals.pesach[0], festivals.pesach[1]);
-      var pesach2 = HebToGreg((hYear), festivals.pesach2[0], festivals.pesach2[1]);
-      var sukkot = HebToGreg((hYear + 1), festivals.sukkot[0], festivals.sukkot[1]);
-      var sukkot2 = HebToGreg((hYear + 1), festivals.sukkot2[0], festivals.sukkot2[1]);
-    }
     if(pesach.getDay() !== (6 || 0) && pesach.getTime() < nextShabbat.getTime()){
+              // TODO: is this ^ a valid way to check (getDay() !== 6 && getDay() !== 0)?
+      /*
+        If the first day of Pesach falls on a Saturday or Sunday then there is 
+        no Shabbat Chol Hamoed, otherwise we check to see if the following week 
+        is the Shabbat chol hamoed.  If not, we just check if we are past that, 
+        in which case we need to deprecate portionNumber by 1.
+      */
       if(pesach2.getTime() > nextShabbat.getTime()){ /* nextShabbat is the Shabbat Chol Hamoed Pesach */
-        return("TODO: ADD PESACH SHABBAT CHOL HAMOED READINGS: Exodus 33:12–34:26, Numbers 28:19–25, Ezekiel 37:1–14");
+        return(["chol-hamoed-pesach", nextShabbat]);
       }
       else{
-        portionNumber -= 1; /* if the first day of Pesach falls on a Saturday or Sunday then there is no Shabbat Chol Hamoed, otherwise if we are past that we need to deprecate portionNumber by 1 */
+        portionNumber -= 1;
       }
     }
 
-    if(sukkot.getTime() < nextShabbat.getTime() && sukkot2.getTime() > nextShabbat.getTime()){ /* there is always a Shabbat Chol Hamoed Sukkot, so we just need to see if we're between the two Chagim */
-      var dayOfSukkot = Math.ceil((nextShabbat.getTime() - sukkot.getTime())/86400000);
+    if(sukkot.getTime() < nextShabbat.getTime() && sukkot2.getTime() > nextShabbat.getTime()){
+    /*
+      Unless the first day of Sukkot falls on a Saturday, which we (essentially) 
+      check for above, there is always a Shabbat Chol Hamoed Sukkot, 
+      so we just need to see if we are between the two Chagim and read 
+      the chol hamoed readings if we are.
+      Otherwise, the Shabbat chol hamoed Sukkot always falls on either 
+      the 3rd, 5th, or 6th day of the festival (because of the Rosh Hashannah 
+      postponement rules), and the maftir reading is different for each case.
+      For more information about Sukkot Yom Tov readings,
+      see https://en.wikipedia.org/wiki/Yom_Tov_Torah_readings#Sukkot
+      For a technical discussion about the Rosh Hashannah postponement rules,
+      see https://individual.utoronto.ca/kalendis/hebrew/postpone.htm
+    */
+      var dayOfSukkot = Math.ceil(((nextShabbat.getTime() - sukkot.getTime())/86400000) + 1);
       switch(dayOfSukkot){
         case 3:
-          return("TODO: ADD SUKKOT DAY 3 SHABBAT CHOL HAMOED READINGS: Exodus 33:12–34:26, Numbers 29:17–22, Ezekiel 38:18–39:16");
+          return(["TODO: ADD SUKKOT DAY 3 SHABBAT CHOL HAMOED READINGS: Exodus 33:12–34:26, Numbers 29:17–22, Ezekiel 38:18–39:16", nextShabbat]);
           break;
         case 5:
-          return("TODO: ADD SUKKOT DAY 5 SHABBAT CHOL HAMOED READINGS: Exodus 33:12–34:26, Numbers 29:23–28, Ezekiel 38:18–39:16");
+          return(["TODO: ADD SUKKOT DAY 5 SHABBAT CHOL HAMOED READINGS: Exodus 33:12–34:26, Numbers 29:23–28, Ezekiel 38:18–39:16", nextShabbat]);
           break;
         case 6:
-          return("TODO: ADD SUKKOT DAY 6 SHABBAT CHOL HAMOED READINGS: Exodus 33:12–34:26, Numbers 29: 26–31, Ezekiel 38:18–39:16");
+          return(["TODO: ADD SUKKOT DAY 6 SHABBAT CHOL HAMOED READINGS: Exodus 33:12–34:26, Numbers 29: 26–31, Ezekiel 38:18–39:16", nextShabbat]);
           break;
       }
     }
 
-    /* At this point if the function has not returned we should be reading a regular portion from the cycle (not a festival or Shabbat Chol Hamoed) */
-    /* next we need to determine if there have been any double portions in the cycle so far, or if the current portion should be a double portion
+    // At this point if the function has not returned we should be reading a regular portion from the cycle (not a festival or Shabbat Chol Hamoed)
+    /*
+       Next we need to determine if there have been any double portions in the cycle so far, or if the current portion should be a double portion
        Possible double portions are 22, 27, 29, 32, 42, and 51
        for the rules about doubled portions, see https://individual.utoronto.ca/kalendis/hebrew/parshah.htm#loop
     */
+
+    var doublePortion = 0;
     if(portionNumber == 22){
       if(((pesach.getTime() - 86400000) - nextShabbat.getTime()) / 604800000 < 4){
-        // TODO: return double portion
+        doublePortion = 55; // TODO: add double portion to reading list 
       }
     }
     else if(portionNumber > 22){
@@ -559,20 +595,20 @@
     }
     if(!IsLeapYear(pesachYear)){
       if(portionNumber == 27){
-        // TODO: return double portion
+        doublePortion = 56; // TODO: add double portion to reading list
       }
       else if(portionNumber > 27){
         portionNumber += 1;
       }
       if(portionNumber == 29){
-        // TODO: return double portion
+        doublePortion = 57; // TODO: add double portion to reading list
       }
       else if(portionNumber > 29){
         portionNumber += 1;
       }
       if(pesach.getDay() !== 6){
         if(portionNumber == 32){
-          // TODO: return double portion
+          doublePortion = 58; // TODO: add double portion to reading list
         }
         else if(portionNumber > 32){
           portionNumber += 1;
@@ -580,24 +616,151 @@
       }
     }
     if(portionNumber == 42 && (HebToGreg(pesachYear, 12, 9).getTime() - nextShabbat.getTime()) / 604800000 < 2){
-      // TODO: return double portion
+      doublePortion = 59; // TODO: add double portion to reading list
     }
     else if(portionNumber > 42 && ((HebToGreg(pesachYear, 12, 9).getTime() - (nextShabbat.getTime() - ((portionNumber - 42) * 604800000))) / 604800000 < 2)){ /* confused yet? :P */
       portionNumber += 1;
     }
+    if(rosh.getDay() == 6 || kippur.getDay() == 6){
+      if(portionNumber == 51){
+        doublePortion = 60; // TODO: add double portion to reading list
+      }
+      else if(portionNumber > 51){
+        portionNumber += 1;
+      }
+    }
 
-    return(portionNumber);
+    // If we set portionNumber to the double portion earlier, then we run into problems with our other double portion checks because portionNumber is greater than all of them even if the original portion number wasn't
+    if(doublePortion > 0){
+      portionNumber = doublePortion;
+    }
+
+
+    /*
+       Now we should have the correct Torah reading.
+       Next we need to figure out if there are any maftir readings 
+       or special haftarah readings.
+       I will wait until we figure out exactly how we are splitting those before implementing.
+    */
+
+    var maftirNumber = portionNumber;
+    var haftarahNumber = portionNumber;
+    var apostolicNumber = portionNumber;
+
+    // There might be a better way to do this, but for now I wanted to get this spitting out the portion names instead of just a number
+    var readingNames = [
+      false,
+      "breisheet",
+      "noach",
+      "lech-lecha",
+      "vayera",
+      "chayei-sarah",
+      "toldot",
+      "vayetze",
+      "vayishlach",
+      "vayeshev",
+      "miketz",
+      "vayigash",
+      "vayechi",
+      "shemot",
+      "vaera",
+      "bo",
+      "beshalach",
+      "yitro",
+      "mishpatim",
+      "terumah",
+      "tetzave",
+      "ki-tisa",
+      "vayakhel",
+      "pekudei",
+      "vayikra",
+      "tzav",
+      "shmini",
+      "tazria",
+      "metzora",
+      "acharei-mot",
+      "kedoshim",
+      "emor",
+      "behar",
+      "bechukotai",
+      "bamidbar",
+      "nasso",
+      "behaalotcha",
+      "shelachlacha",
+      "korach",
+      "chukat",
+      "balak",
+      "pinchas",
+      "mattot",
+      "massei",
+      "devarim",
+      "vaetchanan",
+      "ekev",
+      "reeh",
+      "shoftim",
+      "kitetze",
+      "kitavo",
+      "nitzavim",
+      "vayelekh",
+      "haazinu",
+      "vezothabracha",
+      //DOUBLE PORTIONS:
+      "vayakhel/pekudei", // 55 TODO: add these double portions to the reading list
+      "tazria/metzora", // 56
+      "acharei-mot/kedoshim", // 57
+      "behar/bechukotai", // 58
+      "mattot/massei", // 59
+      "nitzavim/vayelekh", // 60
+      ];
+
+    /*
+      We want to return an array with the following information:
+        1. The name of the Torah reading
+        2. The name of any maftir readings
+        3. The name of the haftarah reading(s)
+        4. The name of the Apostolic reading(s)
+        5. The date on which the portion will be read
+      For now I just have it returning the name of the Torah reading,
+      but we will want to change that once we figure out what we are doing
+      with the portions list, and how we are splitting that up.
+     */
+
+    return([readingNames[portionNumber], nextShabbat]);
   }
 
-/*functions:
-IsLeapYear(nYearH)
-HebToGreg(nYearH, nMonthH, nDateH)
-hebYear(nYearH)
-SameDate(d1, d2)
-findFestival(alephDate, festDate, nextShabbat);
-*/
 
-console.log(findPortionNumber(new Date()));
+/* The following code is a rough draft of the code we will use to output the portions list on window load */
+
+  var alephDate = new Date(new Date().setHours(0,0,0,0));
+  var hYear = hebYear(alephDate);
+  var alephSukkot = HebToGreg(hYear, 1, 22);
+  var nextSukkot = HebToGreg((hYear + 1), 1, 22);
+
+  if(alephDate.getTime() <= alephSukkot.getTime()){
+    var alephSukkot = HebToGreg((hYear - 1), 1, 22);
+    var nextSukkot = HebToGreg(hYear, 1, 22).getTime();
+  }
+
+  var startingShabbat = getNextShabbat(alephSukkot).getTime();
+  var nextShabbat = getShabbat(alephDate);
+  var alreadyReadThis;
+  var newFindings;
+
+  for(var q = startingShabbat; q < nextSukkot; q += 86400000){
+    newFindings = findPortionNumber(new Date(q));
+    if(newFindings[0] !== alreadyReadThis){
+      alreadyReadThis = newFindings[0];
+      console.log(newFindings[0], newFindings[1]);
+      /*
+        When we actually implement this we will likely want to print the 
+        portion name to the portionsMenu with the date tinestamp (see number 5. 
+        in the list above) as the ID tag.  When you click on a portion name 
+        it will then call stuffReferenceMenu(date) on the date from the id, 
+        which will in turn call findPortionNumber() and will stuff the 
+        reference menu with the correct readings for that date.
+      */
+    }
+  }
 
 
 })();

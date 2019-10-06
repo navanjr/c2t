@@ -6,6 +6,7 @@ withNumbers = function(verses, chapter) {
   return [];
 }
 
+
 portionsData = {
   'yom-kippur': {
     week: 0,
@@ -365,10 +366,10 @@ portionsData = {
       {rev: [[21,16,27]]},
     ],
   },
-  'ki-tiza': {
+  'ki-tisa': {
     week: 21,
-    title: 'Ki Tiza',
-    name: 'ki-tiza',
+    title: 'Ki Tisa',
+    name: 'ki-tisa',
     description: 'When you take',
     references: [
       {exd: [[30,11],31,32,33,34]},
@@ -450,7 +451,7 @@ portionsData = {
     title: 'Chol HaMo\'ed Pesach',
     name: 'chol-hamoed-pesach',
     description: 'Passover/Unlevened Bread',
-    references: [
+    references: [ //TODO: should have Exodus 33:12–34:26, Numbers 28:19–25, Ezekiel 37:1–14
       {exd: [[12,21,51]]},
       {exd: [[13,17],14,[15,1,26]]},
       {jos: [[5,2],[6,1,1]]},

@@ -514,6 +514,16 @@ var getShabbat = function(dateInput){
   return(dateInput);
 }
 
+var getNextShabbat = function(dateInput){
+  var offset = 6 - dateInput.getDay();
+  if(dateInput.getDay() == 6){
+    offset = 7;
+  }
+  var dateInput = new Date(dateInput.getTime() + (offset*86400000)); /* offset is the number of days until next Shabbat, and we multiply that by the number of milliseconds in a day */
+
+  return(dateInput);
+}
+
 function findFestival(d1, d2, d3){
   return (d1.getTime() <= d2.getTime() &&
           d2.getTime() <= d3.getTime());
