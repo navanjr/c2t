@@ -674,10 +674,13 @@ portionsData = {
     references: [
       {num: [16,17,18]},
       {sa1: [[11,14],[12,1,22]]},
+      {jer: [[51,36,64]]},
       {luk: [[18,35],[[19,1,28]]]},
       {rom: [[13,1,7]]},
+      {cr2: [[6,14,18]]},
       {ti2: [[2,8,21]]},
       {jud: [1]},
+      {rev: [18]}
     ],
   },
   'chukat': {
@@ -704,8 +707,8 @@ portionsData = {
       {num: [[22,2],23,24,[25,1,9]]},
       {jos: [[13,22,22]]},
       {mic: [[5,7],[6,1,8]]},
-      {mar: [11,1,26]},
-      {rom: [11,25,32]},
+      {mar: [[11,1,26]]},
+      {rom: [[11,25,32]]},
       {cr1: [[1,20,31]]},
       {heb: [[1,1,2]]},
       {pe2: [2]},
@@ -894,7 +897,7 @@ portionsData = {
     references: [
       {deu: [[29,10],[30,1,20]]},
       {isa: [61,62,[63,1,9]]},
-      {mat: [[5,17,19]]},
+      {mat: [[5,14,20]]},
       {luk: [[24,1,12]]},
       {rom: [[9,30],[10,1,13]]},
       {ti1: [6]},
@@ -937,7 +940,7 @@ portionsData = {
     week: 51,
     title: 'Vezot Ha\'Bracha',
     name: 'vezothabracha',
-    description: 'This it the blessing',
+    description: 'This is the blessing',
     references: [
       {deu: [33,34]},
       {jos: [1]},
