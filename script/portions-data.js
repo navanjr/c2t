@@ -69,7 +69,7 @@ portionsData = {
     title: 'Lech Lecha',
     description: 'Go forth',
     references: [
-      {gen: [11,12,13,14,15,16,17]},
+      {gen: [12,13,14,15,16,17]},
       {isa: [[40,27],[41,1,16]]},
       {act: [[7,1,8]]},
       {rom: [[3,1,29]]},
