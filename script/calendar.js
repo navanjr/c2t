@@ -240,5 +240,13 @@ calendar = {
       21: 'vayeshev',
       28: 'miketz'
     }
+  },
+  2020: {
+    1: {
+      4: 'vayigash',
+      11: 'vayechi',
+      18: 'shemot',
+      25: 'vaera'
+    }
   }
 };
