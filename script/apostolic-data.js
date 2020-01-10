@@ -1,8 +1,7 @@
-var apostolicDataTable = ['default-list','another-list'];
+var haftarahData = new Object();
 
-apostolicData = {
-  'default-list': {
-    displayName: 'Anderson\'s List',
+haftarahData.defaultList = {
+    displayName: 'Duncan Reading',
     'yom-kippur': {
       references: [
         {hos: [[14,1,9]]},
@@ -289,11 +288,6 @@ apostolicData = {
         {rev: [[14,6,7]]},
         {rev: [[16,15,15]]},
         {rev: [[19,6,8]]},
-      ],
-    },
-    'chol-hamoed-pesach': {
-      references: [
-        {sa2: [22]},
       ],
     },
     'shmini': {
@@ -618,289 +612,309 @@ apostolicData = {
         {rev: [[22,1,5]]},
       ],
     },
-  },
-  'storyOfYeshua': {
-    displayName: 'Story of Yeshua',
-    'yom-kippur': {
-      references: [
-        {act: [[1,1,14],[2,1,21]]}
-      ],
-    },
-    'breisheet': {
-      references: [
-        {jhn: [[1,1,18]]}
-      ],
-    },
-    'noach': {
-      references: [
-        {luk: [1]}
-      ],
-    },
-   'lech-lecha': {
-      references: [
-        {mat: [[1,1,17]]}
-      ],
-    },
-    'vayera': {
-      references: [
-        {luk: [[2,1,38]]}
-      ],
-    },
-    'chayei-sarah': {
-      references: [
-        {mat: [[2,1,23]]}
-      ],
-    },
-    'toldot': {
-      references: [
-        {luk: [[3,1,38]]}
-      ],
-    },
-    'vayetze': {
-      references: [
-        {mat: [[3,13],[4,1,11]]}
-      ],
-    },
-    'vayishlach': {
-      references: [
-        {jhn: [[1,19],[2,1,12]]}
-      ],
-    },
-    'vayeshev': {
-      references: [
-        {jhn: [[2,13],3,[4,1,42]]}
-      ],
-    },
-    'miketz': {
-      references: [
-        {luk: [[4,16,30]]}
-      ],
-    },
-    'vayigash': {
-      references: [
-        {jhn: [[5,1,47]]}
-      ],
-    },
-    'vayechi': {
-      references: [
-        {luk: [[4,31],[5,1,11]]}
-      ],
-    },
-    'shemot': {
-      references: [
-        {luk: [[5,12,39]]}
-      ],
-    },
-    'vaera': {
-      references: [
-        {mat: [[12,1,14]]}
-      ],
-    },
-    'bo': {
-      references: [
-        {mar: [[3,7,19]]}
-      ],
-    },
-    'beshalach': {
-      references: [
-        {mat: [5]}
-      ],
-    },
-    'yitro': {
-      references: [
-        {mat: [6,7,[8,1,1]]}
-      ],
-    },
-    'mishpatim': {
-      references: [
-        {luk: [7,[8,1,3]]}
-      ],
-    },
-    'terumah': {
-      references: [
-        {mat: [[12,46],[13,1,58]]}
-      ],
-    },
-    'tetzave': {
-      references: [
-        {mar: [[4,35],[5,1,43]]}
-      ],
-    },
-    'ki-tiza': {
-      references: [
-        {mat: [[9,35],10,[11,1,1]]}
-      ],
-    },
-    'vayakhel': {
-      references: [
-        {mar: [[6,14,29]]}
-      ],
-    },
-    'pekudei': {
-      references: [
-        {jhn: [[6,1,71]]}
-      ],
-    },
-    'vayikra': {
-      references: [
-        {mar: [[7,1,30]]}
-      ],
-    },
-    'tzav': {
-      references: [
-        {mar: [[7,31],8,[9,1,1]]}
-      ],
-    },
     'chol-hamoed-pesach': {
       references: [
+        {sa2: [22]},
       ],
     },
-    'shmini': {
-      week: 26,
+    'sukkotshabbatcholhamoed3': {
       references: [
-        {mar: [[9,2,13]]}
+        {jhn: [[7,14,20]]},
       ],
     },
-    'tazria': {
+    'sukkotshabbatcholhamoed5': {
       references: [
-        {mar: [9,14,50]}
+        {jhn: [[7,14,20]]},
       ],
     },
-    'metzora': {
+    'sukkotshabbatcholhamoed6': {
       references: [
-        {luk: [[9,51],[10,1,42]]}
+        {jhn: [[7,14,20]]},
       ],
     },
-    'acharei-mot': {
-      references: [
-        {jhn: [[7,1,52]]}
-      ],
-    },
-    'kedoshim': {
-      references: [
-        {jhn: [[7,53],8,9,[10,1,21]]}
-      ],
-    },
-    'emor': {
-      references: [
-        {luk: [11,[12,1,59]]}
-      ]
-    },
-    'behar': {
-      references: [
-        {luk: [[13,1,33]]}
-      ],
-    },
-    'bechukotai': {
-      references: [
-        {luk: [14,[15,1,32]]}
-      ],
-    },
-    'bamidbar': {
-      references: [
-        {luk: [16,[17,1,10]]}
-      ],
-    },
-    'nasso': {
-      references: [
-        {jhn: [[11,1,54]]}
-      ],
-    },
-    'behaalotcha': {
-      references: [
-        {luk: [[17,11],[18,1,14]]}
-      ],
-    },
-    'shelachlacha': {
-      references: [
-        {mar: [[10,1,45]]}
-      ],
-    },
-    'korach': {
-      references: [
-        {luk: [[18,35],[19,1,28]]}
-      ],
-    },
-    'chukat': {
-      references: [
-        {mat: [[21,1,17]]}
-      ],
-    },
-    'balak': {
-      references: [
-        {mar: [[11,12,26]]}
-      ],
-    },
-    'pinchas': {
-      references: [
-        {mar: [[11,27],[12,1,37]]}
-      ],
-    },
-    'mattot': {
-      references: [
-        {mat: [23,24,[25,1,46]]} // split between mattot and massei?
-      ],
-    },
-    'massei': {
-      references: [
-        {mat: [23,24,[25,1,46]]} // split between mattot and massei?
-      ],
-    },
-    'devarim': {
-      references: [
-        {mar: [[14,1,16]]}
-      ],
-    },
-    'vaecthanan': {
-      references: [
-        {luk: [[22,13,38]]}
-      ],
-    },
-    'ekev': {
-      references: [
-        {jhn: [[13,31],[14,1,31]]}
-      ],
-    },
-    'reeh': {
-      references: [
-        {jhn: [15,16,[17,1,26]]}
-      ],
-    },
-    'shoftim': {
-      references: [
-        {mat: [[26,36],[27,1,10]]}
-      ],
-    },
-    'kitetze': {
-      references: [
-        {luk: [[23,1,25]]}
-      ],
-    },
-    'kitavo': {
-      references: [
-        {luk: [[23,26,56]]}
-      ],
-    },
-    'nitzavim': {
-      references: [
-        {luk: [[24,1,12]]}
-      ],
-    },
-    'vayelekh': {
-      references: [
-        {luk: [[24,13,43]]}
-      ],
-    },
-    'haazinu': {
-      references: [
-        {jhn: [[21,1,25]]}
-      ],
-    },
-    'vezothabracha': {
-      references: [
-        {luk: [[24,44,53]]}
-      ],
-    },
+  };
+
+haftarahData.storyOfYeshua = {
+  displayName: 'Story of Yeshua',
+  'yom-kippur': {
+    references: [
+      {act: [[1,1,14],[2,1,21]]}
+    ],
+  },
+  'breisheet': {
+    references: [
+      {jhn: [[1,1,18]]}
+    ],
+  },
+  'noach': {
+    references: [
+      {luk: [1]}
+    ],
+  },
+ 'lech-lecha': {
+    references: [
+      {mat: [[1,1,17]]}
+    ],
+  },
+  'vayera': {
+    references: [
+      {luk: [[2,1,38]]}
+    ],
+  },
+  'chayei-sarah': {
+    references: [
+      {mat: [[2,1,23]]}
+    ],
+  },
+  'toldot': {
+   references: [
+      {luk: [[3,1,38]]}
+    ],
+  },
+  'vayetze': {
+    references: [
+      {mat: [[3,13],[4,1,11]]}
+    ],
+  },
+  'vayishlach': {
+    references: [
+      {jhn: [[1,19],[2,1,12]]}
+    ],
+  },
+  'vayeshev': {
+    references: [
+      {jhn: [[2,13],3,[4,1,42]]}
+    ],
+  },
+  'miketz': {
+    references: [
+      {luk: [[4,16,30]]}
+    ],
+  },
+  'vayigash': {
+    references: [
+      {jhn: [[5,1,47]]}
+    ],
+  },
+  'vayechi': {
+    references: [
+      {luk: [[4,31],[5,1,11]]}
+    ],
+  },
+  'shemot': {
+    references: [
+      {luk: [[5,12,39]]}
+    ],
+  },
+  'vaera': {
+    references: [
+      {mat: [[12,1,14]]}
+    ],
+  },
+  'bo': {
+    references: [
+      {mar: [[3,7,19]]}
+    ],
+  },
+  'beshalach': {
+    references: [
+      {mat: [5]}
+    ],
+  },
+  'yitro': {
+    references: [
+      {mat: [6,7,[8,1,1]]}
+    ],
+  },
+  'mishpatim': {
+    references: [
+      {luk: [7,[8,1,3]]}
+    ],
+  },
+  'terumah': {
+    references: [
+      {mat: [[12,46],[13,1,58]]}
+    ],
+  },
+  'tetzave': {
+    references: [
+      {mar: [[4,35],[5,1,43]]}
+    ],
+  },
+  'ki-tiza': {
+    references: [
+      {mat: [[9,35],10,[11,1,1]]}
+    ],
+  },
+  'vayakhel': {
+    references: [
+      {mar: [[6,14,29]]}
+    ],
+  },
+  'pekudei': {
+    references: [
+      {jhn: [[6,1,71]]}
+    ],
+  },
+  'vayikra': {
+    references: [
+      {mar: [[7,1,30]]}
+    ],
+  },
+  'tzav': {
+    references: [
+      {mar: [[7,31],8,[9,1,1]]}
+    ],
+  },
+  'chol-hamoed-pesach': {
+    references: [
+    ],
+  },
+  'shmini': {
+    week: 26,
+    references: [
+      {mar: [[9,2,13]]}
+    ],
+  },
+  'tazria': {
+    references: [
+      {mar: [9,14,50]}
+    ],
+  },
+  'metzora': {
+    references: [
+      {luk: [[9,51],[10,1,42]]}
+    ],
+  },
+  'acharei-mot': {
+    references: [
+      {jhn: [[7,1,52]]}
+    ],
+  },
+  'kedoshim': {
+    references: [
+      {jhn: [[7,53],8,9,[10,1,21]]}
+    ],
+  },
+  'emor': {
+    references: [
+      {luk: [11,[12,1,59]]}
+    ]
+  },
+  'behar': {
+    references: [
+      {luk: [[13,1,33]]}
+    ],
+  },
+  'bechukotai': {
+    references: [
+      {luk: [14,[15,1,32]]}
+    ],
+  },
+  'bamidbar': {
+    references: [
+      {luk: [16,[17,1,10]]}
+    ],
+  },
+  'nasso': {
+    references: [
+      {jhn: [[11,1,54]]}
+    ],
+  },
+  'behaalotcha': {
+    references: [
+      {luk: [[17,11],[18,1,14]]}
+    ],
+  },
+  'shelachlacha': {
+    references: [
+      {mar: [[10,1,45]]}
+    ],
+  },
+  'korach': {
+    references: [
+      {luk: [[18,35],[19,1,28]]}
+    ],
+  },
+  'chukat': {
+    references: [
+      {mat: [[21,1,17]]}
+    ],
+  },
+  'balak': {
+    references: [
+      {mar: [[11,12,26]]}
+    ],
+  },
+  'pinchas': {
+    references: [
+      {mar: [[11,27],[12,1,37]]}
+    ],
+  },
+  'mattot': {
+    references: [
+      {mat: [23,24,[25,1,46]]} // split between mattot and massei?
+    ],
+  },
+  'massei': {
+    references: [
+      {mat: [23,24,[25,1,46]]} // split between mattot and massei?
+    ],
+  },
+  'devarim': {
+    references: [
+      {mar: [[14,1,16]]}
+    ],
+  },
+  'vaecthanan': {
+    references: [
+      {luk: [[22,13,38]]}
+    ],
+  },
+  'ekev': {
+    references: [
+      {jhn: [[13,31],[14,1,31]]}
+    ],
+  },
+  'reeh': {
+    references: [
+      {jhn: [15,16,[17,1,26]]}
+    ],
+  },
+  'shoftim': {
+    references: [
+      {mat: [[26,36],[27,1,10]]}
+    ],
+  },
+  'kitetze': {
+    references: [
+      {luk: [[23,1,25]]}
+    ],
+  },
+  'kitavo': {
+    references: [
+      {luk: [[23,26,56]]}
+    ],
+  },
+  'nitzavim': {
+    references: [
+      {luk: [[24,1,12]]}
+    ],
+  },
+  'vayelekh': {
+    references: [
+      {luk: [[24,13,43]]}
+    ],
+  },
+  'haazinu': {
+    references: [
+      {jhn: [[21,1,25]]}
+    ],
+  },
+  'vezothabracha': {
+    references: [
+      {luk: [[24,44,53]]}
+    ],
   },
 };
 

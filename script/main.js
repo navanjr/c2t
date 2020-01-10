@@ -1,4 +1,4 @@
-(function() {
+﻿(function() {
   'use strict';
 
   var properCase = function(str) {
@@ -92,7 +92,7 @@
           b5 = this.button === 'b5',
           b6 = this.button === 'b6',
           b7 = this.button === 'b7';
-      var menuItem = e && e.srcElement && (e.srcElement.className === 'menuItem' || e.srcElement.className === 'bookName');
+      var menuItem = e && e.srcElement && (e.srcElement.className === 'menuItem' || e.srcElement.className === 'bookName' || e.srcElement.className === 'settingsItem');
       var portionsMenu = e && e.srcElement && e.srcElement.parentElement && e.srcElement.parentElement.id === 'portionsMenu';
       var referencesMenu = e && e.srcElement && e.srcElement.parentElement && e.srcElement.parentElement.id === 'referencesMenuItems';
       var settingsMenu = e && e.srcElement && e.srcElement.parentElement && e.srcElement.parentElement.id === 'settingsMenuItems';
@@ -119,7 +119,6 @@
       } else if (menuItem && referencesMenu) { // references menu
         nav.hideMenu('references');
       } else if (menuItem && settingsMenu) { // settings menu
-        // stuffReferenceMenu(menuItemId);
         nav.hideMenu('settings');
         listSettings(menuItemId);
       } else if (b3 || b4){ // navigate left or right through references
@@ -163,24 +162,16 @@
   shabbat.year = shabbat.date.getUTCFullYear();
   shabbat.month = shabbat.date.getUTCMonth() + 1;
   shabbat.day = shabbat.date.getDate();
-  c2t.portionName = calendar[shabbat.year]
-    && calendar[shabbat.year][shabbat.month]
-    && calendar[shabbat.year][shabbat.month][shabbat.day]
-    || 'breisheet';
-  nav.apostolicList = 'default-list';
-  // TODO: fix the following Hack!
-  if (Array.isArray(c2t.portionName)) {
-    c2t.portionName = c2t.portionName[0];
-  }
+  c2t.portionName = 'breisheet';
+  nav.haftarahList = 'defaultList';
+
   window.onload = function() {
+
+    c2t.portionName = (findPortionNumber(new Date()))[0];
+
     // menus
-    var portionNames = Object.keys(portionsData); // with the new system, we would need to add a function here that returns as an array the entire list of portion names for the cycle
-    var menu = document.getElementById('portionsMenu');
-    for (var i = 0; i < portionNames.length; i++) {
-      var menuItem = newElement({contents: properCase(portionNames[i]), class: 'menuItem', id: portionNames[i]});
-      menuItem.onclick = nav.click;
-      menu.appendChild(menuItem);
-    }
+    fillPortionMenu();
+
     document.getElementById('portionTitle').onclick = nav.click;
     document.getElementById('referenceTitle').onclick = nav.click;
 
@@ -208,7 +199,8 @@
     // load the settings list with the available apostolic reading lists
     fillSettingsMenu();
     // load current portion
-    stuffReferenceMenu(c2t.portionName);
+    nav.portionTimestamp = (new Date()).getTime();
+    stuffReferenceMenu(nav.portionTimestamp);
     read({chunkIndex: 0});
   }
 
@@ -216,10 +208,13 @@
     return Object.keys(kjv);
   }
 
-  var stuffReferenceMenu = function(portionName) {
+  var stuffReferenceMenu = function(portionTimestamp) {
+    nav.portionTimestamp = Number(portionTimestamp);
     var mainWindow = document.getElementById('referencesMenuItems');
     var refCount = document.getElementById('referenceCount');
     mainWindow.innerHTML = "";
+//TODO: change getPortion to instead expect the findPortionNumber array
+    var portionName = findPortionNumber(new Date(nav.portionTimestamp))[0];
     var chunks = getPortion(portionName);
     nav.portion = portionName;
     nav.referenceCount = chunks.length;
@@ -234,7 +229,7 @@
         mainWindow.appendChild(bookRefSpan);
       }
       var portionTitle = document.getElementById('portionTitle');
-      portionTitle.innerHTML = properCase(portionName);
+      portionTitle.innerHTML = portionsData[portionName].title;
       refCount.innerHTML = nav.referenceCount;
       nav.reset();
     }
@@ -313,19 +308,19 @@
   // populate the setings menu with the available apostolic reading lists
   var fillSettingsMenu = function(){
     var smenu = document.getElementById('settingsMenuItems');
-    var apoObject = Object.keys(apostolicData);
-    var apoValues = Object.values(apostolicData);
+    var apoObject = Object.keys(haftarahData);
+    var apoValues = Object.values(haftarahData);
     for (var q = 0; q < apoObject.length; q++) {
-        var apostolicPortion = newElement({id: apoObject[q], class: 'bookName', contents: apoValues[q].displayName});
-        apostolicPortion.onclick = nav.click;
-        smenu.appendChild(apostolicPortion);
+        var haftarahPortion = newElement({id: apoObject[q], class: 'settingsItem', contents: apoValues[q].displayName});
+        haftarahPortion.onclick = nav.click;
+        smenu.appendChild(haftarahPortion);
     }
   }
 
-  // resets the references list to use the newly selected apostolic reading list
+  // resets the references list to use the selected apostolic reading list
   var listSettings = function(listName){
-    nav.apostolicList = listName;
-    stuffReferenceMenu(nav.portion);
+    nav.haftarahList = listName;
+    stuffReferenceMenu(nav.portionTimestamp);
     var staticListCount = Object.keys(portionsData[nav.portion].references).length;
     read({chunkIndex: staticListCount}); // We read the first reading from the apostolic list
   }
@@ -444,7 +439,8 @@
     if (options.wholeBible) {
       somethingToRead = [bookInfo.book(portionName).bookData];
     } else {
-      somethingToRead = portionsData[portionName].references.concat(apostolicData[nav.apostolicList][portionName].references);
+      somethingToRead = portionsData[portionName].references;
+      somethingToRead = somethingToRead.concat(haftarahData[nav.haftarahList][portionName].references);
     }
     if (somethingToRead) {
       for (var i = 0; i < somethingToRead.length; i++) {
@@ -605,13 +601,13 @@
       var dayOfSukkot = Math.ceil(((nextShabbat.getTime() - sukkot.getTime())/86400000) + 1);
       switch(dayOfSukkot){
         case 3:
-          return(["TODO: ADD SUKKOT DAY 3 SHABBAT CHOL HAMOED READINGS: Exodus 33:12–34:26, Numbers 29:17–22, Ezekiel 38:18–39:16", nextShabbat]);
+          return(["sukkotshabbatcholhamoed3", nextShabbat]);
           break;
         case 5:
-          return(["TODO: ADD SUKKOT DAY 5 SHABBAT CHOL HAMOED READINGS: Exodus 33:12–34:26, Numbers 29:23–28, Ezekiel 38:18–39:16", nextShabbat]);
+          return(["sukkotshabbatcholhamoed5", nextShabbat]);
           break;
         case 6:
-          return(["TODO: ADD SUKKOT DAY 6 SHABBAT CHOL HAMOED READINGS: Exodus 33:12–34:26, Numbers 29: 26–31, Ezekiel 38:18–39:16", nextShabbat]);
+          return(["sukkotshabbatcholhamoed6", nextShabbat]);
           break;
       }
     }
@@ -688,8 +684,7 @@
     var haftarahNumber = portionNumber;
     var apostolicNumber = portionNumber;
 
-    // There might be a better way to do this, but for now I wanted to get this spitting out the portion names instead of just a number
-    var readingNames = [
+    /*var readingNames = [
       false,
       "breisheet",
       "noach",
@@ -746,22 +741,23 @@
       "haazinu",
       "vezothabracha",
       //DOUBLE PORTIONS:
-      "vayakhel/pekudei", // 55 TODO: add these double portions to the reading list
+      "vayakhel/pekudei", // 55
       "tazria/metzora", // 56
       "acharei-mot/kedoshim", // 57
       "behar/bechukotai", // 58
       "mattot/massei", // 59
       "nitzavim/vayelekh", // 60
-      ];
+      ];*/
+    var readingNames = Object.keys(portionsData);
 
     /*
-      We want to return an array with the following information:
+      We want the function to return an array with the following information:
         1. The name of the Torah reading
         2. The name of any maftir readings
         3. The name of the haftarah reading(s)
         4. The name of the Apostolic reading(s)
         5. The date on which the portion will be read
-      For now I just have it returning the name of the Torah reading,
+      For now I just have it returning the name of the Torah reading and the date,
       but we will want to change that once we figure out what we are doing
       with the portions list, and how we are splitting that up.
      */
@@ -770,38 +766,44 @@
   }
 
 
-/* The following code is a rough draft of the code we will use to output the portions list on window load */
+  var fillPortionMenu = function(){
+  /* Fill the portionMenu with the readings list */
 
-  var alephDate = new Date(new Date().setHours(0,0,0,0));
-  var hYear = hebYear(alephDate);
-  var alephSukkot = HebToGreg(hYear, 1, 22);
-  var nextSukkot = HebToGreg((hYear + 1), 1, 22);
+    var alephDate = new Date(new Date().setHours(0,0,0,0));
+    var hYear = hebYear(alephDate);
+    var alephSukkot = HebToGreg(hYear, 1, 22);
+    var nextSukkot = HebToGreg((hYear + 1), 1, 22);
 
-  if(alephDate.getTime() <= alephSukkot.getTime()){
-    var alephSukkot = HebToGreg((hYear - 1), 1, 22);
-    var nextSukkot = HebToGreg(hYear, 1, 22).getTime();
-  }
+    if(alephDate.getTime() <= alephSukkot.getTime()){
+      var alephSukkot = HebToGreg((hYear - 1), 1, 22);
+      var nextSukkot = HebToGreg(hYear, 1, 22).getTime();
+    }
 
-  var startingShabbat = getNextShabbat(alephSukkot).getTime();
-  var nextShabbat = getShabbat(alephDate);
-  var alreadyReadThis;
-  var newFindings;
+    var startingShabbat = getNextShabbat(alephSukkot).getTime();
+    var nextShabbat = getShabbat(alephDate);
+    var readThis;
+    var newFindings;
+    var menu = document.getElementById('portionsMenu');
 
-  for(var q = startingShabbat; q < nextSukkot; q += 86400000){
-    newFindings = findPortionNumber(new Date(q));
-    if(newFindings[0] !== alreadyReadThis){
-      alreadyReadThis = newFindings[0];
-      console.log(newFindings[0], newFindings[1]);
-      /*
-        When we actually implement this we will likely want to print the 
-        portion name to the portionsMenu with the date tinestamp (see number 5. 
-        in the list above) as the ID tag.  When you click on a portion name 
-        it will then call stuffReferenceMenu(date) on the date from the id, 
-        which will in turn call findPortionNumber() and will stuff the 
-        reference menu with the correct readings for that date.
-      */
+    for(var q = startingShabbat; q < nextSukkot; q += 86400000){
+      newFindings = findPortionNumber(new Date(q));
+      if(newFindings[0] !== readThis){
+        readThis = newFindings[0];
+        var readThisTitle = portionsData[readThis].title;
+        var menuItem = newElement({contents: readThisTitle, class: 'menuItem', id: newFindings[1].getTime()});
+        menuItem.onclick = nav.click;
+        menu.appendChild(menuItem);
+
+        /*
+          When we actually implement this we will likely want to print the 
+          portion name to the portionsMenu with the date tinestamp (see number 5. 
+          in the list above) as the ID tag.  When you click on a portion name 
+          it will then call stuffReferenceMenu(date) on the date from the id, 
+          which will in turn call findPortionNumber() and will stuff the 
+          reference menu with the correct readings for that date.
+        */
+      }
     }
   }
-
 
 })();

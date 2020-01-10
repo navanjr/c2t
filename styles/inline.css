@@ -278,6 +278,19 @@ body {
   top: 57px;
 }
 
+.settingsItem {
+  cursor: pointer;
+  padding-top: .5em;
+  font-weight: lighter;
+}
+
+.settingsItem:before {
+  content: "-";
+  padding: 0px 5px;
+  color: #000000;
+  font-weight: bold;
+}
+
 /* reading */
 .chapterName {
   font-weight: bold;

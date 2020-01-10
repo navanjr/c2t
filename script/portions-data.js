@@ -1,4 +1,4 @@
-withNumbers = function(verses, chapter) {
+﻿withNumbers = function(verses, chapter) {
   if (verses && verses.length) {
     var v = 0;
     return verses.map(function(r){v++; return {ref: chapter + ":" + v, verse: r};});
@@ -184,8 +184,8 @@ portionsData = {
   },
   'mishpatim': {
     week: 18,
-    title: 'Mishpatin',
-    name: 'mishpatin',
+    title: 'Mishpatim',
+    name: 'mishpatim',
     description: 'Judgments',
     references: [
       {exd: [21,22,23,24]},
@@ -260,17 +260,6 @@ portionsData = {
     references: [
       {lev: [[6,8],7,8]},
       {jer: [[7,21],[8,1,3]]},
-    ],
-  },
-  'chol-hamoed-pesach': {
-    week: 25,
-    title: 'Chol HaMo\'ed Pesach',
-    name: 'chol-hamoed-pesach',
-    description: 'Passover/Unlevened Bread',
-    references: [ //TODO: should have Exodus 33:12–34:26, Numbers 28:19–25, Ezekiel 37:1–14
-      {exd: [[12,21,51]]},
-      {exd: [[13,17],14,[15,1,26]]},
-      {jos: [[5,2],[6,1,1]]},
     ],
   },
   'shmini': {
@@ -566,6 +555,170 @@ portionsData = {
       {jos: [1]},
     ],
   },
+  'vayakhel/pekudei': {
+    title: 'Vayakhel/Pekudei',
+    name: 'vayakhel/pekudei',
+    description: 'Double portion',
+    references: [
+      {deu: [33,34]},
+      {jos: [1]},
+    ],
+  },
+  'tazria/metzora': {
+    title: 'Tazria/Metzora',
+    name: 'tazria/metzora',
+    description: 'Double portion',
+    references: [
+      {deu: [33,34]},
+      {jos: [1]},
+    ],
+  },
+  'acharei-mot/kedoshim': {
+    title: 'Acharei Mot/Kedoshim',
+    name: 'acharei-mot/kedoshim',
+    description: 'Double portion',
+    references: [
+      {deu: [33,34]},
+      {jos: [1]},
+    ],
+  },
+  'behar/bechukotai': {
+    title: 'Behar/Bechukotai',
+    name: 'behar/bechukotai',
+    description: 'Double portion',
+    references: [
+      {deu: [33,34]},
+      {jos: [1]},
+    ],
+  },
+  'mattot/massei': {
+    title: 'Mattot/Massei',
+    name: 'mattot/massei',
+    description: 'Double portion',
+    references: [
+      {deu: [33,34]},
+      {jos: [1]},
+    ],
+  },
+  'nitzavim/vayelekh': {
+    title: 'Nitzavim/Vayelekh',
+    name: 'nitzavim/vayelekh',
+    description: 'Double portion',
+    references: [
+      {deu: [33,34]},
+      {jos: [1]},
+    ],
+  },
+  'rosh-hashannah': {
+    title: 'Rosh Hashannah',
+    name: 'rosh-hashannah',
+    description: 'Feast of Trumpets and Head of the Year',
+    references: [
+      {exd: [[12,21,51]]},
+      {exd: [[13,17],14,[15,1,26]]},
+      {jos: [[5,2],[6,1,1]]},
+    ],
+  },
+  'sukkot': {
+    title: 'Sukkot Day 1',
+    name: 'sukkot',
+    description: 'The first day of Sukkot',
+    references: [
+      {exd: [[12,21,51]]},
+      {exd: [[13,17],14,[15,1,26]]},
+      {jos: [[5,2],[6,1,1]]},
+    ],
+  },
+  'sukkotshabbatcholhamoed3': {
+    title: 'Sukkot Shabbat Chol Hamoed',
+    name: 'sukkotshabbatcholhamoed',
+    description: 'Shabbat of the chol hamoed during Sukkot',
+    references: [
+      {exo: [[33,12],[34,1,26]]},
+      {num: [[29,17,22]]},
+      {eze: [[38,18],[39,1,16]]},
+    ],
+  },
+  'sukkotshabbatcholhamoed5': {
+    title: 'Sukkot Shabbat Chol Hamoed',
+    name: 'sukkotshabbatcholhamoed',
+    description: 'Shabbat of the chol hamoed during Sukkot',
+    references: [
+      {exo: [[33,12],[34,1,26]]},
+      {num: [[29,23,28]]},
+      {eze: [[38,18],[39,1,16]]},
+    ],
+  },
+  'sukkotshabbatcholhamoed6': {
+    title: 'Sukkot Shabbat Chol Hamoed',
+    name: 'sukkotshabbatcholhamoed',
+    description: 'Shabbat of the chol hamoed during Sukkot',
+    references: [
+      {exo: [[33,12],[34,1,26]]},
+      {num: [[29,26,31]]},
+      {eze: [[38,18],[39,1,16]]},
+    ],
+  },
+  'sukkot2': {
+    title: 'Sh\'mini Atzeret',
+    name: 'sukkot2',
+    description: 'The eighth day, and conclusion of Sukkot',
+    references: [
+      {exd: [[12,21,51]]},
+      {exd: [[13,17],14,[15,1,26]]},
+      {jos: [[5,2],[6,1,1]]},
+    ],
+  },
+  'pesach': {
+    title: 'Pesach',
+    name: 'pesach',
+    description: 'Passover/Unlevened Bread',
+    references: [
+      {exd: [[12,21,51]]},
+      {exd: [[13,17],14,[15,1,26]]},
+      {jos: [[5,2],[6,1,1]]},
+    ],
+  },
+  'chol-hamoed-pesach': {
+    title: 'Chol HaMo\'ed Pesach',
+    name: 'chol-hamoed-pesach',
+    description: 'Passover/Unlevened Bread',
+    references: [ //TODO: should have Exodus 33:12–34:26, Numbers 28:19–25, Ezekiel 37:1–14
+      {exd: [[12,21,51]]},
+      {exd: [[13,17],14,[15,1,26]]},
+      {jos: [[5,2],[6,1,1]]},
+    ],
+  },
+  'pesach': {
+    title: 'Pesach Day 1',
+    name: 'pesach',
+    description: 'Passover/Unlevened Bread',
+    references: [
+      {exd: [[12,21,51]]},
+      {exd: [[13,17],14,[15,1,26]]},
+      {jos: [[5,2],[6,1,1]]},
+    ],
+  },
+  'pesach2': {
+    title: 'Pesach Day 7',
+    name: 'pesach2',
+    description: 'The final day of Passover',
+    references: [
+      {exd: [[12,21,51]]},
+      {exd: [[13,17],14,[15,1,26]]},
+      {jos: [[5,2],[6,1,1]]},
+    ],
+  },
+  'shavuot': {
+    title: 'Shavuot',
+    name: 'shavuot',
+    description: 'The Feast of Weeks',
+    references: [
+      {exd: [[12,21,51]]},
+      {exd: [[13,17],14,[15,1,26]]},
+      {jos: [[5,2],[6,1,1]]},
+    ],
+  }
 };
 
 bookInfo = {
