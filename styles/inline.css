@@ -268,6 +268,29 @@ body {
   font-weight: lighter;
 }
 
+.settingsMenu {
+  right: 17px;
+  z-index: 6;
+  min-width: 10em;
+}
+.settingsMenu.expand {
+  max-height: 85%;
+  top: 57px;
+}
+
+.settingsItem {
+  cursor: pointer;
+  padding-top: .5em;
+  font-weight: lighter;
+}
+
+.settingsItem:before {
+  content: "-";
+  padding: 0px 5px;
+  color: #000000;
+  font-weight: bold;
+}
+
 /* reading */
 .chapterName {
   font-weight: bold;

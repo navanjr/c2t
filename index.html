@@ -6,10 +6,12 @@
     <link rel=canonical href="https://connected2truth.com/">
     <title>Connected 2 Truth</title>
     <script src=script/ga.js></script>
+    <script src=script/hebrew-date.js></script>
     <script src=script/calendar.js></script>
     <script src=script/main.js async></script>
     <script src=script/kjv.js></script>
     <script src=script/portions-data.js></script>
+    <script src=script/apostolic-data.js></script>
     <link rel="stylesheet" type="text/css" href="styles/inline.css">
     <!-- <link href="styles/style.css" media="all" rel="stylesheet" type="text/css"> -->
     <link href="fonts/google-material/material.css" rel="stylesheet" />
@@ -42,15 +44,19 @@
     <div class="navDiv navRight">
       <i class="material-icons button" id="b3">keyboard_arrow_left</i>
       <i class="material-icons button" id="b4">keyboard_arrow_right</i>
+      <i class="material-icons button" id="b7">settings_applications</i>
     </div>
   </header>
-  <div class="menu portionsMenu" id="portionsMenu"></div>
+  <div id="portionsMenu" class="menu portionsMenu"></div>
   <div id="referencesMenu" class="menu referencesMenu">
     <div class="referenceSubMenu">
       <i class="material-icons button" id="b5">book</i>
       <i class="material-icons button" id="b6">share</i>
     </div>
     <div id="referencesMenuItems"></div>
+  </div>
+  <div id="settingsMenu" class="menu settingsMenu">Reading List:
+    <div id="settingsMenuItems"></div>
   </div>
 
   <main class="main" id="reading"></main>
