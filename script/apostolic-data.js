@@ -1,7 +1,7 @@
 var haftarahData = new Object();
 
 haftarahData.defaultList = {
-    displayName: 'Duncan Reading',
+    displayName: 'Default Reading',
     'yom-kippur': {
       references: [
         {hos: [[14,1,9]]},
