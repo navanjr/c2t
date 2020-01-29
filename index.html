@@ -10,6 +10,7 @@
     <script src=script/calendar.js></script>
     <script src=script/main.js async></script>
     <script src=script/kjv.js></script>
+    <script src=script/wlc.js></script>
     <script src=script/portions-data.js></script>
     <script src=script/apostolic-data.js></script>
     <link rel="stylesheet" type="text/css" href="styles/inline.css">
@@ -55,11 +56,17 @@
     </div>
     <div id="referencesMenuItems"></div>
   </div>
-  <div id="settingsMenu" class="menu settingsMenu">Reading List:
+  <div id="settingsMenu" class="menu settingsMenu">
+    <p style="margin-bottom:5px;">Language:</p>
+	<p id="language">
+    <i id="b8" style="cursor:pointer">A</i>
+    <i id="b9" style="cursor:pointer">AH</i>
+    <i id="b10" style="cursor:pointer">H</i></p>
+    Reading List:
     <div id="settingsMenuItems"></div>
   </div>
 
-  <main class="main" id="reading"></main>
+  <main class="main" id="reading" style="display:flex;"><div id="engReading"></div><div id="hebReading"></div></main>
 
   <div class="loader">
     <svg viewBox="0 0 32 32" width="32" height="32">

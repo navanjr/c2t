@@ -326,3 +326,20 @@ body {
   font-weight: 600;
   margin: 1px;
 }
+
+#hebReading {
+  font:22px times new roman;
+  direction:rtl;
+  flex:1;
+}
+#engReading{
+  flex:1;
+}
+#language{
+  width:100%;
+  margin-top:5px;
+}
+#language>i{
+  font-weight:bold;
+  padding:0 8px;
+}
