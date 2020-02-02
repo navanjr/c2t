@@ -325,6 +325,7 @@ body {
   color: white;
   font-weight: 600;
   margin: 1px;
+  cursor:pointer;
 }
 
 #hebReading {
@@ -334,6 +335,7 @@ body {
 }
 #engReading{
   flex:1;
+  max-width:100%;
 }
 #language{
   width:100%;

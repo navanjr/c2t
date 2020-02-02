@@ -221,9 +221,9 @@
     nav.portions = {element: document.getElementById('portionsMenu')};
     nav.references = {element: document.getElementById('referencesMenu')};
     nav.settings = {element: document.getElementById('settingsMenu')};
-	nav.english = document.getElementById('engReading');
-	nav.hebrew = document.getElementById('hebReading');
-	nav.language = 0;
+    nav.english = document.getElementById('engReading');
+    nav.hebrew = document.getElementById('hebReading');
+    nav.language = 0;
     // load the settings list with the available apostolic reading lists
     fillSettingsMenu();
     // load current portion
@@ -268,7 +268,9 @@
   };
 
   var wholeBible = () => {
-    var reading = document.getElementById('reading');
+    var reading = document.getElementById('engReading');
+    document.getElementById('hebReading').style.display = 'none';
+    reading.style.display = 'initial';
     reading.innerHTML = '';
     var sections = Object.keys(bookInfo.sections);
     for (var i = 0; i < sections.length; i++) {
@@ -298,7 +300,8 @@
   var shareReading = function(portion) {
     //TODO: BUG - this function gets called twice
     changeTitle('referenceTitle', '"' + portionsData[nav.portion].description + '"');
-    var reading = document.getElementById('reading');
+    var reading = document.getElementById('engReading');
+    document.getElementById('hebReading').style.display = 'none';
     var chunks = getPortion(nav.portion);
     reading.innerHTML = '';
     var section = '';
@@ -370,7 +373,7 @@
     }
     var readingDiv = document.getElementById('reading');
     var engReadingDiv = document.getElementById('engReading');
-	var hebReadingDiv = document.getElementById('hebReading');
+    var hebReadingDiv = document.getElementById('hebReading');
     var referenceTitleDiv = document.getElementById('referenceTitle');
     engReadingDiv.innerHTML = '';
     hebReadingDiv.innerHTML = '';
@@ -390,8 +393,8 @@
       cs.appendChild(cn);
       cs.innerHTML += versesFormated(verseArray, {chapter: chapterName, verseSeed: verseSeed});
       engReadingDiv.appendChild(cs);
-	  if(chunk.heb){
-		var cs = newElement({class: 'card'});
+      if(chunk.heb){
+        var cs = newElement({class: 'card'});
         var chapter = Object.keys(chunk)[0];
         var verseArray = chunk.heb;
         var verseSeed = 0;
@@ -404,23 +407,23 @@
         cs.appendChild(cn);
         cs.innerHTML += versesFormated(verseArray, {chapter: chapterName, verseSeed: verseSeed});
         hebReadingDiv.appendChild(cs);
-		if(nav.language == 2){
-	      engReadingDiv.style.display = "none";
-	      hebReadingDiv.style.display = "initial";
-		}
-		else if(nav.language == 0){
-	      engReadingDiv.style.display = "initial";
-	      hebReadingDiv.style.display = "initial";
-		}
-		else if(nav.language == 1){
-	      engReadingDiv.style.display = "initial";
-	      hebReadingDiv.style.display = "none";
-		}
-	  }
-	  else{
-		hebReadingDiv.style.display = "none";
-		engReadingDiv.style.display = "initial";
-	  }console.log(nav.language);
+        if(nav.language == 2){
+          engReadingDiv.style.display = "none";
+          hebReadingDiv.style.display = "initial";
+        }
+        else if(nav.language == 0){
+          engReadingDiv.style.display = "initial";
+          hebReadingDiv.style.display = "initial";
+        }
+        else if(nav.language == 1){
+          engReadingDiv.style.display = "initial";
+          hebReadingDiv.style.display = "none";
+        }
+      }
+      else{
+        hebReadingDiv.style.display = "none";
+        engReadingDiv.style.display = "initial";
+      }
     }
     readingDiv.scrollTop = 0;
     document.querySelector('.loader').setAttribute('hidden', true);
