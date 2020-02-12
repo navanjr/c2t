@@ -83,6 +83,30 @@
     toggleMenu: function(menu) {
       this[menu].element.classList.toggle('expand');
     },
+    hideEng: function() {
+      var engCards = document.getElementsByClassName('engReading');
+      for(var qq = 0; qq < engCards.length; qq++){
+        engCards[qq].style.display = "none";
+      }
+    },
+    hideHeb: function() {
+      var hebCards = document.getElementsByClassName('hebReading');
+      for(var rr = 0; rr < hebCards.length; rr++){
+        hebCards[rr].style.display = "none";
+      }
+    },
+    showEng: function() {
+      var engCards = document.getElementsByClassName('engReading');
+      for(var ss = 0; ss < engCards.length; ss++){
+        engCards[ss].style.display = "initial";
+      }
+    },
+    showHeb: function() {
+      var hebCards = document.getElementsByClassName('hebReading');
+      for(var tt = 0; tt < hebCards.length; tt++){
+        hebCards[tt].style.display = "initial";
+      }
+    },
     click: function(e) {
       this.button = e && e.srcElement && e.srcElement.id;
       var b1 = this.button === 'b1',
@@ -91,7 +115,10 @@
           b4 = this.button === 'b4',
           b5 = this.button === 'b5',
           b6 = this.button === 'b6',
-          b7 = this.button === 'b7';
+          b7 = this.button === 'b7',
+          b8 = this.button === 'b8',
+          b9 = this.button === 'b9',
+          b10 = this.button === 'b10';
       var menuItem = e && e.srcElement && (e.srcElement.className === 'menuItem' || e.srcElement.className === 'bookName' || e.srcElement.className === 'settingsItem');
       var portionsMenu = e && e.srcElement && e.srcElement.parentElement && e.srcElement.parentElement.id === 'portionsMenu';
       var referencesMenu = e && e.srcElement && e.srcElement.parentElement && e.srcElement.parentElement.id === 'referencesMenuItems';
@@ -142,6 +169,27 @@
         nav.toggleMenu('settings');
         nav.hideMenu('references');
         nav.hideMenu('portions');
+      } else if (b8){
+        //English only
+        console.log("this button for English");
+        nav.showEng();
+        nav.hideHeb();
+        nav.hideMenu('settings');
+	nav.language = 1;
+      } else if (b9){
+        //Both English and Hebrew
+        console.log("this button for both");
+        nav.showEng();
+        nav.showHeb();
+        nav.hideMenu('settings');
+	nav.language = 0;
+      } else if (b10){
+        //Hebrew only
+        console.log("this button for Hebrew");
+	nav.hideEng();
+	nav.showHeb();
+        nav.hideMenu('settings');
+	nav.language = 2;
       }
     }
   };
@@ -164,6 +212,7 @@
   shabbat.day = shabbat.date.getDate();
   c2t.portionName = 'breisheet';
   nav.haftarahList = 'defaultList';
+  nav.language = 'both';
 
   window.onload = function() {
 
@@ -196,6 +245,7 @@
     nav.portions = {element: document.getElementById('portionsMenu')};
     nav.references = {element: document.getElementById('referencesMenu')};
     nav.settings = {element: document.getElementById('settingsMenu')};
+    nav.language = 0;
     // load the settings list with the available apostolic reading lists
     fillSettingsMenu();
     // load current portion
@@ -270,6 +320,7 @@
   var shareReading = function(portion) {
     //TODO: BUG - this function gets called twice
     changeTitle('referenceTitle', '"' + portionsData[nav.portion].description + '"');
+    changeTitle('portionTitle', portionsData[nav.portion].title);
     var reading = document.getElementById('reading');
     var chunks = getPortion(nav.portion);
     reading.innerHTML = '';
@@ -331,6 +382,7 @@
     var chunks = {};
     if (this && this.id.split('_')[0] === 'wholeBible') { // reading the entire book
       chunks = getPortion(this.id.split('_')[1], {wholeBible: true})[0];
+      changeTitle('portionTitle', "Book of "+getPortion(this.id.split('_')[1], {wholeBible: true})[0].bookName);
     } else {
       if (options.chunkIndex != undefined) {
         var id = options.chunkIndex;
@@ -339,6 +391,7 @@
       }
       nav.navigate(id); // nav to the id within the Torah Portion
       chunks = getPortion(nav.portion)[id];
+      changeTitle('portionTitle', portionsData[nav.portion].title);
     }
     var readingDiv = document.getElementById('reading');
     var referenceTitleDiv = document.getElementById('referenceTitle');
@@ -346,7 +399,8 @@
     referenceTitleDiv.innerHTML = chunks.reference;
     for (var i = 0; i < chunks.verses.length; i++) {
       var chunk = chunks.verses[i];
-      var cs = newElement({class: 'card'});
+      var chapterBlock = newElement({class: 'chapterBlock'});
+      var cs = newElement({class: 'card engReading'});
       var chapter = Object.keys(chunk)[0];
       var verseArray = chunk[chapter];
       var verseSeed = 0;
@@ -358,7 +412,35 @@
       var cn = newElement({class: 'chapterName', contents: 'Chapter ' + chapterName});
       cs.appendChild(cn);
       cs.innerHTML += versesFormated(verseArray, {chapter: chapterName, verseSeed: verseSeed});
-      readingDiv.appendChild(cs);
+      chapterBlock.appendChild(cs);
+      if(chunk.heb){
+        var cs = newElement({class: 'card hebReading'});
+        var chapter = Object.keys(chunk)[0];
+        var verseArray = chunk.heb;
+        var verseSeed = 0;
+        var chapterName = chapter;
+        if (chapter.indexOf(',') > 0 && chapter.split(',').length > 1) {
+          verseSeed = chapter.split(',')[1] - 1;
+          chapterName = chapter.split(',')[0];
+        }
+        var cn = newElement({class: 'chapterName', contents: 'Chapter ' + chapterName});
+        cs.appendChild(cn);
+        cs.innerHTML += versesFormated(verseArray, {chapter: chapterName, verseSeed: verseSeed});
+        chapterBlock.appendChild(cs);
+      }
+    readingDiv.appendChild(chapterBlock);
+    }
+    if(nav.language == 2){
+      nav.hideEng();
+      nav.showHeb();
+    }
+    else if(nav.language == 0){
+      nav.showEng();
+      nav.showHeb();
+    }
+    else if(nav.language == 1){
+      nav.showEng();
+      nav.hideHeb();
     }
     readingDiv.scrollTop = 0;
     document.querySelector('.loader').setAttribute('hidden', true);
@@ -447,6 +529,7 @@
         var reading = somethingToRead[i]; // returns object {gen: [...]}
         var bookName = Object.keys(reading)[0];
         var book = kjv[bookName];
+		var hebBook = wlc[bookName];
         var chapters = reading[bookName];
         if (book && chapters.length) {
           var chunk = {};
@@ -463,14 +546,18 @@
               var chunkObj = {};
               if (Array.isArray(chapter) && chapter.length === 3) { // not the whole chapter
                 chunkObj[chapter] = book[chapter[0]].slice(chapter[1]-1, chapter[2]);
+		if (hebBook) {chunkObj.heb = hebBook[chapter[0]].slice(chapter[1]-1, chapter[2]);}
                 chunkObj.chapter = 'Chapter ' + chapter[0];
               } else if (Array.isArray(chapter) && chapter.length === 2) { // return from the given verse to the end of the chapter
                 chunkObj[chapter] = book[chapter[0]].slice(chapter[1]-1);
+		if (hebBook) {chunkObj.heb = hebBook[chapter[0]].slice(chapter[1]-1);}				
                 chunkObj.chapter = 'Chapter ' + chapter[0];
               } else { // return the whole chapter
                 chunkObj[chapter] = book[chapter];
+		if (hebBook) {chunkObj.heb = hebBook[chapter];}
                 chunkObj.chapter = 'Chapter ' + chapter;
               }
+              if (!hebBook){chunkObj.heb = false}
               chunk[bookName].push(chunkObj);
             }
           }
