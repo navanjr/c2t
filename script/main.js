@@ -516,20 +516,23 @@
 
   var getPortion = function(portionName, options) {
     options = options || {};
-    var ret = [],
-      somethingToRead = [];
-    if (options.wholeBible) {
-      somethingToRead = [bookInfo.book(portionName).bookData];
-    } else {
-      somethingToRead = portionsData[portionName].references;
-      somethingToRead = somethingToRead.concat(haftarahData[nav.haftarahList][portionName].references);
-    }
+    let portionNames = portionName.split('/'),
+        ret = [],
+        somethingToRead = [];
+    portionNames.forEach(pName => {
+      if (options.wholeBible) {
+        somethingToRead = somethingToRead.concat([bookInfo.book(pName).bookData]);
+      } else {
+        somethingToRead = somethingToRead.concat(portionsData[pName].references);
+        somethingToRead = somethingToRead.concat(haftarahData[nav.haftarahList][pName].references);
+      }
+    });
     if (somethingToRead) {
       for (var i = 0; i < somethingToRead.length; i++) {
         var reading = somethingToRead[i]; // returns object {gen: [...]}
         var bookName = Object.keys(reading)[0];
         var book = kjv[bookName];
-		var hebBook = wlc[bookName];
+    		var hebBook = wlc[bookName];
         var chapters = reading[bookName];
         if (book && chapters.length) {
           var chunk = {};
@@ -546,15 +549,15 @@
               var chunkObj = {};
               if (Array.isArray(chapter) && chapter.length === 3) { // not the whole chapter
                 chunkObj[chapter] = book[chapter[0]].slice(chapter[1]-1, chapter[2]);
-		if (hebBook) {chunkObj.heb = hebBook[chapter[0]].slice(chapter[1]-1, chapter[2]);}
+	            	if (hebBook) {chunkObj.heb = hebBook[chapter[0]].slice(chapter[1]-1, chapter[2]);}
                 chunkObj.chapter = 'Chapter ' + chapter[0];
               } else if (Array.isArray(chapter) && chapter.length === 2) { // return from the given verse to the end of the chapter
                 chunkObj[chapter] = book[chapter[0]].slice(chapter[1]-1);
-		if (hebBook) {chunkObj.heb = hebBook[chapter[0]].slice(chapter[1]-1);}				
+	            	if (hebBook) {chunkObj.heb = hebBook[chapter[0]].slice(chapter[1]-1);}				
                 chunkObj.chapter = 'Chapter ' + chapter[0];
               } else { // return the whole chapter
                 chunkObj[chapter] = book[chapter];
-		if (hebBook) {chunkObj.heb = hebBook[chapter];}
+            		if (hebBook) {chunkObj.heb = hebBook[chapter];}
                 chunkObj.chapter = 'Chapter ' + chapter;
               }
               if (!hebBook){chunkObj.heb = false}
