@@ -516,17 +516,14 @@
 
   var getPortion = function(portionName, options) {
     options = options || {};
-    let portionNames = portionName.split('/'),
-        ret = [],
-        somethingToRead = [];
-    portionNames.forEach(pName => {
-      if (options.wholeBible) {
-        somethingToRead = somethingToRead.concat([bookInfo.book(pName).bookData]);
-      } else {
-        somethingToRead = somethingToRead.concat(portionsData[pName].references);
-        somethingToRead = somethingToRead.concat(haftarahData[nav.haftarahList][pName].references);
-      }
-    });
+    var ret = [],
+     somethingToRead = [];
+    if (options.wholeBible) {
+      somethingToRead = [bookInfo.book(portionName).bookData];
+    } else {
+      somethingToRead = portionsData[portionName].references;
+      somethingToRead = somethingToRead.concat(haftarahData[nav.haftarahList][portionName].references);
+    }
     if (somethingToRead) {
       for (var i = 0; i < somethingToRead.length; i++) {
         var reading = somethingToRead[i]; // returns object {gen: [...]}

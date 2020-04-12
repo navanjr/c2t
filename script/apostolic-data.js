@@ -661,22 +661,19 @@ haftarahData.defaultList = {
     references: [],
   },
   'sukkotshabbatcholhamoed3': {
-    title: 'Sukkot Shabbat Chol Hamoed',
-    name: 'sukkotshabbatcholhamoed',
-    description: 'Shabbat of the chol hamoed during Sukkot',
-    references: [],
+    references: [
+      {jhn: [[7,14,20]]},
+    ],
   },
   'sukkotshabbatcholhamoed5': {
-    title: 'Sukkot Shabbat Chol Hamoed',
-    name: 'sukkotshabbatcholhamoed',
-    description: 'Shabbat of the chol hamoed during Sukkot',
-    references: [],
+    references: [
+      {jhn: [[7,14,20]]},
+    ],
   },
   'sukkotshabbatcholhamoed6': {
-    title: 'Sukkot Shabbat Chol Hamoed',
-    name: 'sukkotshabbatcholhamoed',
-    description: 'Shabbat of the chol hamoed during Sukkot',
-    references: [],
+    references: [
+      {jhn: [[7,14,20]]},
+    ],
   },
   'sukkot2': {
     title: 'Sh\'mini Atzeret',
@@ -684,27 +681,30 @@ haftarahData.defaultList = {
     description: 'The eighth day, and conclusion of Sukkot',
     references: [],
   },
-    'chol-hamoed-pesach': {
-      references: [
-        {sa2: [22]},
-      ],
-    },
-    'sukkotshabbatcholhamoed3': {
-      references: [
-        {jhn: [[7,14,20]]},
-      ],
-    },
-    'sukkotshabbatcholhamoed5': {
-      references: [
-        {jhn: [[7,14,20]]},
-      ],
-    },
-    'sukkotshabbatcholhamoed6': {
-      references: [
-        {jhn: [[7,14,20]]},
-      ],
-    },
-  };
+  'pesach': {
+    title: 'Pesach Day 1',
+    name: 'pesach',
+    description: 'Passover/Unlevened Bread',
+    references: [],
+  },
+  'chol-hamoed-pesach': {
+    references: [
+      {sa2: [22]},
+    ],
+  },
+  'pesach2': {
+    title: 'Pesach Day 7',
+    name: 'pesach2',
+    description: 'The final day of Passover',
+    references: [],
+  },
+  'shavuot': {
+    title: 'Shavuot',
+    name: 'shavuot',
+    description: 'The Feast of Weeks',
+    references: [],
+  },
+};
 
 haftarahData.storyOfYeshua = {
   displayName: 'Story of Yeshua',
@@ -836,10 +836,6 @@ haftarahData.storyOfYeshua = {
   'tzav': {
     references: [
       {mar: [[7,31],8,[9,1,1]]}
-    ],
-  },
-  'chol-hamoed-pesach': {
-    references: [
     ],
   },
   'shmini': {
@@ -987,6 +983,96 @@ haftarahData.storyOfYeshua = {
     references: [
       {luk: [[24,44,53]]}
     ],
+  },
+  'vayakhel/pekudei': {
+    title: 'Vayakhel/Pekudei',
+    name: 'vayakhel/pekudei',
+    description: 'Double portion',
+    references: [],
+  },
+  'tazria/metzora': {
+    title: 'Tazria/Metzora',
+    name: 'tazria/metzora',
+    description: 'Double portion',
+    references: [],
+  },
+  'acharei-mot/kedoshim': {
+    title: 'Acharei Mot/Kedoshim',
+    name: 'acharei-mot/kedoshim',
+    description: 'Double portion',
+    references: [],
+  },
+  'behar/bechukotai': {
+    title: 'Behar/Bechukotai',
+    name: 'behar/bechukotai',
+    description: 'Double portion',
+    references: [],
+  },
+  'mattot/massei': {
+    title: 'Mattot/Massei',
+    name: 'mattot/massei',
+    description: 'Double portion',
+    references: [],
+  },
+  'nitzavim/vayelekh': {
+    title: 'Nitzavim/Vayelekh',
+    name: 'nitzavim/vayelekh',
+    description: 'Double portion',
+    references: [],
+  },
+  'rosh-hashannah': {
+    title: 'Rosh Hashannah',
+    name: 'rosh-hashannah',
+    description: 'Feast of Trumpets and Head of the Year',
+    references: [],
+  },
+  'sukkot': {
+    title: 'Sukkot Day 1',
+    name: 'sukkot',
+    description: 'The first day of Sukkot',
+    references: [],
+  },
+  'sukkotshabbatcholhamoed3': {
+    references: [
+      {jhn: [[7,14,20]]},
+    ],
+  },
+  'sukkotshabbatcholhamoed5': {
+    references: [
+      {jhn: [[7,14,20]]},
+    ],
+  },
+  'sukkotshabbatcholhamoed6': {
+    references: [
+      {jhn: [[7,14,20]]},
+    ],
+  },
+  'sukkot2': {
+    title: 'Sh\'mini Atzeret',
+    name: 'sukkot2',
+    description: 'The eighth day, and conclusion of Sukkot',
+    references: [],
+  },
+  'pesach': {
+    title: 'Pesach Day 1',
+    name: 'pesach',
+    description: 'Passover/Unlevened Bread',
+    references: [],
+  },
+  'chol-hamoed-pesach': {
+    references: [],
+  },
+  'pesach2': {
+    title: 'Pesach Day 7',
+    name: 'pesach2',
+    description: 'The final day of Passover',
+    references: [],
+  },
+  'shavuot': {
+    title: 'Shavuot',
+    name: 'shavuot',
+    description: 'The Feast of Weeks',
+    references: [],
   },
 };
 
