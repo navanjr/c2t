@@ -240,7 +240,7 @@ haftarahData.defaultList = {
         {rev: [[21,16,27]]},
       ],
     },
-    'ki-tiza': {
+    'ki-tisa': {
       references: [
         {luk: [[11,14,20]]},
         {act: [[7,35],[8,1,1]]},
@@ -813,7 +813,7 @@ haftarahData.storyOfYeshua = {
       {mar: [[4,35],[5,1,43]]}
     ],
   },
-  'ki-tiza': {
+  'ki-tisa': {
     references: [
       {mat: [[9,35],10,[11,1,1]]}
     ],
@@ -1098,7 +1098,7 @@ haftarahData.storyOfYeshua = {
         
       ],
     },
-    'ki-tiza': {
+    'ki-tisa': {
       references: [
         
       ],

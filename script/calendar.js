@@ -24,7 +24,7 @@ calendar = {
     3: {
       4: 'terumah',
       11: 'tetzave',
-      18: 'ki-tiza',
+      18: 'ki-tisa',
       25: ['vayakhel','pekudei'],
     },
     4: {
@@ -100,7 +100,7 @@ calendar = {
       24: 'tetzave'
     },
     3: {
-      3: 'ki-tiza',
+      3: 'ki-tisa',
       10: ['vayakhel','pekudei'],
       17: 'vayikra',
       24: 'tzav',
@@ -175,7 +175,7 @@ calendar = {
       2: 'mishpatim',
       9: 'terumah',
       16: 'tetzave',
-      23: 'ki-tiza'
+      23: 'ki-tisa'
     },
     3: {
       2: 'vayakhel',
