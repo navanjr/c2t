@@ -684,16 +684,6 @@ portionsData = {
       {jos: [[5,2],[6,1,1]]},
     ],
   },
-  'pesach': {
-    title: 'Pesach',
-    name: 'pesach',
-    description: 'Passover/Unlevened Bread',
-    references: [
-      {exd: [[12,21,51]]},
-      {exd: [[13,17],14,[15,1,26]]},
-      {jos: [[5,2],[6,1,1]]},
-    ],
-  },
   'chol-hamoed-pesach': {
     title: 'Chol HaMo\'ed Pesach',
     name: 'chol-hamoed-pesach',
@@ -733,7 +723,7 @@ portionsData = {
       {exd: [[13,17],14,[15,1,26]]},
       {jos: [[5,2],[6,1,1]]},
     ],
-  }
+  },
 };
 
 bookInfo = {

@@ -612,6 +612,78 @@ haftarahData.defaultList = {
         {rev: [[22,1,5]]},
       ],
     },
+  'vayakhel/pekudei': {
+    title: 'Vayakhel/Pekudei',
+    name: 'vayakhel/pekudei',
+    description: 'Double portion',
+    references: [],
+  },
+  'tazria/metzora': {
+    title: 'Tazria/Metzora',
+    name: 'tazria/metzora',
+    description: 'Double portion',
+    references: [],
+  },
+  'acharei-mot/kedoshim': {
+    title: 'Acharei Mot/Kedoshim',
+    name: 'acharei-mot/kedoshim',
+    description: 'Double portion',
+    references: [],
+  },
+  'behar/bechukotai': {
+    title: 'Behar/Bechukotai',
+    name: 'behar/bechukotai',
+    description: 'Double portion',
+    references: [],
+  },
+  'mattot/massei': {
+    title: 'Mattot/Massei',
+    name: 'mattot/massei',
+    description: 'Double portion',
+    references: [],
+  },
+  'nitzavim/vayelekh': {
+    title: 'Nitzavim/Vayelekh',
+    name: 'nitzavim/vayelekh',
+    description: 'Double portion',
+    references: [],
+  },
+  'rosh-hashannah': {
+    title: 'Rosh Hashannah',
+    name: 'rosh-hashannah',
+    description: 'Feast of Trumpets and Head of the Year',
+    references: [],
+  },
+  'sukkot': {
+    title: 'Sukkot Day 1',
+    name: 'sukkot',
+    description: 'The first day of Sukkot',
+    references: [],
+  },
+  'sukkotshabbatcholhamoed3': {
+    title: 'Sukkot Shabbat Chol Hamoed',
+    name: 'sukkotshabbatcholhamoed',
+    description: 'Shabbat of the chol hamoed during Sukkot',
+    references: [],
+  },
+  'sukkotshabbatcholhamoed5': {
+    title: 'Sukkot Shabbat Chol Hamoed',
+    name: 'sukkotshabbatcholhamoed',
+    description: 'Shabbat of the chol hamoed during Sukkot',
+    references: [],
+  },
+  'sukkotshabbatcholhamoed6': {
+    title: 'Sukkot Shabbat Chol Hamoed',
+    name: 'sukkotshabbatcholhamoed',
+    description: 'Shabbat of the chol hamoed during Sukkot',
+    references: [],
+  },
+  'sukkot2': {
+    title: 'Sh\'mini Atzeret',
+    name: 'sukkot2',
+    description: 'The eighth day, and conclusion of Sukkot',
+    references: [],
+  },
     'chol-hamoed-pesach': {
       references: [
         {sa2: [22]},
