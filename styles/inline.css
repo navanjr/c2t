@@ -355,3 +355,23 @@ div.chapterBlock {
   font-weight:bold;
   padding:0 8px;
 }
+
+#night{
+height:24px;
+width:40px;
+border:1px solid #aaa;
+border-radius:3px;
+background-color:#ececec;
+margin-bottom:5px;
+margin-left:10px;
+cursor:pointer;
+}
+
+#night_flipper{
+width:19px;
+height:100%;
+float:left;
+background-color:#fff;
+border:.5px solid #ccc;
+border-radius:3px;
+}
