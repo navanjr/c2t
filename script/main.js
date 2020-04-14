@@ -159,6 +159,7 @@
         nav.hideMenu('references');
         nav.hideMenu('portions');
         nav.hideMenu('settings');
+        nav.nightmode();
       } else if (b6){ // Share Feature
         shareReading(nav.portion);
         nav.hideMenu('references');
@@ -191,6 +192,46 @@
         nav.hideMenu('settings');
 	nav.language = 2;
       }
+    },
+    changeColor: function(e, b, c) {
+      for(var o=0; o<e.length; o++){
+        e[o].style.backgroundColor = b;
+        e[o].style.color = c;
+      }
+    },
+    nightmode: function(e) {
+      if(typeof e != 'undefined'){
+        nav.nightsetting = e;
+      }
+      var flipper = document.getElementById("night_flipper");
+      var ref = document.getElementById("referenceCount").style;
+      var header = [document.getElementsByTagName("HEADER")[0]];
+      var menus = [document.getElementById("portionsMenu"), document.getElementById("referencesMenu"), document.getElementById("settingsMenu")];
+      var cards = document.getElementsByClassName("card");
+      var verses = document.getElementsByClassName("verseNumber");
+      var wholeBook = document.getElementsByClassName("wholeBibleBook");
+
+      if(nav.nightsetting) { //turn nightmode on
+        flipper.style.cssFloat = "right";
+        document.getElementsByTagName("BODY")[0].style.backgroundColor = "#000";
+        ref.backgroundColor = "#0000b5";
+        nav.changeColor(header, "#000049", "#ccc");
+        nav.changeColor(menus, "#111", "#aaa");
+        nav.changeColor(cards, "#222", "#aaa");
+        nav.changeColor(verses, "#2d2d2d", "#669");
+        if(wholeBook.length > 0){nav.changeColor(wholeBook, "#000049", "#ccc");}
+      }
+      else { //turn nightmode off
+        flipper.style.cssFloat = "left";
+        document.getElementsByTagName("BODY")[0].style.backgroundColor = "#ececec";
+        ref.backgroundColor = "#ff6f00";
+        nav.changeColor(header, "#3f51b5", "#fff");
+        nav.changeColor(menus, "#fff", "#444");
+        nav.changeColor(cards, "#fff", "#444");
+        nav.changeColor(verses, "#efefea", "maroon");
+        if(wholeBook.length > 0){nav.changeColor(wholeBook, "purple", "#fff");}
+      }
+      nav.hideMenu('settings');
     }
   };
 
@@ -245,6 +286,11 @@
     nav.portions = {element: document.getElementById('portionsMenu')};
     nav.references = {element: document.getElementById('referencesMenu')};
     nav.settings = {element: document.getElementById('settingsMenu')};
+    nav.night = document.getElementById('night');
+    nav.nightsetting = false;
+    night.onclick = function() {
+      nav.nightmode(!nav.nightsetting);
+    }
     nav.language = 0;
     // load the settings list with the available apostolic reading lists
     fillSettingsMenu();
@@ -354,6 +400,7 @@
     if (sectionDiv) {
       reading.appendChild(sectionDiv);
     }
+    nav.nightmode();
   };
 
   // populate the setings menu with the available apostolic reading lists
@@ -430,6 +477,7 @@
       }
     readingDiv.appendChild(chapterBlock);
     }
+    nav.nightmode(); // if nightmode is on we need to change the colours of all the new cards
     if(nav.language == 2){
       nav.hideEng();
       nav.showHeb();
@@ -709,7 +757,7 @@
     var doublePortion = 0;
     if(portionNumber == 22){
       if(((pesach.getTime() - 86400000) - nextShabbat.getTime()) / 604800000 < 4){
-        doublePortion = 55; // TODO: add double portion to reading list 
+        doublePortion = 55;
       }
     }
     else if(portionNumber > 22){
@@ -719,20 +767,20 @@
     }
     if(!IsLeapYear(pesachYear)){
       if(portionNumber == 27){
-        doublePortion = 56; // TODO: add double portion to reading list
+        doublePortion = 56;
       }
       else if(portionNumber > 27){
         portionNumber += 1;
       }
       if(portionNumber == 29){
-        doublePortion = 57; // TODO: add double portion to reading list
+        doublePortion = 57;
       }
       else if(portionNumber > 29){
         portionNumber += 1;
       }
       if(pesach.getDay() !== 6){
         if(portionNumber == 32){
-          doublePortion = 58; // TODO: add double portion to reading list
+          doublePortion = 58;
         }
         else if(portionNumber > 32){
           portionNumber += 1;
@@ -740,14 +788,14 @@
       }
     }
     if(portionNumber == 42 && (HebToGreg(pesachYear, 12, 9).getTime() - nextShabbat.getTime()) / 604800000 < 2){
-      doublePortion = 59; // TODO: add double portion to reading list
+      doublePortion = 59;
     }
     else if(portionNumber > 42 && ((HebToGreg(pesachYear, 12, 9).getTime() - (nextShabbat.getTime() - ((portionNumber - 42) * 604800000))) / 604800000 < 2)){ /* confused yet? :P */
       portionNumber += 1;
     }
     if(rosh.getDay() == 6 || kippur.getDay() == 6){
       if(portionNumber == 51){
-        doublePortion = 60; // TODO: add double portion to reading list
+        doublePortion = 60;
       }
       else if(portionNumber > 51){
         portionNumber += 1;
@@ -759,12 +807,11 @@
       portionNumber = doublePortion;
     }
 
-
+    //TODO: implement the following comment
     /*
        Now we should have the correct Torah reading.
        Next we need to figure out if there are any maftir readings 
        or special haftarah readings.
-       I will wait until we figure out exactly how we are splitting those before implementing.
     */
 
     var maftirNumber = portionNumber;
@@ -772,7 +819,7 @@
     var apostolicNumber = portionNumber;
 
     /*var readingNames = [
-      false,
+      "yomkippur"
       "breisheet",
       "noach",
       "lech-lecha",
@@ -840,11 +887,11 @@
     /*
       We want the function to return an array with the following information:
         1. The name of the Torah reading
-        2. The name of any maftir readings
-        3. The name of the haftarah reading(s)
-        4. The name of the Apostolic reading(s)
+        2. The name of any maftir readings //TODO
+        3. The name of the haftarah reading(s) //TODO
+        4. The name of the Apostolic reading(s) //TODO
         5. The date on which the portion will be read
-      For now I just have it returning the name of the Torah reading and the date,
+      For now I just have it returning the name of the Torah reading (1) and the date (5),
       but we will want to change that once we figure out what we are doing
       with the portions list, and how we are splitting that up.
      */
@@ -880,15 +927,6 @@
         var menuItem = newElement({contents: readThisTitle, class: 'menuItem', id: newFindings[1].getTime()});
         menuItem.onclick = nav.click;
         menu.appendChild(menuItem);
-
-        /*
-          When we actually implement this we will likely want to print the 
-          portion name to the portionsMenu with the date tinestamp (see number 5. 
-          in the list above) as the ID tag.  When you click on a portion name 
-          it will then call stuffReferenceMenu(date) on the date from the id, 
-          which will in turn call findPortionNumber() and will stuff the 
-          reference menu with the correct readings for that date.
-        */
       }
     }
   }
