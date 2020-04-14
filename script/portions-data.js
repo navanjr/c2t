@@ -684,24 +684,24 @@ portionsData = {
       {jos: [[5,2],[6,1,1]]},
     ],
   },
-  'chol-hamoed-pesach': {
-    title: 'Chol HaMo\'ed Pesach',
-    name: 'chol-hamoed-pesach',
-    description: 'Passover/Unlevened Bread',
-    references: [ //TODO: should have Exodus 33:12–34:26, Numbers 28:19–25, Ezekiel 37:1–14
-      {exd: [[12,21,51]]},
-      {exd: [[13,17],14,[15,1,26]]},
-      {jos: [[5,2],[6,1,1]]},
-    ],
-  },
   'pesach': {
     title: 'Pesach Day 1',
     name: 'pesach',
     description: 'Passover/Unlevened Bread',
     references: [
       {exd: [[12,21,51]]},
-      {exd: [[13,17],14,[15,1,26]]},
+      {num: [[28,16,25]]},
       {jos: [[5,2],[6,1,1]]},
+    ],
+  },
+  'chol-hamoed-pesach': {
+    title: 'Chol HaMo\'ed Pesach',
+    name: 'chol-hamoed-pesach',
+    description: 'Passover/Unlevened Bread',
+    references: [
+      {exd: [[33,12],[34,1,26]]},
+      {num: [[28,19,25]]},
+      {eze: [[37,1,14]]},
     ],
   },
   'pesach2': {
@@ -709,9 +709,9 @@ portionsData = {
     name: 'pesach2',
     description: 'The final day of Passover',
     references: [
-      {exd: [[12,21,51]]},
       {exd: [[13,17],14,[15,1,26]]},
-      {jos: [[5,2],[6,1,1]]},
+      {num: [[28,19,25]]},
+      {sa2: [22]},
     ],
   },
   'shavuot': {
@@ -719,9 +719,9 @@ portionsData = {
     name: 'shavuot',
     description: 'The Feast of Weeks',
     references: [
-      {exd: [[12,21,51]]},
-      {exd: [[13,17],14,[15,1,26]]},
-      {jos: [[5,2],[6,1,1]]},
+      {exd: [[19,1],[20,1,23]]},
+      {num: [[28,26,31]]},
+      {eze: [[1,1,28],[3,12,12]]},
     ],
   },
 };
