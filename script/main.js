@@ -172,36 +172,47 @@
         nav.hideMenu('portions');
       } else if (b8){
         //English only
-        console.log("this button for English");
         nav.showEng();
         nav.hideHeb();
         nav.hideMenu('settings');
+        document.cookie = "language=1; expires= " + nav.expiry(1);
 	nav.language = 1;
       } else if (b9){
         //Both English and Hebrew
-        console.log("this button for both");
         nav.showEng();
         nav.showHeb();
         nav.hideMenu('settings');
+        document.cookie = "language=false; expires= " + nav.expiry(-1);
 	nav.language = 0;
       } else if (b10){
         //Hebrew only
-        console.log("this button for Hebrew");
 	nav.hideEng();
 	nav.showHeb();
         nav.hideMenu('settings');
+        document.cookie = "language=2; expires= " + nav.expiry(1);
 	nav.language = 2;
       }
+    },
+    expiry: function(offset) {
+      var date = new Date();
+      var d = date.getDate();
+      date.setMonth(date.getMonth() + offset);
+      if (date.getDate() != d) {
+        date.setDate(0);
+      }
+      return date.toUTCString();
     },
     nightmode: function(e) {
       if(typeof e != 'undefined') nav.nightsetting = e;
       var body = document.getElementsByTagName("BODY")[0];
       var flipper = document.getElementById("night_flipper");
       if(nav.nightsetting) { //turn nightmode on
+        document.cookie = "nightmode=true; expires= " + nav.expiry(1);
         flipper.style.cssFloat = "right";
         body.className = "dark";
       }
       else { //turn nightmode off
+        document.cookie = "nightmode=true; expires= " + nav.expiry(-1);
         flipper.style.cssFloat = "left";
         body.className = "";
       }
@@ -227,7 +238,6 @@
   shabbat.day = shabbat.date.getDate();
   c2t.portionName = 'breisheet';
   nav.haftarahList = 'defaultList';
-  nav.language = 'both';
 
   window.onload = function() {
 
@@ -260,12 +270,21 @@
     nav.portions = {element: document.getElementById('portionsMenu')};
     nav.references = {element: document.getElementById('referencesMenu')};
     nav.settings = {element: document.getElementById('settingsMenu')};
+    //settings
+    if(document.cookie.includes("language=1")) {
+      nav.language = 1;
+    }
+    else if(document.cookie.includes("language=2")) {
+      nav.language = 2;
+    }
+    else {
+      nav.language = 0;
+    }
+    nav.nightsetting = document.cookie.includes("nightmode=true");
     nav.night = document.getElementById('night');
-    nav.nightsetting = false;
     night.onclick = function() {
       nav.nightmode(!nav.nightsetting);
     }
-    nav.language = 0;
     // load the settings list with the available apostolic reading lists
     fillSettingsMenu();
     // load current portion
