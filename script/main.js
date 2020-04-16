@@ -159,7 +159,6 @@
         nav.hideMenu('references');
         nav.hideMenu('portions');
         nav.hideMenu('settings');
-        nav.nightmode();
       } else if (b6){ // Share Feature
         shareReading(nav.portion);
         nav.hideMenu('references');
@@ -193,43 +192,17 @@
 	nav.language = 2;
       }
     },
-    changeColor: function(e, b, c) {
-      for(var o=0; o<e.length; o++){
-        e[o].style.backgroundColor = b;
-        e[o].style.color = c;
-      }
-    },
     nightmode: function(e) {
-      if(typeof e != 'undefined'){
-        nav.nightsetting = e;
-      }
+      if(typeof e != 'undefined') nav.nightsetting = e;
+      var body = document.getElementsByTagName("BODY")[0];
       var flipper = document.getElementById("night_flipper");
-      var ref = document.getElementById("referenceCount").style;
-      var header = [document.getElementsByTagName("HEADER")[0]];
-      var menus = [document.getElementById("portionsMenu"), document.getElementById("referencesMenu"), document.getElementById("settingsMenu")];
-      var cards = document.getElementsByClassName("card");
-      var verses = document.getElementsByClassName("verseNumber");
-      var wholeBook = document.getElementsByClassName("wholeBibleBook");
-
       if(nav.nightsetting) { //turn nightmode on
         flipper.style.cssFloat = "right";
-        document.getElementsByTagName("BODY")[0].style.backgroundColor = "#000";
-        ref.backgroundColor = "#0000b5";
-        nav.changeColor(header, "#000049", "#ccc");
-        nav.changeColor(menus, "#111", "#aaa");
-        nav.changeColor(cards, "#222", "#aaa");
-        nav.changeColor(verses, "#2d2d2d", "#669");
-        if(wholeBook.length > 0){nav.changeColor(wholeBook, "#000049", "#ccc");}
+        body.className = "dark";
       }
       else { //turn nightmode off
         flipper.style.cssFloat = "left";
-        document.getElementsByTagName("BODY")[0].style.backgroundColor = "#ececec";
-        ref.backgroundColor = "#ff6f00";
-        nav.changeColor(header, "#3f51b5", "#fff");
-        nav.changeColor(menus, "#fff", "#444");
-        nav.changeColor(cards, "#fff", "#444");
-        nav.changeColor(verses, "#efefea", "maroon");
-        if(wholeBook.length > 0){nav.changeColor(wholeBook, "purple", "#fff");}
+        body.className = "";
       }
       nav.hideMenu('settings');
     }
@@ -400,7 +373,6 @@
     if (sectionDiv) {
       reading.appendChild(sectionDiv);
     }
-    nav.nightmode();
   };
 
   // populate the setings menu with the available apostolic reading lists
@@ -477,7 +449,6 @@
       }
     readingDiv.appendChild(chapterBlock);
     }
-    nav.nightmode(); // if nightmode is on we need to change the colours of all the new cards
     if(nav.language == 2){
       nav.hideEng();
       nav.showHeb();
