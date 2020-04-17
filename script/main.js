@@ -216,6 +216,25 @@
         body.className = "";
       }
       nav.hideMenu('settings');
+    },
+    header: function() {
+      var header = document.getElementsByTagName("HEADER")[0];
+      var curTop = document.getElementById("reading").scrollTop;
+      if(curTop <= 40) {
+        header.classList.remove("headerHide");
+        return;
+      }
+      if (nav.scrollPos > (curTop + 50)) {
+        header.classList.remove("headerHide");
+        nav.scrollPos = (curTop + 50);
+      }
+      else {
+        header.classList.add("headerHide");
+        nav.hideMenu('references');
+        nav.hideMenu('portions');
+        nav.hideMenu('settings');
+      }
+      if(curTop > nav.scrollPos) nav.scrollPos = curTop;
     }
   };
 
@@ -269,6 +288,11 @@
     nav.portions = {element: document.getElementById('portionsMenu')};
     nav.references = {element: document.getElementById('referencesMenu')};
     nav.settings = {element: document.getElementById('settingsMenu')};
+    //hide header on scroll
+    nav.scrollPos = document.body.scrollTop;
+    document.getElementById("reading").onscroll = function() {
+      nav.header();
+    }
     //language settings
     if(document.cookie.includes("language=1")) {
       nav.language = 1;
