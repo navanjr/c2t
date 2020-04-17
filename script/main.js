@@ -159,7 +159,6 @@
         nav.hideMenu('references');
         nav.hideMenu('portions');
         nav.hideMenu('settings');
-        nav.nightmode();
       } else if (b6){ // Share Feature
         shareReading(nav.portion);
         nav.hideMenu('references');
@@ -281,10 +280,13 @@
       nav.language = 0;
     }
     nav.nightsetting = document.cookie.includes("nightmode=true");
-    nav.night = document.getElementById('night');
-    night.onclick = function() {
+    if (!nav.nightsetting && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      nav.nightsetting=true;
+    }
+    document.getElementById('night').onclick = function() {
       nav.nightmode(!nav.nightsetting);
     }
+    nav.nightmode(nav.nightsetting);
     // load the settings list with the available apostolic reading lists
     fillSettingsMenu();
     // load current portion
@@ -393,7 +395,6 @@
     if (sectionDiv) {
       reading.appendChild(sectionDiv);
     }
-    nav.nightmode();
   };
 
   // populate the setings menu with the available apostolic reading lists
@@ -470,7 +471,6 @@
       }
     readingDiv.appendChild(chapterBlock);
     }
-    nav.nightmode(); // if nightmode is on we need to change the colours of all the new cards
     if(nav.language == 2){
       nav.hideEng();
       nav.showHeb();
