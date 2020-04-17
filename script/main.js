@@ -211,7 +211,7 @@
         body.className = "dark";
       }
       else { //turn nightmode off
-        document.cookie = "nightmode=true; expires= " + nav.expiry(-1);
+        document.cookie = "nightmode=false; expires= " + nav.expiry(1);
         flipper.style.cssFloat = "left";
         body.className = "";
       }
@@ -269,7 +269,7 @@
     nav.portions = {element: document.getElementById('portionsMenu')};
     nav.references = {element: document.getElementById('referencesMenu')};
     nav.settings = {element: document.getElementById('settingsMenu')};
-    //settings
+    //language settings
     if(document.cookie.includes("language=1")) {
       nav.language = 1;
     }
@@ -279,14 +279,21 @@
     else {
       nav.language = 0;
     }
-    nav.nightsetting = document.cookie.includes("nightmode=true");
-    if (!nav.nightsetting && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      nav.nightsetting=true;
+    //nightmode settings
+    nav.nightsetting = false;
+    if (document.cookie.includes("nightmode=true")) {
+      nav.nightsetting = true;
     }
+    else if (document.cookie.includes("nightmode=false")){
+      nav.nightsetting = false;
+    }
+    else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      nav.nightsetting = true;
+    }
+    nav.nightmode(nav.nightsetting);
     document.getElementById('night').onclick = function() {
       nav.nightmode(!nav.nightsetting);
     }
-    nav.nightmode(nav.nightsetting);
     // load the settings list with the available apostolic reading lists
     fillSettingsMenu();
     // load current portion
