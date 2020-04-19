@@ -574,12 +574,16 @@ haftarahData.defaultList = {
     },
     'nitzavim': {
       references: [
-        {mat: [[5,14,20]]},
+        {jer: [[23,15]]},
+        {psa: [[69,21]]},
+        {mat: [[5,14,20],[27,34]]},
         {luk: [[24,1,12]]},
+        {act: [[8,14,23]]},
         {rom: [[9,30],[10,1,13]]},
         {ti1: [6]},
         {heb: [[12,14,15]]},
         {jo1: [5]},
+        {rev: [[8,11]]},
       ],
     },
     'vayelekh': {
@@ -622,19 +626,25 @@ haftarahData.defaultList = {
     title: 'Tazria/Metzora',
     name: 'tazria/metzora',
     description: 'Double portion',
-    references: [],
+    references: [
+      {ki2: [[4,42],[5,1,19]]},
+    ],
   },
   'acharei-mot/kedoshim': {
     title: 'Acharei Mot/Kedoshim',
     name: 'acharei-mot/kedoshim',
     description: 'Double portion',
-    references: [],
+    references: [
+      {amo: [[9,7,15]]},
+    ],
   },
   'behar/bechukotai': {
     title: 'Behar/Bechukotai',
     name: 'behar/bechukotai',
     description: 'Double portion',
-    references: [],
+    references: [
+      {jer: [[32,6,27]]},
+    ],
   },
   'mattot/massei': {
     title: 'Mattot/Massei',
@@ -646,7 +656,9 @@ haftarahData.defaultList = {
     title: 'Nitzavim/Vayelekh',
     name: 'nitzavim/vayelekh',
     description: 'Double portion',
-    references: [],
+    references: [
+      {isa: [61,62,[63,1,9]]},
+    ],
   },
   'rosh-hashannah': {
     title: 'Rosh Hashannah',

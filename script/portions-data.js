@@ -526,16 +526,6 @@ portionsData = {
     references: [
       {deu: [[29,10],[30,1,20]]},
       {isa: [61,62,[63,1,9]]},
-      {jer: [[23,15]]},
-      {psa: [[69,21]]},
-      {mat: [[5,14,20],[27,34]]},
-      {luk: [[24,1,12]]},
-      {act: [[8,14,23]]},
-      {rom: [[9,30],[10,1,13]]},
-      {ti1: [6]},
-      {heb: [[12,14,15]]},
-      {jo1: [5]},
-      {rev: [[8,11]]},
     ],
   },
   'vayelekh': {
@@ -584,8 +574,8 @@ portionsData = {
     name: 'tazria/metzora',
     description: 'Double portion',
     references: [
-      {deu: [33,34]},
-      {jos: [1]},
+      {lev: [12,13,14,15]},
+      {ki2: [[7,3,20]]},
     ],
   },
   'acharei-mot/kedoshim': {
@@ -593,8 +583,8 @@ portionsData = {
     name: 'acharei-mot/kedoshim',
     description: 'Double portion',
     references: [
-      {deu: [33,34]},
-      {jos: [1]},
+      {lev: [16,17,18,19,[20,1,27]]},
+      {amo: [[9,7,15]]},
     ],
   },
   'behar/bechukotai': {
@@ -602,8 +592,8 @@ portionsData = {
     name: 'behar/bechukotai',
     description: 'Double portion',
     references: [
-      {deu: [33,34]},
-      {jos: [1]},
+      {lev: [25,26,27]},
+      {jer: [[16,17],[17,1,29]]},
     ],
   },
   'mattot/massei': {
@@ -611,8 +601,10 @@ portionsData = {
     name: 'mattot/massei',
     description: 'Double portion',
     references: [
-      {deu: [33,34]},
-      {jos: [1]},
+      {num: [30,31,32,33,34,35,36]},
+      {jer: [1,[2,1,3]]},
+      {jer: [[2,4,28]]},
+      {jer: [[3,4,4]]},
     ],
   },
   'nitzavim/vayelekh': {
@@ -620,8 +612,10 @@ portionsData = {
     name: 'nitzavim/vayelekh',
     description: 'Double portion',
     references: [
-      {deu: [33,34]},
-      {jos: [1]},
+      {deu: [[29,10],30,31]},
+      {hos: [[14,1,9]]},
+      {mic: [[7,18,20]]},
+      {joe: [[2,15,27]]},
     ],
   },
   'rosh-hashannah': {
@@ -629,9 +623,9 @@ portionsData = {
     name: 'rosh-hashannah',
     description: 'Feast of Trumpets and Head of the Year',
     references: [
-      {exd: [[12,21,51]]},
-      {exd: [[13,17],14,[15,1,26]]},
-      {jos: [[5,2],[6,1,1]]},
+      {gen: [21]},
+      {num: [[29,1,6]]},
+      {sa1: [1,[2,1,10]]},
     ],
   },
   'sukkot': {
@@ -639,9 +633,9 @@ portionsData = {
     name: 'sukkot',
     description: 'The first day of Sukkot',
     references: [
-      {exd: [[12,21,51]]},
-      {exd: [[13,17],14,[15,1,26]]},
-      {jos: [[5,2],[6,1,1]]},
+      {lev: [[22,26],23]},
+      {num: [[29,12,16]]},
+      {zec: [14]},
     ],
   },
   'sukkotshabbatcholhamoed3': {
@@ -679,9 +673,12 @@ portionsData = {
     name: 'sukkot2',
     description: 'The eighth day, and conclusion of Sukkot',
     references: [
-      {exd: [[12,21,51]]},
-      {exd: [[13,17],14,[15,1,26]]},
-      {jos: [[5,2],[6,1,1]]},
+      {deu: [[14,22],15,[16,1,17]]},
+      {deu: [33,34]},
+      {num: [[29,35],[30,1,1]]},
+      {gen: [1]},
+      {jos: [1]},
+      {ki1: [[8,54]]},
     ],
   },
   'pesach': {
