@@ -290,9 +290,11 @@
     nav.settings = {element: document.getElementById('settingsMenu')};
     //hide header on scroll
     nav.scrollPos = document.body.scrollTop;
-    document.getElementById("reading").onscroll = function() {
+    reading.onscroll = function() {
       nav.header();
     }
+    // load the settings list with the available apostolic reading lists
+    fillSettingsMenu();
     //language settings
     if(document.cookie.includes("language=1")) {
       nav.language = 1;
@@ -318,8 +320,42 @@
     document.getElementById('night').onclick = function() {
       nav.nightmode(!nav.nightsetting);
     }
-    // load the settings list with the available apostolic reading lists
-    fillSettingsMenu();
+    //text size
+    if(document.cookie.includes("fontsize")) {
+      nav.fontSize = Number(document.cookie.substring((document.cookie.indexOf('fontsize')+9), (document.cookie.indexOf('fontsize')+11)));
+    }
+    else {
+      nav.fontSize = 16;
+    }
+    reading.style.fontSize = nav.fontSize + "px";
+    document.getElementById('plus').onclick = function() {
+      if(nav.fontSize < 24) {
+        nav.fontSize += 1;
+        reading.style.fontSize = nav.fontSize + "px";
+        document.cookie = "fontsize=" + nav.fontSize + "; expires= " + nav.expiry(1);
+      }
+    }
+    document.getElementById('minus').onclick = function() {
+      if(nav.fontSize > 12) {
+        nav.fontSize -= 1;
+        reading.style.fontSize = nav.fontSize + "px";
+        document.cookie = "fontsize=" + nav.fontSize + "; expires= " + nav.expiry(1);
+      }
+    }
+    //reset settings
+    document.getElementById('reset').onclick = function() {
+      nav.showEng();
+      nav.showHeb();
+      nav.language = 0;
+      document.cookie = "language=false; expires= " + nav.expiry(-1);
+      nav.nightsetting = false;
+      nav.nightmode(false);
+      document.cookie = "nightmode=false; expires= " + nav.expiry(-1);
+      nav.fontSize = 16;
+      reading.style.fontSize = "16px";
+      document.cookie = "fontsize=16; expires= " + nav.expiry(-1);
+      nav.hideMenu('settings');
+    }
     // load current portion
     nav.portionTimestamp = (new Date()).getTime();
     stuffReferenceMenu(nav.portionTimestamp);

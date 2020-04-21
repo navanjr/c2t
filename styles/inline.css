@@ -345,6 +345,15 @@ body {
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 2px 9px 1px rgba(0, 0, 0, 0.12), 0 4px 2px -2px rgba(0, 0, 0, 0.2);
 }
 
+.settingsMenu > p {
+margin-bottom:5px;
+margin-top:15px;
+}
+
+.settingsMenu > p:first {
+margin-top:25px;
+}
+
 .settingsItem {
   cursor: pointer;
   padding-top: .5em;
@@ -357,7 +366,49 @@ body {
   font-weight: bold;
 }
 
+#fontSize {
+  display:block;
+  //margin:0 auto;
+  margin-top:15px;
+  margin-bottom:15px;
+  width: 100px;
+}
+
+#fontSize > div {
+  font-size:30px;
+  font-weight:bold;
+  display:inline-block;
+  cursor: pointer;
+  border:1px solid #ddd;
+  border-radius: 3px;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  vertical-align: middle;
+  margin: 2px;
+}
+
+#reset {
+  display:block;
+  font-weight:bold;
+  cursor: pointer;
+  border:1px solid #ddd;
+  border-radius: 3px;
+  line-height: 30px;
+  text-align: center;
+  vertical-align: middle;
+  margin:0 auto;
+  margin-top:15px;
+  margin-bottom:15px;
+  width:70%;
+}
+
 /* reading */
+
+#reading{
+  font-size:16px;
+}
 
 .chapterName {
   font-family: 'lato', 'Helvetica', 'Verdana', sans-serif;
@@ -417,7 +468,9 @@ div.chapterBlock {
 }
 
 .hebReading {
-  font:22px times new roman;
+  font-family: times new roman;
+  font-size: 130%;
+  line-height: 1.4em;
   direction:rtl;
   flex:1;
   max-width:100%;
