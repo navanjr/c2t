@@ -83,30 +83,28 @@
     toggleMenu: function(menu) {
       this[menu].element.classList.toggle('expand');
     },
-    hideEng: function() {
-      var engCards = document.getElementsByClassName('engReading');
-      for(var qq = 0; qq < engCards.length; qq++){
-        engCards[qq].style.display = "none";
+    setLanguage: function(language) {
+      var reading = document.getElementById('reading');
+      switch(language) {
+        case 0: //Both English and Hebrew
+          reading.classList.remove('hideEnglish');
+          reading.classList.remove('hideHebrew');
+          document.cookie = "language=false; expires= " + nav.expiry(-1);
+	  nav.language = 0;
+          break;
+        case 1: //English only
+          reading.classList.remove('hideEnglish');
+          reading.classList.add('hideHebrew');
+          document.cookie = "language=1; expires= " + nav.expiry(1);
+	  nav.language = 1;
+          break;
+        case 2: //Hebrew only
+          reading.classList.add('hideEnglish');
+          reading.classList.remove('hideHebrew');
+          document.cookie = "language=2; expires= " + nav.expiry(1);
+	  nav.language = 2;
+          break;
       }
-    },
-    hideHeb: function() {
-      var hebCards = document.getElementsByClassName('hebReading');
-      for(var rr = 0; rr < hebCards.length; rr++){
-        hebCards[rr].style.display = "none";
-      }
-    },
-    showEng: function() {
-      var engCards = document.getElementsByClassName('engReading');
-      for(var ss = 0; ss < engCards.length; ss++){
-        engCards[ss].style.display = "initial";
-      }
-    },
-    showHeb: function() {
-      var hebCards = document.getElementsByClassName('hebReading');
-      for(var tt = 0; tt < hebCards.length; tt++){
-        hebCards[tt].style.display = "initial";
-      }
-      taglexentry();
     },
     click: function(e) {
       this.button = e && e.srcElement && e.srcElement.id;
@@ -172,25 +170,16 @@
         nav.hideMenu('portions');
       } else if (b8){
         //English only
-        nav.showEng();
-        nav.hideHeb();
+        nav.setLanguage(1);
         nav.hideMenu('settings');
-        document.cookie = "language=1; expires= " + nav.expiry(1);
-	nav.language = 1;
       } else if (b9){
         //Both English and Hebrew
-        nav.showEng();
-        nav.showHeb();
+        nav.setLanguage(0);
         nav.hideMenu('settings');
-        document.cookie = "language=false; expires= " + nav.expiry(-1);
-	nav.language = 0;
       } else if (b10){
         //Hebrew only
-	nav.hideEng();
-	nav.showHeb();
+        nav.setLanguage(2);
         nav.hideMenu('settings');
-        document.cookie = "language=2; expires= " + nav.expiry(1);
-	nav.language = 2;
       }
     },
     expiry: function(offset) {
@@ -298,13 +287,13 @@
     fillSettingsMenu();
     //language settings
     if(document.cookie.includes("language=1")) {
-      nav.language = 1;
+      nav.setLanguage(1);
     }
     else if(document.cookie.includes("language=2")) {
-      nav.language = 2;
+      nav.setLanguage(2);
     }
     else {
-      nav.language = 0;
+      nav.setLanguage(0);
     }
     //nightmode settings
     nav.nightsetting = false;
@@ -345,10 +334,7 @@
     }
     //reset settings
     document.getElementById('reset').onclick = function() {
-      nav.showEng();
-      nav.showHeb();
-      nav.language = 0;
-      document.cookie = "language=false; expires= " + nav.expiry(-1);
+      nav.setLanguage(0);
       nav.nightsetting = false;
       nav.nightmode(false);
       document.cookie = "nightmode=false; expires= " + nav.expiry(-1);
@@ -539,19 +525,8 @@
       }
     readingDiv.appendChild(chapterBlock);
     }
-    if(nav.language == 2){
-      nav.hideEng();
-      nav.showHeb();
-    }
-    else if(nav.language == 0){
-      nav.showEng();
-      nav.showHeb();
-    }
-    else if(nav.language == 1){
-      nav.showEng();
-      nav.hideHeb();
-    }
     readingDiv.scrollTop = 0;
+    taglexentry(); //adds onclick event for the new Hebrew words
     document.querySelector('.loader').setAttribute('hidden', true);
   }
 

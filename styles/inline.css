@@ -488,6 +488,14 @@ div.chapterBlock {
   max-width: 100%;
 }
 
+.hideHebrew .hebReading {
+  display: none;
+}
+
+.hideEnglish .engReading {
+  display: none;
+}
+
 span.heb {
   cursor: text;
   font: 18px times serif;
