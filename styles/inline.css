@@ -397,7 +397,6 @@ margin-top:25px;
   border-radius: 3px;
   line-height: 30px;
   text-align: center;
-  vertical-align: middle;
   margin:0 auto;
   margin-top:15px;
   margin-bottom:15px;
@@ -463,22 +462,42 @@ margin-top:25px;
 }
 
 div.chapterBlock {
-  display:flex;
-  flex-direction:row;
+  display: flex;
+  flex-direction: row;
 }
 
 .hebReading {
-  font-family: times new roman;
+  font-family: times, serif;
   font-size: 130%;
   line-height: 1.4em;
-  direction:rtl;
-  flex:1;
-  max-width:100%;
+  direction: rtl;
+  flex: 1;
+  max-width: 100%;
+}
+
+.hebReading span {
+  cursor: pointer;
+}
+
+.hebReading span.verseNumber {
+  cursor: text;
 }
 
 .engReading {
-  flex:1;
-  max-width:100%;
+  flex: 1;
+  max-width: 100%;
+}
+
+span.heb {
+  cursor: text;
+  font: 18px times serif;
+}
+
+span.samech {
+  cursor: text;
+  display: inline-block;
+  width: 40px;
+  height: .8em;
 }
 
 @media all and (max-width:600px){
@@ -488,13 +507,13 @@ div.chapterBlock {
 }
 
 #language {
-  width:100%;
-  margin-top:5px;
+  width: 100%;
+  margin-top: 5px;
 }
 
 #language>i {
-  font-weight:bold;
-  padding:0 8px;
+  font-weight: bold;
+  padding: 0 8px;
 }
 
 #night {
@@ -524,4 +543,23 @@ div.chapterBlock {
 
 .dark #night_flipper {
   background-color: #333;
+}
+
+#def {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  width: 100%;
+  text-align: center;
+  line-height: 1.5em;
+  border-top: 1px solid #ddd;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.dark #def {
+  border-top: 0px;
+  background-color: #111;
+  color: #aaa;
 }

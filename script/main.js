@@ -106,6 +106,7 @@
       for(var tt = 0; tt < hebCards.length; tt++){
         hebCards[tt].style.display = "initial";
       }
+      taglexentry();
     },
     click: function(e) {
       this.button = e && e.srcElement && e.srcElement.id;
@@ -988,6 +989,45 @@
         menuItem.onclick = nav.click;
         menu.appendChild(menuItem);
       }
+    }
+  }
+  
+  var defTimer;
+  var taglexentry = function() {
+    var spans = document.getElementsByTagName('span');
+    for (var s = 0; s < spans.length; s++) {
+      if(spans[s].getAttribute("st")){
+        spans[s].onclick = function(e){
+          clearTimeout(defTimer);
+          lookup.click(e);
+        }
+      }
+    }
+  }
+
+  var lookup = {
+    click: function(e) {
+      var strongs = e.target.getAttribute("st");
+      var def = document.getElementById("def");
+      if(strongs.length <= 0){
+        def.innerHTML = "No entry for this word";
+        return("");
+      }
+      if(!(strongs in lexicon)){
+        def.innerHTML = "No entry for this word";
+        return("");
+      }
+      var txt = "";
+      txt += "<span class='heb'>";
+      txt += lexicon[strongs][0];
+      txt += "</span> | ";
+      txt += lexicon[strongs][1];
+      txt += ": ";
+      txt += lexicon[strongs][2];
+      txt += "<br>Strongs number: ";
+      txt += lexicon[strongs][3];
+      def.innerHTML = txt;
+      defTimer = setTimeout(function(){def.innerHTML = "";}, 5000);
     }
   }
 
