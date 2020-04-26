@@ -404,12 +404,33 @@
           contents: book.bookName,
           class: 'wholeBibleBook',
           id: 'wholeBible_' + books[j],
-          onclick: read
+          onclick: wholeBibleBook
         }));
       }
       sectionDiv.appendChild(card);
       reading.appendChild(sectionDiv);
     }
+    reading.scrollTop = 0;
+  }
+
+  var wholeBibleBook = function() {
+    var reading = document.getElementById('reading');
+    reading.innerHTML = '';
+    var book = this.id.split('_')[1];
+    var card = newElement({class: 'card closer wholeBibleCard'});
+    var chapters = Object.keys(kjv[book]);
+    reading.appendChild(newElement({contents: 'Book of ' + this.innerHTML}));
+    for (var j = 0; j < chapters.length; j++) {
+      card.appendChild(newElement({
+        type: 'span',
+        contents: 'Chapter ' + (j+1),
+        class: 'wholeBibleBook',
+        id: 'wholeBible_' + book + '_' + j,
+        onclick: read
+      }));
+    }
+    reading.appendChild(card);
+    reading.scrollTop = 0;
   }
 
   var shareReading = function(portion) {
@@ -478,6 +499,7 @@
     if (this && this.id.split('_')[0] === 'wholeBible') { // reading the entire book
       chunks = getPortion(this.id.split('_')[1], {wholeBible: true})[0];
       changeTitle('portionTitle', "Book of "+getPortion(this.id.split('_')[1], {wholeBible: true})[0].bookName);
+      var chapterNumber = Number(this.id.split('_')[2]);
     } else {
       if (options.chunkIndex != undefined) {
         var id = options.chunkIndex;
@@ -494,7 +516,11 @@
     referenceTitleDiv.innerHTML = chunks.reference;
     for (var i = 0; i < chunks.verses.length; i++) {
       var chunk = chunks.verses[i];
-      var chapterBlock = newElement({class: 'chapterBlock'});
+      if(chapterNumber && chapterNumber == i) {
+        var chapterBlock = newElement({class: 'chapterBlock', id: chapterNumber})
+      } else {
+        var chapterBlock = newElement({class: 'chapterBlock'});
+      }
       var cs = newElement({class: 'card engReading'});
       var chapter = Object.keys(chunk)[0];
       var verseArray = chunk[chapter];
@@ -525,7 +551,11 @@
       }
     readingDiv.appendChild(chapterBlock);
     }
-    readingDiv.scrollTop = 0;
+    if (chapterNumber) {
+      readingDiv.scrollTop = document.getElementById(chapterNumber).offsetTop;
+    } else {
+      readingDiv.scrollTop = 0;
+    }
     taglexentry(); //adds onclick event for the new Hebrew words
     document.querySelector('.loader').setAttribute('hidden', true);
   }
