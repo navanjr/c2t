@@ -17,6 +17,7 @@ html, body {
 
 html {
   overflow: hidden;
+  font-size:16px;
 }
 
 body {
@@ -405,19 +406,16 @@ margin-top:25px;
 
 /* reading */
 
-#reading{
-  font-size:16px;
-}
-
 .chapterName {
   font-family: 'lato', 'Helvetica', 'Verdana', sans-serif;
   font-weight: bold;
-  font-size:16px;
+  font-size: 1rem;
   margin-bottom: .5em;
 }
 
 .verseNumber {
-  font-size: x-small;
+  font-size: .6rem;
+  font-family: 'lato', 'Helvetica', 'Verdana', sans-serif;
   color: maroon;
   padding-right: 3px;
   vertical-align: text-top;
@@ -426,6 +424,12 @@ margin-top:25px;
   background-color: rgba(198, 199, 181, 0.28);
   margin-right: 3px;
   margin-left: 5px;
+}
+
+.hebReading span.verseNumber {
+  cursor: text;
+  position: relative;
+  top: -.7em;
 }
 
 .dark .verseNumber {
@@ -466,8 +470,10 @@ div.chapterBlock {
   flex-direction: row;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700&display=swap');
+
 .hebReading {
-  font-family: times, serif;
+  font-family: 'Frank Ruhl Libre', serif;
   font-size: 130%;
   line-height: 1.4em;
   direction: rtl;
@@ -477,10 +483,6 @@ div.chapterBlock {
 
 .hebReading span {
   cursor: pointer;
-}
-
-.hebReading span.verseNumber {
-  cursor: text;
 }
 
 .engReading {
@@ -498,7 +500,7 @@ div.chapterBlock {
 
 span.heb {
   cursor: text;
-  font: 18px times serif;
+  font: 130% 'Frank Ruhl Libre', serif;
 }
 
 span.samech {
@@ -564,6 +566,9 @@ span.samech {
   border-top: 1px solid #ddd;
   background-color: #f9f9f9;
   color: #333;
+  font-size:90%;
+  padding-left:4px;
+  padding-right:4px;
 }
 
 .dark #def {

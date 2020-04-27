@@ -280,8 +280,9 @@
     nav.settings = {element: document.getElementById('settingsMenu')};
     //hide header on scroll
     nav.scrollPos = document.body.scrollTop;
+    nav.fontChanging = false;
     reading.onscroll = function() {
-      nav.header();
+      if(!nav.fontChanging) nav.header();
     }
     // load the settings list with the available apostolic reading lists
     fillSettingsMenu();
@@ -317,29 +318,37 @@
     else {
       nav.fontSize = 16;
     }
-    reading.style.fontSize = nav.fontSize + "px";
+    var root = document.getElementsByTagName('html')[0];
+    root.style.fontSize = nav.fontSize + "px";
+    var changeTimeout;
     document.getElementById('plus').onclick = function() {
       if(nav.fontSize < 24) {
+        nav.fontChanging = true;
+        clearTimeout (changeTimeout);
         nav.fontSize += 1;
-        reading.style.fontSize = nav.fontSize + "px";
+        root.style.fontSize = nav.fontSize + "px";
         document.cookie = "fontsize=" + nav.fontSize + "; expires= " + nav.expiry(1);
       }
+      changeTimeout = setTimeout(function(){nav.fontChanging = false;}, 500);
     }
     document.getElementById('minus').onclick = function() {
       if(nav.fontSize > 12) {
+        nav.fontChanging = true;
+        clearTimeout (changeTimeout);
         nav.fontSize -= 1;
-        reading.style.fontSize = nav.fontSize + "px";
+        root.style.fontSize = nav.fontSize + "px";
         document.cookie = "fontsize=" + nav.fontSize + "; expires= " + nav.expiry(1);
       }
+      changeTimeout = setTimeout(function(){nav.fontChanging = false;}, 500);
     }
     //reset settings
     document.getElementById('reset').onclick = function() {
       nav.setLanguage(0);
-      nav.nightsetting = false;
-      nav.nightmode(false);
-      document.cookie = "nightmode=false; expires= " + nav.expiry(-1);
+      nav.nightsetting = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      nav.nightmode(nav.nightsetting);
+      document.cookie = "nightmode=" + nav.nightsetting + "; expires= " + nav.expiry(1);
       nav.fontSize = 16;
-      reading.style.fontSize = "16px";
+      root.style.fontSize = "16px";
       document.cookie = "fontsize=16; expires= " + nav.expiry(-1);
       nav.hideMenu('settings');
     }
