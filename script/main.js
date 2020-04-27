@@ -428,6 +428,10 @@
     var book = this.id.split('_')[1];
     var card = newElement({class: 'card closer wholeBibleCard'});
     var chapters = Object.keys(kjv[book]);
+    if (chapters.length == 1) {
+      read.call(this);
+      return;
+    }
     reading.appendChild(newElement({contents: 'Book of ' + this.innerHTML}));
     for (var j = 0; j < chapters.length; j++) {
       card.appendChild(newElement({
@@ -508,7 +512,7 @@
     if (this && this.id.split('_')[0] === 'wholeBible') { // reading the entire book
       chunks = getPortion(this.id.split('_')[1], {wholeBible: true})[0];
       changeTitle('portionTitle', "Book of "+getPortion(this.id.split('_')[1], {wholeBible: true})[0].bookName);
-      var chapterNumber = Number(this.id.split('_')[2]);
+      var chapterNumber = Number(this.id.split('_')[2]) || 0;
     } else {
       if (options.chunkIndex != undefined) {
         var id = options.chunkIndex;
