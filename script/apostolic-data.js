@@ -526,6 +526,7 @@ haftarahData.defaultList = {
         {rom: [[8,31,39]]},
         {heb: [12]},
         {jam: [[5,7,11]]},
+        {rev: [9]},
       ],
     },
     'reeh': {
