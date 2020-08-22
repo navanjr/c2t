@@ -548,6 +548,7 @@ haftarahData.defaultList = {
         {cr1: [[5,9,13]]},
         {ti1: [[5,17,22]]},
         {heb: [[10,28,31]]},
+        {jo1: [5]},
       ],
     },
     'kitetze': {
