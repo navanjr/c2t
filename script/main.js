@@ -677,7 +677,7 @@
                 chunkObj.chapter = 'Chapter ' + chapter[0];
               } else if (Array.isArray(chapter) && chapter.length === 2) { // return from the given verse to the end of the chapter
                 chunkObj[chapter] = book[chapter[0]].slice(chapter[1]-1);
-	            	if (hebBook) {chunkObj.heb = hebBook[chapter[0]].slice(chapter[1]-1);}				
+	            	if (hebBook) {chunkObj.heb = hebBook[chapter[0]].slice(chapter[1]-1);}
                 chunkObj.chapter = 'Chapter ' + chapter[0];
               } else { // return the whole chapter
                 chunkObj[chapter] = book[chapter];
@@ -701,7 +701,7 @@
   var findPortionNumber = function(alephDate) {
 
     var alephDate = new Date(alephDate.setHours(0,0,0,0)); /* we want to work with a clean date timestamp so our math works out evenly later */
-    
+
     var festivals = { /* store the dates of all the festivals, and also the reading list index for each one */
     // TODO: add all festival readings to reading list
       rosh: [1,1,"rosh-hashannah"],
@@ -753,11 +753,11 @@
 
     for(const f of Object.entries(festivals)){
 
-      /* The following bit of messy code deals with finding the approprate 
+      /* The following bit of messy code deals with finding the approprate
          Hebrew year for festivals that affect the current Torah reading cycle.
-         This is tricky, because if the date is past Yom Teruah we need to look 
-         for the spring feasts from the previous year, but we if we're before 
-         Yom Teruah we don't care about the fall feasts, but we do want to 
+         This is tricky, because if the date is past Yom Teruah we need to look
+         for the spring feasts from the previous year, but we if we're before
+         Yom Teruah we don't care about the fall feasts, but we do want to
          display the readings for Yom Teruah if it's coming up in a few days, so it's still worth checking
          TODO: If someone can think of a cleaner way to do this, that would be great
       */
@@ -785,9 +785,9 @@
     if(pesach.getDay() !== (6 || 0) && pesach.getTime() < nextShabbat.getTime()){
               // TODO: is this ^ a valid way to check (getDay() !== 6 && getDay() !== 0)?
       /*
-        If the first day of Pesach falls on a Saturday or Sunday then there is 
-        no Shabbat Chol Hamoed, otherwise we check to see if the following week 
-        is the Shabbat chol hamoed.  If not, we just check if we are past that, 
+        If the first day of Pesach falls on a Saturday or Sunday then there is
+        no Shabbat Chol Hamoed, otherwise we check to see if the following week
+        is the Shabbat chol hamoed.  If not, we just check if we are past that,
         in which case we need to deprecate portionNumber by 1.
       */
       if(pesach2.getTime() > nextShabbat.getTime()){ /* nextShabbat is the Shabbat Chol Hamoed Pesach */
@@ -800,17 +800,17 @@
 
     if(sukkot.getTime() < nextShabbat.getTime() && sukkot2.getTime() > nextShabbat.getTime()){
     /*
-      Unless the first day of Sukkot falls on a Saturday, which we (essentially) 
-      check for above, there is always a Shabbat Chol Hamoed Sukkot, 
-      so we just need to see if we are between the two Chagim and read 
+      Unless the first day of Sukkot falls on a Saturday, which we (essentially)
+      check for above, there is always a Shabbat Chol Hamoed Sukkot,
+      so we just need to see if we are between the two Chagim and read
       the chol hamoed readings if we are.
-      Otherwise, the Shabbat chol hamoed Sukkot always falls on either 
-      the 3rd, 5th, or 6th day of the festival (because of the Rosh Hashannah 
+      Otherwise, the Shabbat chol hamoed Sukkot always falls on either
+      the 3rd, 5th, or 6th day of the festival (because of the Rosh Hashannah
       postponement rules), and the maftir reading is different for each case.
       For more information about Sukkot Yom Tov readings,
       see https://en.wikipedia.org/wiki/Yom_Tov_Torah_readings#Sukkot
       For a technical discussion about the Rosh Hashannah postponement rules,
-      see https://individual.utoronto.ca/kalendis/hebrew/postpone.htm
+      see http://individual.utoronto.ca/kalendis/hebrew/postpone.htm
     */
       var dayOfSukkot = Math.ceil(((nextShabbat.getTime() - sukkot.getTime())/86400000) + 1);
       switch(dayOfSukkot){
@@ -889,7 +889,7 @@
     //TODO: implement the following comment
     /*
        Now we should have the correct Torah reading.
-       Next we need to figure out if there are any maftir readings 
+       Next we need to figure out if there are any maftir readings
        or special haftarah readings.
     */
 
@@ -1009,7 +1009,7 @@
       }
     }
   }
-  
+
   var defTimer;
   var taglexentry = function() {
     var spans = document.getElementsByTagName('span');
