@@ -565,7 +565,7 @@ portionsData = {
     name: 'vayakhel/pekudei',
     description: 'Double portion',
     references: [
-      {deu: [33,34]},
+      {exd: [35,36,37,[38,1,20],[38,21],39,40]},
       {jos: [1]},
     ],
   },
